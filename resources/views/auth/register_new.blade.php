@@ -1,19 +1,14 @@
-@extends('layouts.register_layout')
-
-@section('content')
-	<div class="container">
-    @include('messages.errorMessage')
-        <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data" novalidate>
-        @csrf
-		<div class="outer-panel">
+<div class="outer-panel">
 			<div class="outer-panel-inner">
 				<div class="process-title mt-6">
-					<h2 id="step-title-1" class="step-title is-active">Enter your member code.</h2>
-					<h2 id="step-title-2" class="step-title">What should we call you?</h2>
-					<h2 id="step-title-3" class="step-title">Upload your profile picture.</h2>
+					<h2 id="step-title-1" class="step-title is-active">Welcome, enter your members code.</h2>
+					<h2 id="step-title-2" class="step-title">Tell us more about you.</h2>
+					<h2 id="step-title-3" class="step-title">Upload a profile picture.</h2>
 					<h2 id="step-title-4" class="step-title">Secure your account.</h2>
-					<h2 id="step-title-5" class="step-title">You're all set. Welcome to the neighborhood!</h2>
+					<h2 id="step-title-5" class="step-title">You're all set. Ready?</h2>
 				</div>
+                <form method="POST" action="{{ route('register') }}">
+                @csrf
                     <div id="signup-panel-1" class="process-panel-wrap is-active is-narrow">
                         <div class="account-code">
                             <p class="has-text-centered">This code should be provided to you by the administrator.</p>
@@ -90,39 +85,26 @@
 
                         <div class="buttons">
                             <a class="button process-button" data-step="step-dot-1">Back</a>
-                            <a class="button process-button is-next" data-step="step-dot-3">Next</a>
+                            <a class="button process-button is-next" data-step="step-dot-4">Next</a>
                         </div>
                     </div>
 
                     <div id="signup-panel-3" class="process-panel-wrap is-narrow">
-                        <div class="field">
-                            <label>Profile Picture</label>
-                            <div class="control">
-                                 <input type="file" class="" id="profile_picture" name="profile_picture">
-                                <br>
-                                @if ($errors->has('profile_picture'))
-                                    <span class="invalid-feedback has-text-dangers" role="alert">
-                                        <strong>{{ $errors->first('profile_picture') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-                         {{--<div class="form-panel">
+                        <div class="form-panel">
                             <div class="photo-upload">
                                 <div class="preview">
                                     <a class="upload-button">
                                         <i data-feather="plus"></i>
                                     </a>
-                                    <img id="upload-preview" src="https://via.placeholder.com/150x150"
+                                    <img id="upload-preview" src="https://via.placeholder.com/150x150" name="profile_picture" required
                                         data-demo-src="{{ asset('assets/img/avatars/avatar-w.png') }}" alt="">
                                     <form id="profile-pic-dz" class="dropzone is-hidden" action="/"></form>
                                 </div>
                                 <div class="limitation">
                                     <small>Only images with a size lower than 3MB are allowed.</small>
                                 </div>
-                            </div> 
-                           
-                        </div>--}}
+                            </div>
+                        </div>
 
                         <div class="buttons">
                             <a class="button process-button" data-step="step-dot-2">Back</a>
@@ -163,37 +145,35 @@
                                     <p> We just sent you a confirmation email. PLease confirm your account within 24 hours.</p> -->
                                 {{-- <a id="signup-finish" class="button is-fullwidth">Let Me In</a> --}}
                                 <button type="submit" class="button is-fullwidth">
-                                    {{ __('Register') }}
+                                    {{ __('Let Me In') }}
                                 </button>
                             </div>
                         </div>
                     </div>
-
-                </div>
-            </div>
-        </form>
-	</div>
-
-
-    <!--Edit Credit card Modal-->
-    <div id="crop-modal" class="modal is-small crop-modal is-animated">
-        <div class="modal-background"></div>
-        <div class="modal-content">
-            <div class="modal-card">
-                <header class="modal-card-head">
-                    <h3>Crop your picture</h3>
-                    <div class="close-wrap">
-                        <button class="close-modal" aria-label="close">
-                            <i data-feather="x"></i>
-                        </button>
-                    </div>
-                </header>
-                <div class="modal-card-body">
-                    <div id="cropper-wrapper" class="cropper-wrapper">
-
-                    </div>
-                </div>
+                </form>
             </div>
         </div>
-    </div>
-@endsection
+
+
+
+	<!--Edit Credit card Modal-->
+	<div id="crop-modal" class="modal is-small crop-modal is-animated">
+		<div class="modal-background"></div>
+		<div class="modal-content">
+			<div class="modal-card">
+				<header class="modal-card-head">
+					<h3>Crop your picture</h3>
+					<div class="close-wrap">
+						<button class="close-modal" aria-label="close">
+							<i data-feather="x"></i>
+						</button>
+					</div>
+				</header>
+				<div class="modal-card-body">
+					<div id="cropper-wrapper" class="cropper-wrapper">
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>

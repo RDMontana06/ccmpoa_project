@@ -43503,12 +43503,11 @@ body.is-dark .mapboxgl-ctrl-geocoder .mapboxgl-ctrl-geocoder--suggestion-address
     }
     .signup-wrapper .outer-panel .outer-panel-inner .account-code .button {
         position: absolute;
-        top: 0;
+        top: 5;
         left: 0;
         margin: 0;
-        height: 100%;
+        height: 50%;
         width: 100%;
-        opacity: 0
     }
     .signup-wrapper .process-bar-wrap {
         max-width: 320px;

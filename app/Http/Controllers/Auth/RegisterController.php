@@ -49,8 +49,12 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+            'members_code' => ['required', 'unique:users', 'string', 'max:255'],
+            'first_name' => ['required', 'string', 'max:255'],
+            'last_name' => ['required', 'string', 'max:255'],
+            'profile_picture' => ['required'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'phone_number' => ['required', 'string', 'max:255'],
             'password' => ['required', 'string', 'min:6', 'confirmed'],
         ]);
     }
@@ -63,9 +67,21 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        // dd($data);
+        $attachment = $data['profile_picture'];
+        $original_name = $attachment->getClientOriginalName();
+        $name = time() . '_' . $attachment->getClientOriginalName();
+        $attachment->move(public_path() . '/users/', $name);
+        $file_name = '/users/' . $name;
+
         return User::create([
-            'name' => $data['name'],
+            'members_code' => $data['members_code'],
+            'name' => $data['first_name'] . ' ' . $data['last_name'],
+            'first_name' =>  $data['first_name'],
+            'last_name' =>  $data['last_name'],
+            'profile_picture' => $file_name,
             'email' => $data['email'],
+            'phone_number' => $data['phone_number'],
             'password' => Hash::make($data['password']),
         ]);
     }
