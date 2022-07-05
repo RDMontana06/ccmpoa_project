@@ -43,7 +43,7 @@
                                         value="{{ old('first_name') }}" name="first_name" placeholder="Enter your first name" required>
 
                                     @if ($errors->has('first_name'))
-                                        <span class="invalid-feedback" role="alert">
+                                        <span class="invalid-feedback has-text-dangers" role="alert">
                                             <strong>{{ $errors->first('first_name') }}</strong>
                                         </span>
                                     @endif
@@ -55,7 +55,7 @@
                                     <input type="text" id="last_name" class="input form-control{{ $errors->has('last_name') ? ' is-invalid' : '' }}" name="last_name" value="{{ old('last_name') }}" placeholder="Enter your last name" required>
 
                                     @if ($errors->has('last_name'))
-                                        <span class="invalid-feedback" role="alert">
+                                        <span class="invalid-feedback has-text-dangers" role="alert">
                                             <strong>{{ $errors->first('last_name') }}</strong>
                                         </span>
                                     @endif
@@ -68,7 +68,7 @@
                                     <input type="email" id="email" class="input form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" placeholder="Enter your email address" required>
 
                                     @if ($errors->has('email'))
-                                        <span class="invalid-feedback" role="alert">
+                                        <span class="invalid-feedback has-text-dangers" role="alert">
                                             <strong>{{ $errors->first('email') }}</strong>
                                         </span>
                                     @endif
@@ -80,7 +80,7 @@
                                     <input type="text" class="input form-control{{ $errors->has('phone_number') ? ' is-invalid' : '' }}"" id="phone_number" name="phone_number" value="{{ old('phone_number') }}" required placeholder="Enter your phone number">
 
                                     @if ($errors->has('phone_number'))
-                                        <span class="invalid-feedback" role="alert">
+                                        <span class="invalid-feedback has-text-dangers" role="alert">
                                             <strong>{{ $errors->first('phone_number') }}</strong>
                                         </span>
                                     @endif
@@ -135,14 +135,19 @@
                             <div class="field">
                                 <label>Password</label>
                                 <div class="control">
-                                    <input type="password" id="password" class="input form-control{{ $errors->has('password') ? ' is-invalid' : '' }}"
-                                            name="password" required placeholder="Choose a password">
+                                    <input type="password" id="password" class="input form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" value="{{ old('password') }}" name="password" required placeholder="Choose a password">
+
+                                     @if ($errors->has('password'))
+                                        <span class="invalid-feedback has-text-dangers" role="alert">
+                                            <strong>{{ $errors->first('password') }}</strong>
+                                        </span>
+                                    @endif
                                 </div>
                             </div>
                             <div class="field">
                                 <label>Repeat Password</label>
                                 <div class="control">
-                                    <input id="password-confirm" type="password" class="input form-control" name="password_confirmation" required
+                                    <input id="password_confirmation" type="password" class="input form-control" name="password_confirmation"  value="{{ old('password_confirmation') }}""
                                         placeholder="Repeat your password">
                                 </div>
                             </div>
