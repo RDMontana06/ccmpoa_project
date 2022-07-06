@@ -6,18 +6,19 @@
 			<div class="columns is-vcentered">
 				<div class="column is-6 first-column">
 
-					<div class="lg-header is-hidden-mobile">
-						<img src="{{ asset('assets/img/logo/logo.svg') }}" alt="">
+					<div class="lg-header is-hidden-mobile logo-details">
+						<img src="{{ asset('assets/img/logo/logo.svg') }}" alt="ccmpoalogo">
 						<div>
 							<span>Cane Creek Mountain</span><br>
 							<span>Property Owners</span>
 						</div>
 					</div>
 
-					<h2 class="form-title">Welcome!</h2>
-					<h3 class="form-subtitle">Enter your credentials to sign in.</h3>
+					<div>
+						<h2 class="form-title">Welcome!</h2>
+						<h3 class="form-subtitle">Enter your credentials to sign in.</h3>
+					</div>
                         
-
 					<!--Form-->
 					<form method="POST" action="{{ route('login') }}" class="login-form">
 						@csrf
@@ -30,8 +31,8 @@
 						<div class="form-panel">
                         
 							<div class="field">
-								<label for="email">{{ __('Email Address') }}</label>
-								<input id="email" type="email" class="input form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
+								<label for="email">{{ __('Email') }}</label>
+								<input id="email" type="email" placeholder="Enter your email" class="input form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
 									name="email" value="{{ old('email') }}" required autofocus>
 
 								@if ($errors->has('email'))
@@ -42,8 +43,7 @@
 							</div>
 							<div class="field">
 								<label for="password">{{ __('Password') }}</label>
-								<input id="password" type="password"
-									class="input form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+								<input id="password" type="password" placeholder="Enter your password" class="input form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
 
 								@if ($errors->has('password'))
 									<span class="invalid-feedback" role="alert">
@@ -59,12 +59,12 @@
 										<i></i>
 									</label>
 									<div class="meta">
-										<p>{{ __('Remember Me') }}</p>
+										<p class="f16">{{ __('Remember me') }}</p>
 									</div>
 								</div>
 								@if (Route::has('password.request'))
-									<a href="{{ route('password.request') }}">
-										{{ __('Forgot Password?') }}
+									<a class="f16" href="{{ route('password.request') }}">
+										{{ __('Forgot password?') }}
 									</a>
 								@endif
 							</div>
@@ -72,12 +72,12 @@
 						<div class="buttons">
 							<button type="submit" style="padding: 0px" class="button is-solid primary-button is-fullwidth raised"
 								id="loginbtn">
-								{{ __('Login') }}
+								{{ __('Log in') }}
 							</button>
 						</div>
 
 						<div class="account-link has-text-centered" style="margin-bottom: 40px">
-							<a href="{{ url('signup') }}">Don't have an account? Sign Up</a>
+							<span>Don't have an account? <a href="{{ url('signup') }}">Sign up here</a></span>
 						</div>
 					</form>
 				</div>
