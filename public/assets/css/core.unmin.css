@@ -32,7 +32,7 @@
     position: relative;
     vertical-align: top
 }
-
+ 
 .pagination-previous:focus,
 .pagination-next:focus,
 .pagination-link:focus,
@@ -17093,12 +17093,12 @@ button.button {
 .button.is-solid.primary-button {
     background: #3BA767;
     border-color: #3BA767;
-    color: #fff
+    color: #fff;
+    font-size: 16px;
 }
 
 .button.is-solid.primary-button.raised:hover {
     box-shadow: 0 14px 26px -12px rgba(61, 112, 178, .42), 0 4px 23px 0px rgba(0, 0, 0, .12), 0 8px 10px -5px rgba(61, 112, 178, .2) !important;
-    opacity: .8
 }
 
 .button.is-solid.secondary-button {
@@ -21550,8 +21550,8 @@ body.is-dark .child-dropdown .inner ul li .text span:first-child {
 
 .field label {
     font-size: .9rem;
-    font-weight: 500;
-    color: #393a4f
+    font-weight: 400;
+    color: #181818;
 }
 
 .control.has-icon {
@@ -43771,7 +43771,7 @@ body.is-dark .mapboxgl-ctrl-geocoder .mapboxgl-ctrl-geocoder--suggestion-address
 }
 
 .login-container .login-form .field.is-flex a:hover {
-    color: #3d70b2
+    color: #33A968;
 }
 
 .login-container .login-form .account-link {
@@ -50992,3 +50992,35 @@ body.is-dark .elements-wrap .element-block code {
 }
 
 /*# sourceMappingURL=scss */
+
+/*-- additional css--*/
+.logo-details{
+    margin-bottom: 4vh;
+}
+.f16{
+    font-size: 16px!important;
+}
+.align-left{
+    text-align: left;
+}
+.align-center{
+    text-align: center;
+}
+.align-right{
+    text-align: right;
+}
+.verification{
+    gap: 10px;
+    margin: 4vh auto 4vh auto;
+    padding: 2vh 0 4vh 0;
+    max-width: 50vw;
+}
+.verify-logo{
+    width: 230px; 
+    margin: auto; 
+    display: block;
+}
+.verify-title{
+    font-size: 18px; 
+    font-weight: 500;
+}
