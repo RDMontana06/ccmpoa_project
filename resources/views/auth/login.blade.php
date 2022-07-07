@@ -68,6 +68,7 @@
 									</a>
 								@endif
 							</div>
+							
 						</div>
 						<div class="buttons">
 							<button type="submit" style="padding: 0px" class="button is-solid primary-button is-fullwidth raised"

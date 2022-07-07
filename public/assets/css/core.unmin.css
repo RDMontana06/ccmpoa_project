@@ -43072,7 +43072,7 @@ body.is-dark .mapboxgl-ctrl-geocoder .mapboxgl-ctrl-geocoder--suggestion-address
 }
 
 .fake-nav img {
-    max-width: 48px
+    max-width: 48px;
 }
 
 .signup-wrapper {
@@ -43193,7 +43193,17 @@ body.is-dark .mapboxgl-ctrl-geocoder .mapboxgl-ctrl-geocoder--suggestion-address
 .signup-wrapper .outer-panel .outer-panel-inner {
     width: 100%
 }
-
+.signup-wrapper .signup-title {
+    max-width: 840px;
+    margin: 0 auto;
+    text-align: center
+}
+.signup-wrapper .signup-title h1 {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400 !important;
+    color: #33A968;
+    /* font-size: 1.2rem */
+}
 .signup-wrapper .process-title {
     max-width: 840px;
     margin: 0 auto;
@@ -43715,7 +43725,8 @@ body.is-dark .mapboxgl-ctrl-geocoder .mapboxgl-ctrl-geocoder--suggestion-address
     font-family: "Roboto", sans-serif;
     font-size: 2rem;
     color: #33A968;
-    font-weight: 300
+    font-weight: 300;
+    margin-top:20px;
 }
 
 .login-container .form-subtitle {

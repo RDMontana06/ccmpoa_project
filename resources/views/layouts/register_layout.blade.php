@@ -15,6 +15,7 @@
 	<!-- Core CSS -->
 	<link rel="stylesheet" href="{{ asset('assets/css/app.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/css/core.unmin.css') }}">
+	<link rel="stylesheet" href="{{ asset('assets/css/landing-page.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/toastr/toastr.min.css') }}">
 </head>
 
@@ -30,7 +31,6 @@
 				<img src="{{ asset('assets/img/logo/logo.svg') }}" width="112" height="28" alt="">
 			</a>
 		</div>
-
 		<div class="process-bar-wrap mt-6">
 			<div class="process-bar">
 				<div class="progress-wrap">

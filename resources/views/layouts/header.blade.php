@@ -8,7 +8,7 @@
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-	<title> CCMPOA.org | Email Verification</title>
+	<title> CCMPOA.org</title>
 	<link rel="icon" type="image/png" href="{{ asset('assets/img/logo/logo.svg') }}" />
 	<!-- Fonts -->
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:600,700,800,900" rel="stylesheet">
