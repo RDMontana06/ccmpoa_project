@@ -35,8 +35,8 @@
 
 	<!-- Pageloader -->
 	<div class="pageloader"></div>
-	<div class="infraloader is-active"></div>
-	<div class="signup-wrapper">
+    <div class="infraloader is-active"></div>
+    <div class="app-overlay"></div>
 
 		<!--Fake navigation-->
 		<div class="fake-nav">
@@ -82,6 +82,14 @@
 	<script src="{{ asset('assets/app/script.js') }}"></script>
 	<script src="{{ asset('assets/app/login.js') }}"></script>
 	<script src="{{ asset('assets/js/notify-js.js') }}"></script>
+
+	
+    <!-- Feed pages js -->
+    <script src="{{ asset('assets/js/feed.js') }}"></script>
+
+    <!-- profile js -->
+    <script src="{{ asset('assets/js/profile.js') }}"></script>
+	
 	<script>
 	 if (window.location.hash == '#success') {
 	  new NotifyJS({

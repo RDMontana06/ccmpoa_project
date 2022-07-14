@@ -9,7 +9,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
 	<title> CCMPOA.org | Sign in</title>
-	<link rel="icon" type="image/png" href="{{ asset('assets/img/logo/logo.svg') }}" />
+	<link rel="icon" type="image/svg" href="{{ asset('assets/img/logo/logo.svg') }}" />
 	<!-- Fonts -->
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:600,700,800,900" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Roboto:400,500" rel="stylesheet">
