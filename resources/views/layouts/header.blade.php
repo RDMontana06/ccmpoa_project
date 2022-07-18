@@ -8,7 +8,7 @@
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-	<title> CCMPOA.org</title>
+	<title> CCMPOA.org | Sign in</title>
 	<link rel="icon" sizes="any" type="image/svg+xml" href="{{ asset('assets/img/logo/logo.svg') }}" />
 	<!-- Fonts -->
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:600,700,800,900" rel="stylesheet">
@@ -35,8 +35,8 @@
 
 	<!-- Pageloader -->
 	<div class="pageloader"></div>
-    <div class="infraloader is-active"></div>
-    <div class="app-overlay"></div>
+	<div class="infraloader is-active"></div>
+	<div class="signup-wrapper">
 
 		<!--Fake navigation-->
 		<div class="fake-nav">
@@ -82,14 +82,6 @@
 	<script src="{{ asset('assets/app/script.js') }}"></script>
 	<script src="{{ asset('assets/app/login.js') }}"></script>
 	<script src="{{ asset('assets/js/notify-js.js') }}"></script>
-
-	
-    <!-- Feed pages js -->
-    <script src="{{ asset('assets/js/feed.js') }}"></script>
-
-    <!-- profile js -->
-    <script src="{{ asset('assets/js/profile.js') }}"></script>
-	
 	<script>
 	 if (window.location.hash == '#success') {
 	  new NotifyJS({
