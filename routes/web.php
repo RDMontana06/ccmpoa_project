@@ -1,4 +1,5 @@
 <?php
+
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 /*
@@ -22,6 +23,14 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/home', 'HomeController@index');
     Route::get('profile', 'ProfileController@index');
 
+    // Administrator
+    Route::get('admin_index', 'AdminController@index');
+    Route::get('account_request', 'AdminController@accountRequest');
+    Route::get('user_accounts', 'AdminController@userAccounts');
+    Route::post('approveRequest/{id}', 'AdminController@approve_request');
+    Route::post('rejectRequest/{id}', 'AdminController@reject_request');
 });
 Route::post('saveUser', 'RegisterController@save');
-Route::get('signup', 'RegisterController@register');
+Route::post('requestAccount', 'RegisterController@request_account');
+
+// Route::get('signup', 'RegisterController@register');

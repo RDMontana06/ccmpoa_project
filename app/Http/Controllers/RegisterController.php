@@ -1,12 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
-use Validator;
+
 use Session;
-use Illuminate\Http\Request;
 use App\User;
-use RealRashid\SweetAlert\Facades\Alert;
+use App\AccountRequest;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use App\Notifications\AccountReqNotif;
+use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
 {
@@ -16,9 +19,10 @@ class RegisterController extends Controller
         // dd($departments);
         return view('auth.register');
     }
-    public function save(Request $request){
+    public function save(Request $request)
+    {
         // dd($request);
-        
+
         $validator = Validator::make($request->all(), [
             'members_code' => 'unique:users|required',
             'first_name' => 'required',
@@ -54,8 +58,26 @@ class RegisterController extends Controller
 
         $user->save();
 
-        $user->session()->flash('status','Successfully Created');
+        $user->session()->flash('status', 'Successfully Created');
         return redirect('/');
+    }
+    public function request_account(Request $request)
+    {
+        // dd($request);
 
+        $accountRequest = new AccountRequest;
+        $accountRequest->email = $request->email;
+        $accountRequest->message = $request->message;
+        $accountRequest->save();
+        // dd($accountRequest);
+
+        $acctReqDetails = AccountRequest::where('id', $accountRequest->id)->first();
+        // dd($acctReqDetails);
+
+        $acctReqApproval = User::where('role_id', '1')->first();
+        $acctReqApproval->notify(new AccountReqNotif($acctReqDetails));
+
+        Alert::success('Request Sent', 'Successfully Sent, Please wait for an email for your credentials')->persistent('Dismiss');;
+        return back();
     }
 }

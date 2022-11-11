@@ -14,7 +14,7 @@
                 </div>
                 <div class="card-body">
 
-                    <img src="../assets/img/icons/chat/bubbles.svg" alt="">
+                    <img src=" " alt="">
 
                     <div class="field is-autocomplete">
                         <div class="control has-icon">

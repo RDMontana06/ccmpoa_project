@@ -12,7 +12,7 @@
                 <div class="cover-bg">
                     <img class="cover-image" src="https://via.placeholder.com/1600x460" data-demo-src="assets/img/demo/bg/4.png" alt="">
                     <div class="avatar">
-                        <img id="user-avatar" class="avatar-image" src="https://via.placeholder.com/300x300" data-demo-src="{{ asset('assets/img/avatars/jenna.webp') }}" alt="">
+                        <img id="user-avatar" class="avatar-image" src="{{ asset(auth()->user()->profile_picture) }}" data-demo-src="{{ asset(auth()->user()->profile_picture) }}" alt="Profile Picture">
                         <div class="avatar-button">
                             <i data-feather="plus"></i>
                         </div>
@@ -116,9 +116,7 @@
                         <span>Friends</span>
                     </div>
                     <div class="subheader-middle">
-                    @foreach ($users as $user )
-                         <h2>{{ $user->name }}</h2>
-                    @endforeach
+                         <h2> {{ Auth::user()->name }}</h2>
                         <span>Media Influencer</span>
                     </div>
                     <div class="subheader-end is-hidden-mobile">

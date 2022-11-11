@@ -7,10 +7,9 @@ use App\User;
 
 class ProfileController extends Controller
 {
-    //
+    // User Index
     public function index(){
         $users = User::all();
-// dd($users);
         return view('profile.index', array(
             'users' => $users,
         ));

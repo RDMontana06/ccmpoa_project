@@ -7,13 +7,13 @@ body {
     z-index: 1;
 }
 
-.fake-nav img { 
+.fake-nav img {
     width: 35px;
     height: 35px;
 }
 
 .container {
-    max-width: 100% !important;    
+    max-width: 100% !important;
     padding: 0px !important;
     width: 100% !important;
     max-width: 100% !important;
@@ -57,12 +57,14 @@ div.lg-header {
     gap: 20px;
     margin-top: 20px
 }
+
 div.lg-header-forgot-pass {
     display: flex;
     align-items: center;
     gap: 20px;
     margin-top: -40px
 }
+
 div.lg-header-forgot-pass div span {
     color: #33A968;
     font-style: normal;
@@ -185,6 +187,7 @@ input.input {
         margin: auto
     } */
 }
-.invalid-feedback strong{
+
+.invalid-feedback strong {
     color: #e3342f !important;
 }

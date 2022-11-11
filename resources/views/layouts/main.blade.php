@@ -6,9 +6,9 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+	<meta name="csrf-token" content="{{ csrf_token() }}">
 
-	<title> CCMPOA.org</title>
+	<title>CCMPOA.org | Main Feed</title>
 	<link rel="icon" sizes="any" type="image/svg+xml" href="{{ asset('assets/img/logo/logo.svg') }}" />
 	<!-- Fonts -->
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:600,700,800,900" rel="stylesheet">
@@ -22,12 +22,13 @@
 
 	<!-- Styles -->
 
-	<link href="{{ asset('css/app.css') }}" rel="stylesheet">
+	{{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
 	<!-- Core CSS -->
 	<link rel="stylesheet" href="{{ asset('assets/css/app.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/css/core.css') }}">
-	<link rel="stylesheet" href="{{ asset('assets/css/landing-page.css') }}">
+	{{-- <link rel="stylesheet" href="{{ asset('assets/css/landing-page.css') }}"> --}}
 	<link rel="stylesheet" href="{{ asset('assets/css/feed.css') }}">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.6/dist/sweetalert2.min.css">
 
 
 </head>
@@ -36,16 +37,16 @@
 
 	<!-- Pageloader -->
 	<div class="pageloader"></div>
-    <div class="infraloader is-active"></div>
-    <div class="app-overlay"></div>
+	<div class="infraloader is-active"></div>
+	<div class="app-overlay"></div>
 
-		@include('layouts.nav-feed')
-		@yield('content')
+	@include('layouts.nav-feed')
+	@yield('content')
 
-	</div>
 
 	<!-- Concatenated js plugins and jQuery -->
-
+	<script src="https://code.jquery.com/jquery-3.6.1.min.js"
+		integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 	<script src="{{ asset('assets/js/app.js') }}"></script>
 	<script src="https://js.stripe.com/v3/"></script>
 	<script src="{{ asset('assets/data/tipuedrop_content.js') }}"></script>
@@ -76,39 +77,41 @@
 	<script src="{{ asset('assets/app/login.js') }}"></script>
 	<script src="{{ asset('assets/js/notify-js.js') }}"></script>
 
-	
-    <!-- Feed pages js -->
-    <script src="{{ asset('assets/js/feed.js') }}"></script>
 
-    <script src="{{ asset('assets/js/webcam.js') }}"></script>
-    <script src="{{ asset('assets/js/compose.js') }}"></script>
-    <script src="{{ asset('assets/js/autocompletes.js') }}"></script>
+	<!-- Feed pages js -->
+	<script src="{{ asset('assets/js/feed.js') }}"></script>
 
-    <!-- profile js -->
-    <script src="{{ asset('assets/js/profile.js') }}"></script>
-	
+	<script src="{{ asset('assets/js/webcam.js') }}"></script>
+	<script src="{{ asset('assets/js/compose.js') }}"></script>
+	<script src="{{ asset('assets/js/autocompletes.js') }}"></script>
+
+	<!-- profile js -->
+	<script src="{{ asset('assets/js/profile.js') }}"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.6/dist/sweetalert2.all.min.js"></script>
+	@yield('loginScript')
+	@include('sweetalert::alert')
 	<script>
-	 if (window.location.hash == '#success') {
-	  new NotifyJS({
-	   message: "Registration Successful!",
-	   duration: 5000
-	  }, {
-	   color: '#d4edda',
-	   textColor: 'black',
-	   fontFamily: 'Lexend Deca',
-	   customCSSBox: `border-bottom: 5px solid green; background-color: #d4edda;`
-	  })
-	 } else if (window.location.hash == "#unauthorized") {
-	  new NotifyJS({
-	   message: "Please login to continue!",
-	   duration: 5000
-	  }, {
-	   color: 'red',
-	   textColor: 'red',
-	   fontFamily: 'Lexend Deca',
-	   customCSSBox: `border-bottom: 5px solid red; background-color: white;`
-	  })
-	 }
+		if (window.location.hash == '#success') {
+			new NotifyJS({
+				message: "Registration Successful!",
+				duration: 5000
+			}, {
+				color: '#d4edda',
+				textColor: 'black',
+				fontFamily: 'Lexend Deca',
+				customCSSBox: `border-bottom: 5px solid green; background-color: #d4edda;`
+			})
+		} else if (window.location.hash == "#unauthorized") {
+			new NotifyJS({
+				message: "Please login to continue!",
+				duration: 5000
+			}, {
+				color: 'red',
+				textColor: 'red',
+				fontFamily: 'Lexend Deca',
+				customCSSBox: `border-bottom: 5px solid red; background-color: white;`
+			})
+		}
 	</script>
 	<!-- Landing page js -->
 
