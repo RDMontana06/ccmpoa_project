@@ -71,7 +71,7 @@
 										<div class="image">
 											<img src="{{ asset(auth()->user()->profile_picture) }}"
 												data-demo-src="{{ asset(auth()->user()->profile_picture) }}"
-												onerror="this.src='{{ URL::asset('/assets/img/avatar/no-user-image.png') }}';" alt="">
+												onerror="this.src='{{ URL::asset('assets/img/avatar/no-user-image.png') }}';" alt="">
 										</div>
 									</div>
 									<div class="media-content">

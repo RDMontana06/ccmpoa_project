@@ -45,10 +45,10 @@
 
 
 	<!-- Concatenated js plugins and jQuery -->
-	<script src="https://code.jquery.com/jquery-3.6.1.min.js"
-		integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+	{{-- <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+		integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script> --}}
 	<script src="{{ asset('assets/js/app.js') }}"></script>
-	<script src="https://js.stripe.com/v3/"></script>
+	{{-- <script src="https://js.stripe.com/v3/"></script> --}}
 	<script src="{{ asset('assets/data/tipuedrop_content.js') }}"></script>
 
 	<!-- Core js -->
@@ -86,7 +86,7 @@
 	<script src="{{ asset('assets/js/autocompletes.js') }}"></script>
 
 	<!-- profile js -->
-	<script src="{{ asset('assets/js/profile.js') }}"></script>
+	{{-- <script src="{{ asset('assets/js/profile.js') }}"></script> --}}
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.6/dist/sweetalert2.all.min.js"></script>
 	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 
@@ -97,7 +97,9 @@
 		document.addEventListener('readystatechange', event => {
 
 			// When window loaded ( external resources are loaded too- `css`,`src`, etc...) 
-			if (event.target.readyState === "complete") {
+			var btn = document.getElementById("btnClick");
+			console.log(btn);
+			if (event.target.readyState === "complete" && btn !== null) {
 				document.querySelector('#btnClick').click();
 			}
 		});
