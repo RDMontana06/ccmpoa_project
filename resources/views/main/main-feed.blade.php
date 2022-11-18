@@ -1,15 +1,12 @@
 @extends('layouts.main')
 
 @section('content')
-
 	<div class="view-wrapper">
-		@foreach ($users as $user)
-			@if ($user->created_at == $user->updated_at)
-				{
-				<button type="button" id="btnClick" onclick="alertDetails()" hidden></button>
-				}
-			@endif
-		@endforeach
+		@if (auth()->user()->created_at == auth()->user()->updated_at)
+			{
+			<button type="button" id="btnClick" onclick="alertDetails()" hidden></button>
+			}
+		@endif
 
 		<div id="main-feed" class="navbar-v2-wrapper">
 			<!-- Container -->
@@ -400,6 +397,7 @@
 										<div class="compose">
 											<div class="compose-form">
 												<img src="{{ asset(auth()->user()->profile_picture) }}"
+													onerror="this.src='{{ URL::asset('assets/img/avatar/no-user-image.png') }}';"
 													data-demo-src="{{ asset(auth()->user()->profile_picture) }}" alt="">
 												<div class="control">
 													<textarea id="publish" class="textarea" rows="3" placeholder="Write something about you..."></textarea>
