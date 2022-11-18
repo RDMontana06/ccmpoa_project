@@ -17,7 +17,8 @@ use Illuminate\Support\Facades\Auth;
 //     return view('welcome');
 // });
 
-Auth::routes(['verify' => true]);
+// Auth::routes(['verify' => true]);
+Auth::routes();
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/', 'HomeController@index');
     Route::get('/home', 'HomeController@index');
@@ -25,12 +26,25 @@ Route::group(['middleware' => 'auth'], function () {
 
     // Administrator
     Route::get('admin_index', 'AdminController@index');
-    Route::get('account_request', 'AdminController@accountRequest');
+
     Route::get('user_accounts', 'AdminController@userAccounts');
-    Route::post('approveRequest/{id}', 'AdminController@approve_request');
-    Route::post('rejectRequest/{id}', 'AdminController@reject_request');
+    Route::get('events', 'AdminController@events');
+
+    // Approve Request
+    Route::get('account_request', 'AccountRequestController@accountRequest');
+    Route::post('rejectRequest/{id}', 'AccountRequestController@reject_request');
+    Route::post('approveRequest/{id}', 'AccountRequestController@approve_request');
+
+    // Profile
+    Route::get('profile', 'ProfileController@index');
+
+    // Events
+    Route::get('event', 'EventController@index');
+
+    // Marketplace
+    Route::get('marketplace', 'MarketplaceController@index');
 });
 Route::post('saveUser', 'RegisterController@save');
-Route::post('requestAccount', 'RegisterController@request_account');
+Route::post('requestAccount', 'AccountRequestController@request_account');
 
 // Route::get('signup', 'RegisterController@register');

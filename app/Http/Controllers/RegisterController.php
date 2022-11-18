@@ -7,7 +7,8 @@ use App\User;
 use App\AccountRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use App\Notifications\AccountReqNotif;
+use App\Notifications\ApproverNotif;
+use App\Notifications\RequestorNotif;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Validator;
 
@@ -61,23 +62,5 @@ class RegisterController extends Controller
         $user->session()->flash('status', 'Successfully Created');
         return redirect('/');
     }
-    public function request_account(Request $request)
-    {
-        // dd($request);
-
-        $accountRequest = new AccountRequest;
-        $accountRequest->email = $request->email;
-        $accountRequest->message = $request->message;
-        $accountRequest->save();
-        // dd($accountRequest);
-
-        $acctReqDetails = AccountRequest::where('id', $accountRequest->id)->first();
-        // dd($acctReqDetails);
-
-        $acctReqApproval = User::where('role_id', '1')->first();
-        $acctReqApproval->notify(new AccountReqNotif($acctReqDetails));
-
-        Alert::success('Request Sent', 'Successfully Sent, Please wait for an email for your credentials')->persistent('Dismiss');;
-        return back();
-    }
+    
 }

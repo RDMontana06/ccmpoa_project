@@ -7,8 +7,8 @@
 			<div class="columns is-vcentered">
 				<div class="column is-6 image-column">
 					<!--Illustration-->
-					<img class="light-image login-image" src="{{ asset('assets/img/illustrations/login/login.svg') }}" alt="">
-					<img class="dark-image login-image" src="{{ asset('assets/img/illustrations/login/login.svg') }}" alt="">
+					<img class="light-image login-image" src="{{ asset('assets/img/login-img/login.png') }}" alt="">
+					<img class="dark-image login-image" src="{{ asset('assets/img/login-img/login.png') }}" alt="">
 				</div>
 				<div class="column is-6">
 
@@ -16,6 +16,7 @@
 					<h3 class="form-subtitle">Enter your credentials to sign in.</h3>
 
 					<!--Form-->
+
 					<div class="login-form">
 						<form method="POST" action="{{ route('login') }}" class="login-form">
 							@csrf
@@ -44,27 +45,27 @@
 									<label>Password</label>
 									<div class="control">
 										<input id="password" type="password" placeholder="Enter your password"
-											class="input form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+											class="input {{ $errors->has('password') ? ' is-danger' : '' }}" name="password" required>
 
 										@if ($errors->has('password'))
-											<span class="invalid-feedback has-text-danger" role="alert">
+											<span class="has-text-danger" role="alert">
 												<strong>{{ $errors->first('password') }}</strong>
 											</span>
 										@endif
 									</div>
 								</div>
-								{{-- <div class="field is-flex">
+								<div class="field is-flex">
 									<div class="switch-block">
-										<label class="f-switch">
+										{{-- <label class="f-switch">
 											<input type="checkbox" class="is-switch">
 											<i></i>
 										</label>
 										<div class="meta">
 											<p>Remember me?</p>
-										</div>
+										</div> --}}
 									</div>
-									<a>Forgot Password?</a>
-								</div> --}}
+									<a href="{{ route('password.request') }}">Forgot Password?</a>
+								</div>
 							</div>
 
 							<div class="buttons mt-3">
@@ -101,12 +102,27 @@
 					<div class="card-body">
 						<!-- Placeholder -->
 						<div class="selection-placeholder">
+							@if ($errors->has('user_email'))
+								@foreach ($errors->all() as $error)
+									<div class="notification is-danger is-light">
+										{{ $error }}
+									</div>
+								@endforeach
+							@endif
 							<form method="POST" action="requestAccount" class="">
 								{{ csrf_field() }}
 								<div class="field">
+									<label class="label">Name</label>
+									<div class="control">
+										<input class="input {{ $errors->has('name') ? ' is-danger' : '' }}" type="text"
+											placeholder="Enter your name" name="name" value="{{ old('name') }}" required>
+									</div>
+								</div>
+								<div class="field">
 									<label class="label">Email</label>
 									<div class="control">
-										<input class="input" type="email" placeholder="e.g. nodata@gmail.com" name="email" required>
+										<input class="input {{ $errors->has('user_email') ? ' is-danger' : '' }}" type="email"
+											placeholder="e.g. nodata@gmail.com" name="user_email" value="{{ old('user_email') }}" required>
 									</div>
 								</div>
 								<div class="field">
@@ -115,8 +131,6 @@
 										<textarea class="textarea" placeholder="Enter message..." name="message" required></textarea>
 									</div>
 								</div>
-
-
 						</div>
 					</div>
 					<div class="card-footer">
@@ -127,6 +141,11 @@
 			</div>
 		</div>
 	</div>
+	@if ($errors->has('user_email'))
+		<script type="text/javascript">
+			document.getElementById("req-account-modal").classList.add("is-active");
+		</script>
+	@endif
 @endsection
 @section('loginScript')
 	<script>

@@ -7,7 +7,7 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class AccountRequest extends Notification
+class ApproverNotif extends Notification
 {
     use Queueable;
 
@@ -21,7 +21,6 @@ class AccountRequest extends Notification
     {
         //
         $this->acctReqDetails = $acctReqDetails;
-        dd($this->acctReqDetails);
     }
 
     /**
@@ -43,19 +42,18 @@ class AccountRequest extends Notification
      */
     public function toMail($notifiable)
     {
-        dd($this->acctReqDetails);
         return (new MailMessage)
-            ->line('The introduction to the notification.')
-            ->action('Notification Action', url('/'))
-            ->line('Thank you for using our application!');
+            // ->line('The introduction to the notification.')
+            // ->action('Notification Action', url('/'))
+            // ->line('Thank you for using our application!');
 
-        // ->subject('Account Request')
-        // ->greeting('Good Day!')
-        // ->greeting('Request for Account Approval!')
-        // ->line('Email by: ' . $this->email)
-        // ->line('Message: ' . $this->message)
-        // // ->action('View Request', url('for-verification'))
-        // ->line('Thank you for using our application!');
+            ->subject('Account Request')
+            ->greeting('Good Day!')
+            ->greeting('Request for Account Approval!')
+            ->line('Email by: ' . $this->acctReqDetails->user_email)
+            ->line('Message: ' . $this->acctReqDetails->message)
+            ->action('View Request', url('account_request'))
+            ->line('Thank you for using our application!');
     }
 
     /**

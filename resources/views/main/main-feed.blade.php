@@ -1,9 +1,17 @@
 @extends('layouts.main')
 
 @section('content')
-	<div class="view-wrapper">
-		<div id="main-feed" class="navbar-v2-wrapper">
 
+	<div class="view-wrapper">
+		@foreach ($users as $user)
+			@if ($user->created_at == $user->updated_at)
+				{
+				<button type="button" id="btnClick" onclick="alertDetails()" hidden></button>
+				}
+			@endif
+		@endforeach
+
+		<div id="main-feed" class="navbar-v2-wrapper">
 			<!-- Container -->
 			<div class="container">
 
@@ -268,9 +276,10 @@
 							<div class="card has-background-image is-bottom"
 								data-background="{{ asset('assets/img/illustrations/characters/friends2.svg') }}" id="profile-card">
 								<div class="pc-first">
-									<img src="{{ asset(auth()->user()->profile_picture) }}" alt="">
+									<img src="{{ asset(auth()->user()->profile_picture) }}"
+										onerror="this.src='{{ URL::asset('assets/img/avatar/no-user-image.png') }}';" alt="">
 									<div class="pc-first-text">
-										<h3 id="userName">-</h3>
+										<h3 id="userName">{{ auth()->user()->name }}</h3>
 										<p>Owner</p>
 									</div>
 								</div>

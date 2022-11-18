@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\AccountRequest;
 use App\User;
+use App\Event;
+use App\AccountRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use App\Notifications\ApprovedRequest;
+use Illuminate\Notifications\Notification;
 
 class AdminController extends Controller
 {
@@ -21,17 +25,7 @@ class AdminController extends Controller
             'accountRequests' => $accountRequests,
         ));
     }
-    // Account Request Index
-    public function accountRequest()
-    {
-        $acctRequests = AccountRequest::where('status', '!=', 'Rejected')->get();
-        // dd($acctRequests);
-        return view('admin.accountRequest', array(
-            'header' => 'accountSettings',
-            'submenu' => 'accountRequest',
-            'acctRequests' => $acctRequests,
-        ));
-    }
+
     // User Account Index
     public function userAccounts()
     {
@@ -43,22 +37,15 @@ class AdminController extends Controller
             'users' => $users,
         ));
     }
-    // Approve Request
-    public function approve_request($id)
+
+    // Events
+    public function events()
     {
-        // dd($id);
-        $acctReq = AccountRequest::findOrFail($id);
-        $acctReq->status = 'Approved';
-        $acctReq->save();
-        return back();
-    }
-    // Reject Request
-    public function reject_request($id)
-    {
-        // dd($id);
-        $acctReq = AccountRequest::findOrFail($id);
-        $acctReq->status = 'Rejected';
-        $acctReq->save();
-        return back();
+        $events = Event::all();
+        return view('admin.events', array(
+            'header' => 'eventSettings',
+            'submenu' => 'event',
+            'events' => $events,
+        ));
     }
 }

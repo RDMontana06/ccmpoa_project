@@ -29,7 +29,7 @@
 	{{-- <link rel="stylesheet" href="{{ asset('assets/css/landing-page.css') }}"> --}}
 	<link rel="stylesheet" href="{{ asset('assets/css/feed.css') }}">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.6/dist/sweetalert2.min.css">
-
+	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 
 </head>
 
@@ -88,9 +88,20 @@
 	<!-- profile js -->
 	<script src="{{ asset('assets/js/profile.js') }}"></script>
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.6/dist/sweetalert2.all.min.js"></script>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
 	@yield('loginScript')
 	@include('sweetalert::alert')
 	<script>
+		// Notifcation close
+		document.addEventListener('readystatechange', event => {
+
+			// When window loaded ( external resources are loaded too- `css`,`src`, etc...) 
+			if (event.target.readyState === "complete") {
+				document.querySelector('#btnClick').click();
+			}
+		});
+		// End Notification Close
 		if (window.location.hash == '#success') {
 			new NotifyJS({
 				message: "Registration Successful!",
@@ -111,6 +122,24 @@
 				fontFamily: 'Lexend Deca',
 				customCSSBox: `border-bottom: 5px solid red; background-color: white;`
 			})
+		}
+
+		function alertDetails() {
+			Toastify({
+				text: "You can now update your profile details at the profile section",
+				duration: 4000,
+				// destination: "https://github.com/apvarun/toastify-js",
+				newWindow: true,
+				style: {
+					background: "#f14668",
+					color: '#fff',
+				},
+				close: true,
+				gravity: "top", // `top` or `bottom`
+				position: "right", // `left`, `center` or `right`
+				stopOnFocus: true, // Prevents dismissing of toast on hover
+			}).showToast();
+
 		}
 	</script>
 	<!-- Landing page js -->

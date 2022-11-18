@@ -42,17 +42,17 @@
 												</button>
 												<div class="dropdown-menu" id="tdAction{{ $acctRequest->id }}" data-id="{{ $acctRequest->id }}">
 													@if ($acctRequest->status == 'Pending')
-														<a class="dropdown-item" id="{{ $acctRequest->id }}" href="#" onclick="approve(this.id)"><i
-																class="bx bx-check me-1"></i>
-															Approve</a>
-														<a class="dropdown-item" id="{{ $acctRequest->id }}" href="#" onclick="reject(this.id)"><i
-																class="bx bx-trash me-1"></i> Reject</a>
+														<button type="button" class="dropdown-item" data-bs-toggle="modal"
+															data-bs-target="#approveModal{{ $acctRequest->id }}"" id="{{ $acctRequest->id }}">
+															<i class="bx bx-check me-1"></i>Approve</button>
+
+														<button type="button" class="dropdown-item" id="{{ $acctRequest->id }}" onclick="reject(this.id)"><i
+																class="bx bx-trash me-1"></i> Reject</button>
 													@endif
 												</div>
 											</div>
 										@endif
 									</td>
-
 								</tr>
 							@endforeach
 
@@ -62,60 +62,15 @@
 			</div>
 
 		</div>
+		@include('admin.approve_modal')
 		<!--/ Basic Bootstrap Table -->
 	</div>
 @endsection
 @section('adminScripts')
 	<script>
-		function approve(id) {
-			var element = document.getElementById('tdAction' + id);
-			var dataID = element.getAttribute('data-id');
-			console.log(id);
-			console.log(dataID);
-			Swal.fire({
-				title: 'Are you sure?',
-				text: "You won't be able to revert this!",
-				icon: 'question',
-				showCancelButton: true,
-				confirmButtonColor: '#0f854f',
-				cancelButtonColor: '#d33',
-				confirmButtonText: 'Approved'
-			}).then((result) => {
-				if (result.isConfirmed) {
-					// alert(id);
-					// return false;
-					$.ajax({
-						url: "approveRequest/" + id,
-						method: "POST",
-						data: {
-							id: id
-						},
-						headers: {
-							'X-CSRF-TOKEN': '{{ csrf_token() }}'
-						},
-						success: function(data) {
-							console.log(data);
-							Swal.fire(
-								'Approved!',
-								'Request has been approved.',
-								'success'
-							).then(function() {
-								document.getElementById("statusTdId" + id).innerHTML =
-									"<span class='badge bg-label-success me-1'>Approved</span>";
-								document.querySelector('#dropdownTdAction' + id).remove();
-							});
-						}
-					});
-
-				}
-			})
-		}
-
 		function reject(id) {
 			var element = document.getElementById('tdAction' + id);
 			var dataID = element.getAttribute('data-id');
-			console.log(id);
-			console.log(dataID);
 			Swal.fire({
 				title: 'Are you sure?',
 				text: "You won't be able to revert this!",
@@ -145,6 +100,50 @@
 								document.querySelector('#trId' + id).remove();
 							});
 						}
+					});
+
+				}
+			})
+		}
+
+		function approveReq(id) {
+			console.log(id);
+			var element = document.getElementById('tdAction' + id);
+			var dataID = element.getAttribute('data-id');
+			Swal.fire({
+				title: 'Are you sure?',
+				text: "You won't be able to revert this!",
+				icon: 'question',
+				showCancelButton: true,
+				confirmButtonColor: '#0f854f',
+				cancelButtonColor: '#d33',
+				confirmButtonText: 'Approved'
+			}).then((result) => {
+				if (result.isConfirmed) {
+					$.ajax({
+						url: "approveRequest/" + id,
+						method: "POST",
+						data: {
+							id: id
+						},
+						headers: {
+							'X-CSRF-TOKEN': '{{ csrf_token() }}'
+						},
+						success: function(data) {
+							console.log(data);
+							Swal.fire(
+								'Approved!',
+								'Request has been approved.',
+								'success'
+							).then(function() {
+								document.getElementById("statusTdId" + id).innerHTML =
+									"<span class='badge bg-label-success me-1'>Approved</span>";
+								document.querySelector('#dropdownTdAction' + id).remove();
+							});
+						}
+						// error: function(XMLHttpRequest, textStatus, errorThrown) {
+						// 	alert("some error");
+						// }
 					});
 
 				}

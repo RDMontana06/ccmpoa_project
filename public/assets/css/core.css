@@ -35447,7 +35447,7 @@ body.is-dark .error-container .error-wrapper .error-inner h3 {
 /*! _app-events.scss | Friendkit | © Css Ninja. 2020-2021 */
 .events-wrapper {
   position: absolute;
-  top: 58px;
+  top: 150px;
   left: 0;
   width: 100%;
   height: calc(100vh - 58px);
@@ -35467,7 +35467,7 @@ body.is-dark .error-container .error-wrapper .error-inner h3 {
 
 .events-wrapper .left-panel {
   position: fixed;
-  top: 58px;
+  top: 150px !important;
   left: 0;
   width: 260px;
   height: calc(100vh - 58px);
@@ -35586,7 +35586,7 @@ body.is-dark .error-container .error-wrapper .error-inner h3 {
 
 .events-wrapper .right-panel {
   position: fixed;
-  top: 58px;
+  top: 150px !important;
   right: 0;
   width: 380px;
   height: calc(100vh - 58px);

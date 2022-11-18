@@ -1,59 +1,58 @@
-@extends('layouts.header')
+@extends('layouts.log_layout')
 
 @section('content')
-<div class="container">
-    <div class="columns is-vcentered">
-        <div class="column is-6 first-column">
-            <div class="lg-header is-hidden-mobile logo-details">
-                <img src="{{ asset('assets/img/logo/logo.svg') }}" alt="ccmpoalogo">
-                <div>
-                    <span>Cane Creek Mountain</span><br>
-                    <span>Property Owners</span>
-                </div>
-            </div>
+	<div class="container">
+		<!--Container-->
+		<div class="login-container">
+			<div class="columns is-vcentered">
+				<div class="column is-6 image-column">
+					<!--Illustration-->
+					<img class="light-image login-image" src="{{ asset('assets/img/illustrations/login/login.svg') }}" alt="">
+					<img class="dark-image login-image" src="{{ asset('assets/img/illustrations/login/login.svg') }}" alt="">
+				</div>
+				<div class="column is-6">
 
-            <div>
-                <h2 class="form-title">Reset Password!</h2>
-                <h3 class="form-subtitle">Enter your email to reset</h3>
-            </div>
-                
-            <!--Form-->
-            @if (session('status'))
-                <div class="alert alert-success" role="alert">
-                    {{ session('status') }}
-                </div>
-            @endif
+					<div>
+						<h2 class="form-title">Reset Password!</h2>
+						<h3 class="form-subtitle">Enter your email to reset</h3>
+					</div>
 
-            <form method="POST" action="{{ route('password.email') }}">
-                @csrf
+					<!--Form-->
+					@if (session('status'))
+						<div class="notification is-success is-light">
+							{{-- <button class="delete"></button> --}}
+							{{ session('status') }}
+						</div>
+					@endif
 
-                <div class="form-panel">
-                    <div class="field">
-                        <label for="email" >{{ __('Email Address') }}</label>
-                        <input id="email" type="email" class="input form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="Enter your email address" name="email" value="{{ old('email') }}" required>
+					<form method="POST" action="{{ route('password.email') }}">
+						@csrf
 
-                        @if ($errors->has('email'))
-                            <span class="invalid-feedback has-text-danger" role="alert">
-                                <strong>{{ $errors->first('email') }}</strong>
-                            </span>
-                        @endif
-                    </div>
-                    <div class="field">
-                        <div class="buttons mt-2">
-                            <button type="submit"  style="padding: 0px" class="button is-solid primary-button is-fullwidth raised">
-                                {{ __('Send Password Reset Link') }}
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                
-            </form>
-        </div>
-        <div class="column is-6 image-column">
-            <!--Illustration-->
-            <img class="light-image" src="{{ asset('assets/img/login-img/reset-img.jpeg') }}" alt="">
-            <img class="dark-image" src="{{ asset('assets/img/login-img/reset-img.jpeg') }}" alt="">
-        </div>
-    </div>
-</div>
+						<div class="form-panel">
+							<div class="field">
+								<label for="email">{{ __('Email Address') }}</label>
+								<input id="email" type="email" class="input form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
+									placeholder="Enter your email address" name="email" value="{{ old('email') }}" required>
+
+								@if ($errors->has('email'))
+									<span class="invalid-feedback has-text-danger" role="alert">
+										<strong>{{ $errors->first('email') }}</strong>
+									</span>
+								@endif
+							</div>
+							<div class="field">
+								<div class="buttons mt-2">
+									<button type="submit" style="padding: 0px" class="button is-solid is-success  is-fullwidth raised">
+										{{ __('Send Password Reset Link') }}
+									</button>
+								</div>
+							</div>
+						</div>
+
+					</form>
+
+				</div>
+			</div>
+		</div>
+	</div>
 @endsection
