@@ -21,7 +21,7 @@ class AccountRequestController extends Controller
         $acctRequests = AccountRequest::where('status', '!=', 'Rejected')->get();
         $roles = Role::all();
         // dd($acctRequests);
-        return view('admin.accountRequest', array(
+        return view('admin.account_requests.accountRequest', array(
             'header' => 'accountSettings',
             'submenu' => 'accountRequest',
             'roles' => $roles,

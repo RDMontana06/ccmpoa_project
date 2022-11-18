@@ -27,8 +27,11 @@ Route::group(['middleware' => 'auth'], function () {
     // Administrator
     Route::get('admin_index', 'AdminController@index');
 
-    Route::get('user_accounts', 'AdminController@userAccounts');
-    Route::get('events', 'AdminController@events');
+    // Users
+    Route::get('admin/users', 'UserController@index');
+
+    // Events
+    Route::get('events', 'EventController@events');
 
     // Approve Request
     Route::get('account_request', 'AccountRequestController@accountRequest');

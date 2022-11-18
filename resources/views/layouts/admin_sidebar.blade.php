@@ -64,7 +64,7 @@
 			</a>
 			<ul class="menu-sub">
 				<li class="menu-item  @if ($submenu == 'userAccounts') active @endif">
-					<a href="{{ url('user_accounts') }}" class="menu-link ">
+					<a href="{{ url('admin/users') }}" class="menu-link ">
 						<div data-i18n="Account">User Accounts</div>
 					</a>
 				</li>
@@ -73,7 +73,6 @@
 						<div data-i18n="Account">Account Requests</div>
 					</a>
 				</li>
-
 			</ul>
 		</li>
 		<li class="menu-item @if ($header == 'eventSettings') active open @endif">

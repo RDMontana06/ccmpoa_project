@@ -26,17 +26,6 @@ class AdminController extends Controller
         ));
     }
 
-    // User Account Index
-    public function userAccounts()
-    {
-        $users = User::with('role')->get();
-        // dd($users);
-        return view('admin.users', array(
-            'header' => 'accountSettings',
-            'submenu' => 'userAccounts',
-            'users' => $users,
-        ));
-    }
 
     // Events
     public function events()
