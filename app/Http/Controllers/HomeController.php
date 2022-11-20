@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Post;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +23,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('main.main-feed');
+        $posts = Post::with('user','likes.user','comments.user')->orderBy('created_at','desc')->get();
+        return view('main.main-feed',
+        array(
+            'posts' => $posts,
+        )
+        );
     }
 }

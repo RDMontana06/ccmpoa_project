@@ -29,8 +29,14 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('user_accounts', 'AdminController@userAccounts');
     Route::post('approveRequest/{id}', 'AdminController@approve_request');
     Route::post('rejectRequest/{id}', 'AdminController@reject_request');
+
+
+    //All Users
+    Route::post('publish-post','PostController@index');
+    Route::post('like-post','PostController@likePost');
+
+    Route::post('comment','CommentController@create');
+    Route::post('remove-comment','CommentController@remove');
 });
 Route::post('saveUser', 'RegisterController@save');
 Route::post('requestAccount', 'RegisterController@request_account');
-
-// Route::get('signup', 'RegisterController@register');

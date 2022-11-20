@@ -15909,13 +15909,14 @@ body.is-white {
   bottom: 0;
   left: 0;
   width: 100%;
-  background-color: #fafafa;
+  /* background-color: #fafafa; */
   z-index: 999998;
   opacity: 0;
   transition: -webkit-opacity .35s ease-out;
   transition: opacity .35s ease-out;
   will-change: opacity;
-  pointer-events: none
+  pointer-events: none;
+  background-color: rgba(255,255,255,.5);
 }
 
 .pageloader.is-active {
@@ -15938,7 +15939,7 @@ body.is-white {
   margin-left: -100px;
   width: 200px;
   height: 200px;
-  background-color: rgba(51, 169, 104, .5);
+  /* background-color: rgba(51, 169, 104, .5); */
   border: 3px solid rgba(61, 112, 178, .75);
   -webkit-animation: page-loader-inner 1.5s infinite ease-out;
   animation: page-loader-inner 1.5s infinite ease-out
