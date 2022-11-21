@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Post;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -24,6 +25,14 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $posts = Post::with('user', 'likes.user', 'comments.user')->orderBy('created_at', 'desc')->get();
+        return view(
+            'main.main-feed',
+            array(
+                'header' => 'main',
+                'posts' => $posts,
+            )
+        );
         $users = User::all();
         // dd($users);
         return view('main.main-feed', array(
