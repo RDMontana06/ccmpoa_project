@@ -30,6 +30,23 @@ Route::group(['middleware' => 'auth'], function () {
     // Users
     Route::get('users_index', 'UserController@index');
 
+    Route::get('account_request', 'AdminController@accountRequest');
+    Route::get('user_accounts', 'AdminController@userAccounts');
+    Route::post('approveRequest/{id}', 'AdminController@approve_request');
+    Route::post('rejectRequest/{id}', 'AdminController@reject_request');
+
+
+    //All Users
+    Route::post('publish-post','PostController@index');
+    Route::post('like-post','PostController@likePost');
+    Route::post('remove-post','PostController@remove');
+
+    Route::post('comment','CommentController@create');
+    Route::post('remove-comment','CommentController@remove');
+    
+     // Users
+    Route::get('admin/users', 'UserController@index');
+
     // Admin Events
     Route::get('adminEvents', 'EventController@admin_event');
 
@@ -49,8 +66,13 @@ Route::group(['middleware' => 'auth'], function () {
 
     // Marketplace
     Route::get('marketplace', 'MarketplaceController@index');
+
+
 });
 Route::post('saveUser', 'RegisterController@save');
-Route::post('requestAccount', 'AccountRequestController@request_account');
+Route::post('requestAccount', 'RegisterController@request_account');
 
-// Route::get('signup', 'RegisterController@register');
+
+   
+});
+
