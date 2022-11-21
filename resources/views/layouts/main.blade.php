@@ -24,8 +24,8 @@
 
 	{{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
 	<!-- Core CSS -->
-	<link rel="stylesheet" href="{{ asset('assets/css/app.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/css/core.css') }}">
+	<link rel="stylesheet" href="{{ asset('assets/css/app.css') }}">
 	{{-- <link rel="stylesheet" href="{{ asset('assets/css/landing-page.css') }}"> --}}
 	<link rel="stylesheet" href="{{ asset('assets/css/feed.css') }}">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.6/dist/sweetalert2.min.css">
@@ -90,8 +90,9 @@
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.6/dist/sweetalert2.all.min.js"></script>
 	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 
-	@yield('loginScript')
+
 	@include('sweetalert::alert')
+	@yield('loginScript')
 	<script>
 		// Notifcation close
 		document.addEventListener('readystatechange', event => {
@@ -104,6 +105,7 @@
 			}
 		});
 		// End Notification Close
+
 		if (window.location.hash == '#success') {
 			new NotifyJS({
 				message: "Registration Successful!",

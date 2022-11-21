@@ -64,7 +64,7 @@
 			</a>
 			<ul class="menu-sub">
 				<li class="menu-item  @if ($submenu == 'userAccounts') active @endif">
-					<a href="{{ url('admin/users') }}" class="menu-link ">
+					<a href="{{ url('users_index') }}" class="menu-link ">
 						<div data-i18n="Account">User Accounts</div>
 					</a>
 				</li>
@@ -82,7 +82,7 @@
 			</a>
 			<ul class="menu-sub">
 				<li class="menu-item @if ($submenu == 'event') active @endif"">
-					<a href="{{ url('events') }}" class="menu-link">
+					<a href="{{ url('adminEvents') }}" class="menu-link">
 						<div data-i18n="Account">Events</div>
 					</a>
 				</li>

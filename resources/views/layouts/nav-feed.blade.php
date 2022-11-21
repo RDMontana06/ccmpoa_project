@@ -142,14 +142,14 @@
 			</div>
 		</div>
 	</div>
-	<div class="sub-nav">
+	<div class="sub-nav is-active">
 		<div class="sub-nav-tabs">
 			<div class="tabs is-centered">
 				<ul>
-					<li class="@if ($header == 'main') is-active @endif">
+					<li class="@if ($header == 'main') is-active @endif"">
 						<a href="{{ url('/') }}">Feed</a>
 					</li>
-					<li class="@if ($header == 'events') is-active @endif">
+					<li class="@if ($header == 'eventSettings') is-active @endif">
 						<a href="{{ url('event') }}">Events</a>
 					</li>
 					<li class="@if ($header == 'marketplace') is-active @endif">

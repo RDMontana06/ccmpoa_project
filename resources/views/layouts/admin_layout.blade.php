@@ -51,9 +51,24 @@
 	<!-- SweeatAler2-->
 	<link rel="stylesheet" href="{{ asset('assets/vendor/sweetalert2/sweetalert2.min.css') }}">
 
+	<style>
+		.loader {
+			position: fixed;
+			left: 0px;
+			top: 0px;
+			width: 100%;
+			height: 100%;
+			z-index: 9999;
+			background: url("{{ asset('assets/img/loader/spinner.gif') }}") 50% 50% no-repeat rgb(249, 249, 249);
+			opacity: .8;
+			background-size: 130px 130px;
+		}
+	</style>
 </head>
 
 <body>
+	<div id="myDiv" style="display:none;" class="loader"></div>
+
 	<!-- Layout wrapper -->
 	<div class="layout-wrapper layout-content-navbar">
 		<div class="layout-container">
@@ -113,15 +128,17 @@
 	<script async defer src="https://buttons.github.io/buttons.js"></script>
 	<!--SweetAler2 -->
 	<script src="{{ asset('assets/vendor/sweetalert2/sweetalert2.all.js') }}"></script>
-
+	@include('sweetalert::alert')
 	@yield('adminScripts')
+	@yield('eventScript')
 	<script>
+		function show() {
+			document.getElementById("myDiv").style.display = "block";
+		}
 		$(document).ready(function() {
 			$('#userTbl').DataTable({
 				select: true
-				// responsive: true
 			});
-			acctReqTbl
 			$('#acctReqTbl').DataTable({
 				select: true
 			})

@@ -21,7 +21,7 @@ class AccountRequestController extends Controller
         $acctRequests = AccountRequest::where('status', '!=', 'Rejected')->get();
         $roles = Role::all();
         // dd($acctRequests);
-        return view('admin.account_requests.accountRequest', array(
+        return view('account_requests.index', array(
             'header' => 'accountSettings',
             'submenu' => 'accountRequest',
             'roles' => $roles,
@@ -55,7 +55,7 @@ class AccountRequestController extends Controller
         $acctReqApproval->notify(new ApproverNotif($acctReqDetails));
 
 
-        Alert::success('Request Sent', 'Successfully Sent, Please wait for an email for your credentials')->persistent('Dismiss');;
+        Alert::success('Request Sent', 'Successfully Sent, Please wait for an email for your credentials')->persistent('Dismiss');
         return back();
     }
     // Approve Request

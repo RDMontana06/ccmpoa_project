@@ -12,9 +12,9 @@ class UserController extends Controller
     public function index()
     {
         $users = User::with('role')->get();
-        $profiles = Profile::with('users')->where('user_id', $users->id)->get();
+        // $profiles = Profile::with('users')->where('user_id', $users->id)->get();
         // dd($users);
-        return view('admin.users.index', array(
+        return view('users.index', array(
             'header' => 'accountSettings',
             'submenu' => 'userAccounts',
             'users' => $users,

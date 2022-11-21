@@ -13,7 +13,7 @@
 					<table class="table table-striped" id="userTbl">
 						<thead>
 							<tr>
-								<th>Profile Picture</th>
+								{{-- <th>Profile Picture</th> --}}
 								<th>Name</th>
 								<th>Contact #</th>
 								<th>Email</th>
@@ -26,9 +26,9 @@
 						<tbody class="table-border-bottom-0">
 							@foreach ($users as $user)
 								<tr>
-									<td width="10">
+									{{-- <td width="10">
 										<img src="{{ asset($user->profile_picture) }}" alt="Avatar" class="rounded-circle" width="50" />
-									</td>
+									</td> --}}
 									<td>{{ $user->name }}</td>
 									<td>{{ $user->phone_number }}</td>
 									<td>{{ $user->email }}</td>

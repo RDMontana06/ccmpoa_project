@@ -28,10 +28,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('admin_index', 'AdminController@index');
 
     // Users
-    Route::get('admin/users', 'UserController@index');
+    Route::get('users_index', 'UserController@index');
 
-    // Events
-    Route::get('events', 'EventController@events');
+    // Admin Events
+    Route::get('adminEvents', 'EventController@admin_event');
 
     // Approve Request
     Route::get('account_request', 'AccountRequestController@accountRequest');
@@ -43,6 +43,9 @@ Route::group(['middleware' => 'auth'], function () {
 
     // Events
     Route::get('event', 'EventController@index');
+    Route::post('storeEvents', 'EventController@store_events');
+    Route::post('updateEvents/{id}', 'EventController@update_events');
+
 
     // Marketplace
     Route::get('marketplace', 'MarketplaceController@index');

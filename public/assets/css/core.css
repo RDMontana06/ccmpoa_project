@@ -14613,10 +14613,10 @@ body.is-white {
   color: #a2a5b9
 }
 
-.navbar-v2 .sub-nav .sub-nav-tabs .tabs ul li.is-active a {
-  font-weight: 500;
-  color: #33A968;
-  border-color: #33A968
+.navbar-v2 .sub-nav .sub-nav-tabs .tabs ul .is-active a {
+  font-weight: 500 !important;
+  color: #33A968 !important;
+  border-color: #33A968 !important
 }
 
 .navbar-v2 .sub-nav .sub-nav-tabs .tabs ul li a {
@@ -15909,7 +15909,7 @@ body.is-white {
   bottom: 0;
   left: 0;
   width: 100%;
-  background-color: #fafafa;
+  background-color: transparent;
   z-index: 999998;
   opacity: 0;
   transition: -webkit-opacity .35s ease-out;

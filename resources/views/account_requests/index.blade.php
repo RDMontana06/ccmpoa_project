@@ -43,7 +43,7 @@
 												<div class="dropdown-menu" id="tdAction{{ $acctRequest->id }}" data-id="{{ $acctRequest->id }}">
 													@if ($acctRequest->status == 'Pending')
 														<button type="button" class="dropdown-item" data-bs-toggle="modal"
-															data-bs-target="#approveModal{{ $acctRequest->id }}"" id="{{ $acctRequest->id }}">
+															data-bs-target="#approveModal{{ $acctRequest->id }}" id="{{ $acctRequest->id }}">
 															<i class="bx bx-check me-1"></i>Approve</button>
 
 														<button type="button" class="dropdown-item" id="{{ $acctRequest->id }}" onclick="reject(this.id)"><i
@@ -62,7 +62,7 @@
 			</div>
 
 		</div>
-		@include('admin.approve_modal')
+		@include('account_requests.approve_modal')
 		<!--/ Basic Bootstrap Table -->
 	</div>
 @endsection
