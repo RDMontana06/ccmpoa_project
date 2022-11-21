@@ -25,11 +25,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $posts = Post::with('user','likes.user','comments.user')->orderBy('created_at','desc')->get();
-        return view('main.main-feed',
-        array(
-            'posts' => $posts,
-        )
+        $posts = Post::with('user', 'likes.user', 'comments.user')->orderBy('created_at', 'desc')->get();
+        return view(
+            'main.main-feed',
+            array(
+                'header' => 'main',
+                'posts' => $posts,
+            )
         );
         $users = User::all();
         // dd($users);

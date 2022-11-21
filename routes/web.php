@@ -35,16 +35,15 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('approveRequest/{id}', 'AdminController@approve_request');
     Route::post('rejectRequest/{id}', 'AdminController@reject_request');
 
-
     //All Users
-    Route::post('publish-post','PostController@index');
-    Route::post('like-post','PostController@likePost');
-    Route::post('remove-post','PostController@remove');
+    Route::post('publish-post', 'PostController@index');
+    Route::post('like-post', 'PostController@likePost');
+    Route::post('remove-post', 'PostController@remove');
 
-    Route::post('comment','CommentController@create');
-    Route::post('remove-comment','CommentController@remove');
-    
-     // Users
+    Route::post('comment', 'CommentController@create');
+    Route::post('remove-comment', 'CommentController@remove');
+
+    // Users
     Route::get('admin/users', 'UserController@index');
 
     // Admin Events
@@ -66,13 +65,6 @@ Route::group(['middleware' => 'auth'], function () {
 
     // Marketplace
     Route::get('marketplace', 'MarketplaceController@index');
-
-
 });
 Route::post('saveUser', 'RegisterController@save');
 Route::post('requestAccount', 'RegisterController@request_account');
-
-
-   
-});
-
