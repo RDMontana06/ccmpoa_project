@@ -37,7 +37,7 @@ class EventController extends Controller
         // 
         $this->validate($request, [
             'name' => 'required',
-            'description' => 'required|max:150',
+            'description' => 'required|max:255',
             'date' => 'required|date',
             'expiry_date' => 'required|date|after_or_equal:date',
             'address' => 'required',
@@ -83,7 +83,7 @@ class EventController extends Controller
         // dd($id, $request->all());
         $this->validate($request, [
             'name' => 'required',
-            'description' => 'required|max:150',
+            'description' => 'required|max:255',
             'date' => 'required|date',
             'expiry_date' => 'required|date|after_or_equal:date',
             'address' => 'required',
