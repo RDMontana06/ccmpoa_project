@@ -50,7 +50,7 @@ class ApproverNotif extends Notification
             ->subject('Account Request')
             ->greeting('Good Day!')
             ->greeting('Request for Account Approval!')
-            ->line('Email by: ' . $this->acctReqDetails->user_email)
+            ->line('Email by: ' . $this->acctReqDetails->email)
             ->line('Message: ' . $this->acctReqDetails->message)
             ->action('View Request', url('account_request'))
             ->line('Thank you for using our application!');
