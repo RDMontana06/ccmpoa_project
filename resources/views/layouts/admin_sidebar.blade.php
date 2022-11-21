@@ -1,6 +1,6 @@
 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
 	<div class="app-brand demo">
-		<a href="{{ url('admin_index') }}" class="app-brand-link">
+		<a href="{{ url('/') }}" class="app-brand-link">
 			<span class="app-brand-logo demo">
 				<svg width="103" height="103" viewBox="0 0 103 103" fill="none" xmlns="http://www.w3.org/2000/svg">
 					<path fill-rule="evenodd" clip-rule="evenodd"
@@ -64,7 +64,7 @@
 			</a>
 			<ul class="menu-sub">
 				<li class="menu-item  @if ($submenu == 'userAccounts') active @endif">
-					<a href="{{ url('user_accounts') }}" class="menu-link ">
+					<a href="{{ url('admin/users') }}" class="menu-link ">
 						<div data-i18n="Account">User Accounts</div>
 					</a>
 				</li>
@@ -73,16 +73,15 @@
 						<div data-i18n="Account">Account Requests</div>
 					</a>
 				</li>
-
 			</ul>
 		</li>
-		<li class="menu-item">
+		<li class="menu-item @if ($header == 'eventSettings') active open @endif">
 			<a href="javascript:void(0);" class="menu-link menu-toggle">
 				<i class="menu-icon tf-icons bx bx-dock-top"></i>
 				<div data-i18n="Account Settings">Event Settings</div>
 			</a>
 			<ul class="menu-sub">
-				<li class="menu-item">
+				<li class="menu-item @if ($submenu == 'event') active @endif"">
 					<a href="{{ url('events') }}" class="menu-link">
 						<div data-i18n="Account">Events</div>
 					</a>

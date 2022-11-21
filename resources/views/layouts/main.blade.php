@@ -29,7 +29,7 @@
 	{{-- <link rel="stylesheet" href="{{ asset('assets/css/landing-page.css') }}"> --}}
 	<link rel="stylesheet" href="{{ asset('assets/css/feed.css') }}">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.6/dist/sweetalert2.min.css">
-
+	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 
 </head>
 
@@ -45,10 +45,10 @@
 
 
 	<!-- Concatenated js plugins and jQuery -->
-	<script src="https://code.jquery.com/jquery-3.6.1.min.js"
-		integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+	{{-- <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+		integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script> --}}
 	<script src="{{ asset('assets/js/app.js') }}"></script>
-	<script src="https://js.stripe.com/v3/"></script>
+	{{-- <script src="https://js.stripe.com/v3/"></script> --}}
 	<script src="{{ asset('assets/data/tipuedrop_content.js') }}"></script>
 
 	<!-- Core js -->
@@ -86,11 +86,24 @@
 	<script src="{{ asset('assets/js/autocompletes.js') }}"></script>
 
 	<!-- profile js -->
-	<script src="{{ asset('assets/js/profile.js') }}"></script>
+	{{-- <script src="{{ asset('assets/js/profile.js') }}"></script> --}}
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.6/dist/sweetalert2.all.min.js"></script>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
 	@yield('loginScript')
 	@include('sweetalert::alert')
 	<script>
+		// Notifcation close
+		document.addEventListener('readystatechange', event => {
+
+			// When window loaded ( external resources are loaded too- `css`,`src`, etc...) 
+			var btn = document.getElementById("btnClick");
+			console.log(btn);
+			if (event.target.readyState === "complete" && btn !== null) {
+				document.querySelector('#btnClick').click();
+			}
+		});
+		// End Notification Close
 		if (window.location.hash == '#success') {
 			new NotifyJS({
 				message: "Registration Successful!",
@@ -111,6 +124,24 @@
 				fontFamily: 'Lexend Deca',
 				customCSSBox: `border-bottom: 5px solid red; background-color: white;`
 			})
+		}
+
+		function alertDetails() {
+			Toastify({
+				text: "You can now update your profile details at the profile section",
+				duration: 4000,
+				// destination: "https://github.com/apvarun/toastify-js",
+				newWindow: true,
+				style: {
+					background: "#f14668",
+					color: '#fff',
+				},
+				close: true,
+				gravity: "top", // `top` or `bottom`
+				position: "right", // `left`, `center` or `right`
+				stopOnFocus: true, // Prevents dismissing of toast on hover
+			}).showToast();
+
 		}
 	</script>
 	<!-- Landing page js -->

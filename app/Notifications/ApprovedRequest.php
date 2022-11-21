@@ -7,7 +7,7 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class AccountReqNotif extends Notification
+class ApprovedRequest extends Notification
 {
     use Queueable;
 
@@ -16,11 +16,13 @@ class AccountReqNotif extends Notification
      *
      * @return void
      */
-    protected $acctReqDetails;
-    public function __construct($acctReqDetails)
+    protected $user;
+    protected $randomPassword;
+    public function __construct($user, $randomPassword)
     {
         //
-        $this->acctReqDetails = $acctReqDetails;
+        $this->user = $user;
+        $this->randomPassword = $randomPassword;
     }
 
     /**
@@ -43,16 +45,13 @@ class AccountReqNotif extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            // ->line('The introduction to the notification.')
-            // ->action('Notification Action', url('/'))
-            // ->line('Thank you for using our application!');
-
-            ->subject('Account Request')
+            ->subject('Approved Account Requests')
             ->greeting('Good Day!')
-            ->greeting('Request for Account Approval!')
-            ->line('Email by: ' . $this->acctReqDetails->email)
-            ->line('Message: ' . $this->acctReqDetails->message)
-            // ->action('View Request', url('for-verification'))
+            ->greeting('Congratrulations your account was verified!')
+            ->line('Please use the credentials below to login.')
+            ->line('Email: ' . $this->user->email)
+            ->line('Password: ' . $this->randomPassword)
+            ->action('CCMPOA Login', url('/'))
             ->line('Thank you for using our application!');
     }
 

@@ -41,7 +41,9 @@
 			<div id="account-dropdown" class="navbar-item is-account drop-trigger has-caret">
 				<div class="user-image">
 					<img src="{{ asset(auth()->user()->profile_picture) }}"
-						data-demo-src="{{ asset(auth()->user()->profile_picture) }}" alt="">
+						data-demo-src="{{ asset(auth()->user()->profile_picture) }}"
+						onerror="this.src='{{ URL::asset('/assets/img/avatar/no-user-image.png') }}';"
+						alt=">
 					<span class="indicator"></span>
 
 				</div>
@@ -68,7 +70,8 @@
 									<div class="media-left">
 										<div class="image">
 											<img src="{{ asset(auth()->user()->profile_picture) }}"
-												data-demo-src="{{ asset(auth()->user()->profile_picture) }}" alt="">
+												data-demo-src="{{ asset(auth()->user()->profile_picture) }}"
+												onerror="this.src='{{ URL::asset('assets/img/avatar/no-user-image.png') }}';" alt="">
 										</div>
 									</div>
 									<div class="media-content">
@@ -106,8 +109,7 @@
 									</div>
 								</div>
 							</a> --}}
-							<a class="account-item" href="{{ route('logout') }}"
-								onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+							<a class="account-item" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
 								<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
 									@csrf
 								</form>
@@ -144,14 +146,14 @@
 		<div class="sub-nav-tabs">
 			<div class="tabs is-centered">
 				<ul>
-					<li class="is-active">
-						<a href="index.html">Feed</a>
+					<li class="@if ($header == 'main') is-active @endif">
+						<a href="{{ url('/') }}">Feed</a>
 					</li>
-					<li>
-						<a href="friends.html">Events</a>
+					<li class="@if ($header == 'events') is-active @endif">
+						<a href="{{ url('event') }}">Events</a>
 					</li>
-					<li>
-						<a href="groups.html">Marketplace</a>
+					<li class="@if ($header == 'marketplace') is-active @endif">
+						<a href="{{ url('marketplace') }}">Marketplace</a>
 					</li>
 				</ul>
 			</div>

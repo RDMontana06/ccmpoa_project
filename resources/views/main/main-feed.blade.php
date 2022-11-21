@@ -2,8 +2,13 @@
 
 @section('content')
 	<div class="view-wrapper">
-		<div id="main-feed" class="navbar-v2-wrapper">
+		@if (auth()->user()->created_at == auth()->user()->updated_at)
+			{
+			<button type="button" id="btnClick" onclick="alertDetails()" hidden></button>
+			}
+		@endif
 
+		<div id="main-feed" class="navbar-v2-wrapper">
 			<!-- Container -->
 			<div class="container">
 
@@ -268,10 +273,12 @@
 							<div class="card has-background-image is-bottom"
 								data-background="{{ asset('assets/img/illustrations/characters/friends2.svg') }}" id="profile-card">
 								<div class="pc-first">
+
 									<img src="{{ asset(auth()->user()->profile_picture) }}" onerror="this.src='{{URL::asset('/images/no_image.png')}}';" alt="">
 									<div class="pc-first-text">
 										<h3 id="userName">{{ auth()->user()->first_name }}</h3>
 										{{-- <p>Owner</p> --}}
+
 									</div>
 								</div>
 								<div class="pc-second" style="background-color:rgba(59,167,103,0.9);">
@@ -391,7 +398,12 @@
 										<!-- Compose form -->
 										<div class="compose">
 											<div class="compose-form">
-												<img src="{{ asset(auth()->user()->profile_picture) }} " onerror="this.src='{{URL::asset('/images/no_image.png')}}';" data-demo-src="{{ asset(auth()->user()->profile_picture) }}" alt="">
+
+												
+												<img src="{{ asset(auth()->user()->profile_picture) }}"
+													onerror="this.src='{{ URL::asset('assets/img/avatar/no-user-image.png') }}';"
+													data-demo-src="{{ asset(auth()->user()->profile_picture) }}" alt="">
+
 												<div class="control">
 													<textarea id="publish" class="textarea" rows="3" placeholder="Write something about you..."></textarea>
 												</div>

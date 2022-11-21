@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Post;
+use App\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -29,5 +31,11 @@ class HomeController extends Controller
             'posts' => $posts,
         )
         );
+        $users = User::all();
+        // dd($users);
+        return view('main.main-feed', array(
+            'header' => 'main',
+            'users' => $users,
+        ));
     }
 }
