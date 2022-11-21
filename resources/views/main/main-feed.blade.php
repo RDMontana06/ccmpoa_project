@@ -422,11 +422,12 @@
 							</div>
 							<!-- /partials/pages/feed/posts/feed-post6.html -->
 							<!-- POST #6 -->
-							@foreach($posts as $post)
+						
 							<div class="profile-post is-simple">
 								
 								<!-- Post -->
-								<div class="card is-post">
+								@foreach($posts as $post)
+								<div class="card is-post" id='post-{{$post->id}}'>
 									<!-- Main wrap -->
 									<div class="content-wrap">
 										<!-- Header -->
@@ -672,9 +673,10 @@
 									</div>
 									<!-- /Post #6 comments -->
 								</div>
+								
+								@endforeach
 								<!-- /Post -->
 							</div>
-							@endforeach
 							{{-- <div class=" load-more-wrap narrow-top has-text-centered">
 								<a href="#" class="load-more-button">Load More</a>
 							</div> --}}
@@ -939,11 +941,34 @@
 				// alert(latest_count);
 
 			}
+			function removePost(id)
+			{
+				$('#post-'+id).remove();
+				$(".pageloader").toggleClass("is-active");
+				$.ajax({
+						url: "remove-post",
+						method: "POST",
+						data: {
+							post_id: id,
+						},
+						headers: {
+							'X-CSRF-TOKEN': '{{ csrf_token() }}'
+						},
+						success: function(data) {
+							$(".pageloader").removeClass("is-active");
+							
+						},
+						error:  function (data)
+						{
+							$(".pageloader").removeClass("is-active");
+							warning_message('Error','Something went wrong, Please refresh.')
+						},
+				});
+			}
 			function removeComment(id,postId)
 			{
 				$('#comment-data-'+id).remove();
 
-				
 				var latest_count = document.getElementById("comment-count-"+postId).innerText;
 				latest_count = parseInt(latest_count)-1;
 				$('.comment-counts-'+postId).text(latest_count);

@@ -21,8 +21,9 @@ class CommentController extends Controller
 
     public function remove(Request $request)
     {
-        $comment = Comment::findOrfail($request->comment_id)->delete();
+        // return $request->all();
+        $comment = Comment::findOrfail(intval($request->comment_id))->delete();
 
-        return $comment;
+        return "success";
     }
 }

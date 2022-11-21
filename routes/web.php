@@ -34,9 +34,12 @@ Route::group(['middleware' => 'auth'], function () {
     //All Users
     Route::post('publish-post','PostController@index');
     Route::post('like-post','PostController@likePost');
+    Route::post('remove-post','PostController@remove');
 
     Route::post('comment','CommentController@create');
     Route::post('remove-comment','CommentController@remove');
+
+
 });
 Route::post('saveUser', 'RegisterController@save');
 Route::post('requestAccount', 'RegisterController@request_account');

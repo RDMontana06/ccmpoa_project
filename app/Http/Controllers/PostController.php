@@ -38,4 +38,10 @@ class PostController extends Controller
         
         return "Success";
     }
+    
+    public function remove(Request $request)
+    {
+        $post = Post::findOrfail(intval($request->post_id))->delete();
+        return "success";
+    }
 }
