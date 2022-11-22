@@ -32,7 +32,7 @@ class AccountRequestController extends Controller
     {
         // dd($request);
         $this->validate($request, [
-            'user_email' => 'email|required|unique:account_requests,email',
+            'user_email' => 'email|required|unique:account_requests,email|unique:users,email',
             'name' => 'required',
         ]);
 
