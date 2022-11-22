@@ -40,6 +40,11 @@
 							</div>
 						</div>
 					</div>
+					<div class="row imageUploaded">
+						<label for="formFileMultiple" class="form-label">Files</label>
+							<input class="form-control mb-2" type="file" name="file[]" id="formFileMultiple" multiple /><br>
+						{{-- <img src="{{ url('public/event-files/' . $profile->image) }}" /> --}}
+					</div>
 					<hr>
 					<div class="row">
 						<div class="col-lg-4">

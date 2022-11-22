@@ -25,7 +25,6 @@ class EventController extends Controller
     public function admin_event()
     {
         $events = Event::with('attachment')->get();
-        // dd($events);
         return view('admin_events.index', array(
             'header' => 'eventSettings',
             'submenu' => 'event',

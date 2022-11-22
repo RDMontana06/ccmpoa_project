@@ -30,41 +30,23 @@
 					<table class="table table-striped" id="eventTbl">
 						<thead>
 							<tr>
-								<th hidden>id</th>
+								<th hidden></th>
 								<th>Name</th>
 								<th>Address</th>
-								<th hidden></th>
-								<th hidden></th>
 								<th>Event Date</th>
 								<th>Expiration Date</th>
-								<th>Files</th>
 								<th>Status</th>
-								<th hidden></th>
-								<th hidden></th>
-								<th hidden></th>
-								<th hidden></th>
 								<th>Actions</th>
 							</tr>
 						</thead>
 						<tbody class="table-border-bottom-0">
 							@foreach ($events as $event)
 								<tr>
-									<td hidden>{{ $event->id }}</td>
+								<td hidden>{{ $event->id }}</td>
 									<td>{{ $event->name }}</td>
 									<td>{{ $event->address }}</td>
-									<td hidden>{{ date($event->date) }}</td>
-									<td hidden>{{ date($event->expiration_date) }}</td>
 									<td>{{ date('F j, Y, g:i a', strtotime($event->date)) }}</td>
 									<td>{{ date('F j, Y, g:i a', strtotime($event->expiration_date)) }}</td>
-									<td>
-										@foreach ($event->attachment as $attachment)
-											<a href="{{ url($attachment->file_name) }}" target="_blank" rel="noopener noreferrer">
-												<img src="{{ url($attachment->file_name) }}" alt="" srcset="" class="img-thumbnail"
-													width="50%">
-											</a>
-										@endforeach
-
-									</td>
 									<td>
 										@if ($event->status == 'Active')
 											<span class="badge bg-label-success me-1">Active</span>
@@ -72,10 +54,6 @@
 											<span class="badge bg-label-danger me-1">Inactive</span>
 										@endif
 									</td>
-									<td hidden>{{ $event->description }}</td>
-									<td hidden>{{ $event->organizer }}</td>
-									<td hidden>{{ $event->organizer_email }}</td>
-									<td hidden>{{ $event->organizer_website }}</td>
 									<td>
 										<div class="dropdown">
 											<button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
@@ -109,8 +87,9 @@
 				select: true,
 			});
 			console.log(table);
-
+			var events = {!! json_encode($events->toArray()) !!};
 			table.on('click', '.edit', function() {
+
 				$tr = $(this).closest('tr');
 				console.log('tr ' + $tr);
 				if ($($tr).hasClass('child')) {
@@ -120,22 +99,39 @@
 				}
 
 				var data = table.row($tr).data();
-				console.log(data);
+				var obj = events.find(event => event.id == data[0]);
+				console.log(obj);
+				// var attachment =
+				obj.attachment.forEach(function(element) {
+					// code
+					console.log(element);
+					$('.imageUploaded').append(appendDiv(element));
+					
+				});
 
-				$('#ename').val(data[1]);
-				$('#eaddress').val(data[2]);
-				$('#edate').val(data[3]);
-				$('#eexpiry_date').val(data[4]);
-				$('#edescription').val(data[8]);
-				$('#eorganizer').val(data[9]);
-				$('#eorganizer_email').val(data[10]);
-				$('#eorganizer_website').val(data[11]);
+				$('#ename').val(obj.name);
+				$('#eaddress').val(obj.address);
+				// $('#edate').val(data[3]);
+				// $('#eexpiry_date').val(data[4]);
+				// $('#edescription').val(data[9]);
+				// $('#eorganizer').val(data[10]);
+				// $('#eorganizer_email').val(data[11]);
+				// $('#eorganizer_website').val(data[12]);
 
-				$('#editForm').attr('action', 'updateEvents/' + data[0])
+				$('#editForm').attr('action', 'updateEvents/' + obj.id)
 				$('#editEventModal').modal('show');
 			})
 		})
-
-		// Disable Event
+		function appendDiv(elem){
+			console.log(elem);
+			var data = "<div class='col-lg-4'>"
+			data += "<img class='img-thumbnail' style='box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);' src='{{URL::asset('/')}}/"+ elem.file_name +" ' />";
+			data += "<button type='button' class='form-control btn btn-danger btn-block' id="+elem.id+" onclick='remove("+elem.id+")'>Remove image</button> ";
+			data += "</div>"
+			return data;
+		}
+		function remove(idx) {
+			
+		}
 	</script>
 @endsection
