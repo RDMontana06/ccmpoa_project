@@ -16,14 +16,15 @@
 	<link rel="stylesheet" href="{{ asset('assets/css/app.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/css/core.css') }}">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.6/dist/sweetalert2.min.css">
+
 </head>
 
 <body>
 
 	<!-- Pageloader -->
-	{{-- <div class="pageloader"></div>
+ <div class="pageloader"></div>
 	<div class="infraloader is-active"></div>
-	<div class="signup-wrapper"> --}}
+	<div class="signup-wrapper"> 
 
 	<!--Fake navigation-->
 	<div class="fake-nav">
@@ -35,11 +36,9 @@
 	@yield('content')
 
 
-	</div>
-
 	<!-- Concatenated js plugins and jQuery -->
 	<script src="{{ asset('assets/js/app.js') }}"></script>
-	<script src="https://js.stripe.com/v3/"></script>
+	{{-- <script src="https://js.stripe.com/v3/"></script> --}}
 	<script src="{{ asset('assets/data/tipuedrop_content.js') }}"></script>
 
 	<!-- Core js -->
@@ -68,7 +67,12 @@
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.6/dist/sweetalert2.all.min.js"></script>
 	@yield('loginScript')
 	@include('sweetalert::alert')
-
+	<script>
+	function show() {
+			$(".pageloader").toggleClass("is-active");
+			document.querySelector('.submitBtn').disabled = true;
+		}
+	</script>
 
 	<!-- Landing page js -->
 
@@ -99,6 +103,7 @@
 	<!-- map page js -->
 
 	<!-- elements page js -->
+
 </body>
 
 </html>

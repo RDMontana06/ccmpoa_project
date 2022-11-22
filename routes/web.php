@@ -67,4 +67,4 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('marketplace', 'MarketplaceController@index');
 });
 Route::post('saveUser', 'RegisterController@save');
-Route::post('requestAccount', 'RegisterController@request_account');
+Route::post('requestAccount', 'AccountRequestController@request_account');

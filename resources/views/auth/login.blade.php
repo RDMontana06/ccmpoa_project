@@ -109,7 +109,7 @@
 									</div>
 								@endforeach
 							@endif
-							<form method="POST" action="requestAccount" class="">
+							<form method="POST" action="requestAccount" class="" onsubmit="show()">
 								{{ csrf_field() }}
 								<div class="field">
 									<label class="label">Name</label>
@@ -134,7 +134,7 @@
 						</div>
 					</div>
 					<div class="card-footer">
-						<button type="submit" class="button is-solid is-success ">Send Request</button>
+						<button type="submit" class="button is-solid is-success submitBtn">Send Request</button>
 					</div>
 					</form>
 				</div>
