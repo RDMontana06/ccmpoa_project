@@ -1005,7 +1005,7 @@
 				    post += '</div>';
 				    post += '<div class="user-info">';
 				    post += '<a href="#">{{auth()->user()->name}}</a>';
-				    post += '<span class="time">{{date("M d, Y h:i a",strtotime($post->created_at))}}</span>';
+				    post += '<span class="time">{{date("M d, Y h:i a")}}</span>';
 				    post += '</div>';
 				    post += '</div>';
 				    post += '<div class="dropdown is-spaced is-right is-neutral dropdown-trigger">';
