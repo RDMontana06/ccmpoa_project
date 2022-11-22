@@ -6,7 +6,7 @@
 				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 			</div>
 			<div class="modal-body">
-				<form action="updateEvents/" method="post" id="editForm" onsubmit="show()">
+				<form action="updateEvents/" method="post" id="editForm" onsubmit="show()" enctype="multipart/form-data">
 					@csrf
 					<div class="row">
 						<div class="col mb-3">
@@ -20,7 +20,7 @@
 							<div class="col mb-3">
 								<label for="date" class="form-label">Date</label>
 								<input class="form-control" type="datetime-local" id="edate" value="" name="date"
-									min="{{ today() }}" required />
+									min="" required />
 							</div>
 							<div class="col mb-3">
 								<label for="desc" class="form-label">Description</label>
@@ -39,6 +39,11 @@
 								<textarea class="form-control" id="eaddress" name="address" rows="3" required></textarea>
 							</div>
 						</div>
+					</div>
+					<div class="row imageUploaded">
+						<label for="formFileMultiple" class="form-label">Files</label>
+							<input class="form-control mb-2" type="file" name="file[]" id="formFileMultiple" multiple /><br>
+						{{-- <img src="{{ url('public/event-files/' . $profile->image) }}" /> --}}
 					</div>
 					<hr>
 					<div class="row">

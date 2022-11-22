@@ -25,7 +25,6 @@ class EventController extends Controller
     public function admin_event()
     {
         $events = Event::with('attachment')->get();
-        // dd($events);
         return view('admin_events.index', array(
             'header' => 'eventSettings',
             'submenu' => 'event',
@@ -72,6 +71,7 @@ class EventController extends Controller
                 $attachment->save();
             }
         }
+        
 
 
         Alert::success('Successfully Store', 'Event created successfully!')->persistent('Dismiss');
@@ -80,7 +80,7 @@ class EventController extends Controller
     public function update_events(Request $request, $id)
     {
 
-        // dd($id, $request->all());
+        //   dd($id, $request->all());
         $this->validate($request, [
             'name' => 'required',
             'description' => 'required|max:255',
@@ -104,8 +104,35 @@ class EventController extends Controller
         $events->encoded_by = auth()->user()->id;
         $events->save();
 
+        if ($request->filesAttach == null) {
+            $attachments = EventAttachment::where('event_id', $id)->get();
+        }else{
+            $attachments = EventAttachment::where('event_id', $id)->whereNotIn('id', $request->filesAttach)->get();
+        }
+        foreach ($attachments as $attach) {
+            $attach->delete();
+        }  
+        if ($request->hasFile('file')) {
+            foreach ($request->file('file') as $file) {
+                $path = $file->getClientOriginalName();
+                $name = time() . '-' . $path;
+                $attachment = new EventAttachment();
+                $file->move(public_path() . '/event-files/', $name);
+                $file_name = '/event-files/' . $name;
+                $attachment->file_name = $file_name;
+                $attachment->event_id = $events->id;
+                $attachment->save();
+            }
+        }
+        
+
 
         Alert::success('Successfully Updated', 'Event update successfully!')->persistent('Dismiss');
         return back();
     }
+   public function cancel_events($id){
+    Event::Where('id', $id)->update(['status' => 'Cancelled']);
+    Alert::success('Event Cancelled', 'Event was cancelled successfully!')->persistent('Dismiss');
+    return back();
+   }
 }
