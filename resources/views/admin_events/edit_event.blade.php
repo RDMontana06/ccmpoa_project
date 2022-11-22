@@ -6,7 +6,7 @@
 				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 			</div>
 			<div class="modal-body">
-				<form action="updateEvents/" method="post" id="editForm" onsubmit="show()">
+				<form action="updateEvents/" method="post" id="editForm" onsubmit="show()" enctype="multipart/form-data">
 					@csrf
 					<div class="row">
 						<div class="col mb-3">
@@ -20,7 +20,7 @@
 							<div class="col mb-3">
 								<label for="date" class="form-label">Date</label>
 								<input class="form-control" type="datetime-local" id="edate" value="" name="date"
-									min="{{ today() }}" required />
+									min="" required />
 							</div>
 							<div class="col mb-3">
 								<label for="desc" class="form-label">Description</label>

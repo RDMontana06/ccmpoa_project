@@ -61,6 +61,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('event', 'EventController@index');
     Route::post('storeEvents', 'EventController@store_events');
     Route::post('updateEvents/{id}', 'EventController@update_events');
+    Route::post('deleteAttachment/{id}', 'EventController@delete_attachment');
+    Route::post('cancelEvent/{id}', 'EventController@cancel_events');
 
 
     // Marketplace

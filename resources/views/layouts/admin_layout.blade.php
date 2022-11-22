@@ -63,6 +63,14 @@
 			opacity: .8;
 			background-size: 130px 130px;
 		}
+		.swal2-container {
+				z-index: X !important;
+		}
+		/* .img-thumbnail {
+			display: block;
+			max-width: 100%;
+			height: auto;
+		} */
 	</style>
 </head>
 
@@ -128,9 +136,10 @@
 	<script async defer src="https://buttons.github.io/buttons.js"></script>
 	<!--SweetAler2 -->
 	<script src="{{ asset('assets/vendor/sweetalert2/sweetalert2.all.js') }}"></script>
-	@include('sweetalert::alert')
+
 	@yield('adminScripts')
 	@yield('eventScript')
+	@include('sweetalert::alert')
 	<script>
 		function show() {
 			document.getElementById("myDiv").style.display = "block";
