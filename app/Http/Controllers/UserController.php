@@ -23,4 +23,8 @@ class UserController extends Controller
     public function reset_password()
     {
     }
+    public function disable_account($id){
+        User::Where('id', $id)->update(['status' => 0]);
+        return back();
+    }
 }
