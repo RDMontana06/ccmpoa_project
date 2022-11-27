@@ -103,18 +103,16 @@
 				var data = table.row($tr).data();
 				console.log(data[0]);
 				var obj = events.find(event => event.id == data[0]);
-				console.log("Objects "+ obj.attachment);
+				console.log("Objects "+ obj.cover_photo);
 				// var attachment =
-				if(obj.attachment){
-					obj.attachment.forEach(function(element) {
-						// code
-						console.log("elem   " + element.file_name);
-						$('.imageUploaded').append(appendDiv(element));
+				// if(obj.cover_photo){
+				// 		 console.log("elem   " + obj.cover_photo);
+				// 		$('.imageUploaded').append(appendDiv(obj));
 						
-					});
-				}
-			
-
+				// }
+			console.log(obj);
+			var source = "{!! asset('') !!}"
+			console.log(source);
 				$('#ename').val(obj.name);
 				$('#eaddress').val(obj.address);
 				$('#edate').val(obj.date);
@@ -126,17 +124,21 @@
 				$('#eorganizer').val(obj.organizer);
 				$('#eorganizer_email').val(obj.organizer_email);
 				$('#eorganizer_website').val(obj.organizer_website);
+				$('#eorganizer_number').val(obj.organizer_number);
+				$('#feed-upload').attr('src', source + obj.cover_photo);
+
+
 
 				$('#editForm').attr('action', 'updateEvents/' + obj.id)
 				$('#editEventModal').modal('show');
 			})
 		})
 		function appendDiv(elem){
-			console.log(elem);
+			console.log(elem.cover_photo);
 			var data = "<div class='col-md-4 col-lg-4 images' id='file"+elem.id+"'>"
-			data += '<img class="img-thumbnail img-responsive" style="box-shadow: 0 3px 10px rgb(0 0 0 / 0.2); min-height:50px; width:100%;"  src="{{URL::asset("/")}}/'+ elem.file_name +' " />';
+			data += '<img class="img-thumbnail img-responsive" style="box-shadow: 0 3px 10px rgb(0 0 0 / 0.2); min-height:50px; width:100%;"  src="{{URL::asset("/")}}/'+ elem.cover_photo +' " />';
 			data += "<button type='button' class='form-control btn btn-danger btn-block' id="+elem.id+" onclick='remove("+elem.id+")'>Remove image</button> ";
-			data += "<input type='text' name='filesAttach[]' value="+elem.id+" id='editA"+elem.id+"' hidden>";
+			data += "<input type='text' name='filesAttach' value="+elem.cover_photo+" id='editA"+elem.id+"' hidden>";
 			data += "</div>"
 			return data;
 		}
@@ -196,6 +198,20 @@
 					)
 				}
 			})
+			
 		}
+		 function upload_cover(input)
+        {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                
+                reader.onload = function(e) {
+                    $('#feed-upload').attr('src', e.target.result);
+                }
+                
+                reader.readAsDataURL(input.files[0]);
+						}
+				}
+		
 	</script>
 @endsection

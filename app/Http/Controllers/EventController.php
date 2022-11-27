@@ -57,8 +57,10 @@ class EventController extends Controller
             'organizer_name' => 'required',
             'organizer_email' => 'required|email',
             'organizer_number' => 'required',
-            'organizer_website' => 'url',
-            'cover_photo' => 'required|mimes:jpeg,bmp,png,jpg|max:2048'
+            // 'organizer_website' => 'url',
+            'cover_photo' => 'mimes:jpeg,jpg,png,gif|max:2048'
+        ], [
+            'cover_photo.max' => 'Sorry! Maximum allowed size for an image is 2MB',
         ]);
 
         // dd($request->all());
@@ -76,6 +78,7 @@ class EventController extends Controller
         $events->encoded_by = auth()->user()->id;
     
         // Save Single Image
+        
         if ($request->file('cover_photo')) {
             $attachment = $request->file('cover_photo');
             $original_name = $attachment->getClientOriginalName();
@@ -135,6 +138,11 @@ class EventController extends Controller
             'address' => 'required',
             'organizer_name' => 'required',
             'organizer_email' => 'required|email',
+            'organizer_number' => 'required',
+            // 'organizer_website' => 'url',
+            'cover_photo' => 'mimes:jpeg,jpg,png,gif|max:2048'
+        ], [
+            'cover_photo.max' => 'Sorry! Maximum allowed size for an image is 2MB',
         ]);
 
         $events = Event::findOrFail($id);
@@ -146,30 +154,43 @@ class EventController extends Controller
         $events->organizer = $request->organizer_name;
         $events->organizer_email = $request->organizer_email;
         $events->organizer_website = $request->organizer_website;
+        $events->organizer_number = $request->organizer_number;
         $events->status = 'Active';
         $events->encoded_by = auth()->user()->id;
+        
+
+            // Save Single Image
+            if ($request->file('cover_photo')) {
+                $attachment = $request->file('cover_photo');
+                $original_name = $attachment->getClientOriginalName();
+                $name = time() . '_' . $attachment->getClientOriginalName();
+                $attachment->move(public_path() . '/event-files/', $name);
+                $file_name = '/event-files/' . $name;
+                $events->cover_photo = $file_name;
+            }
+       
         $events->save();
 
-        if ($request->filesAttach == null) {
-            $attachments = EventAttachment::where('event_id', $id)->get();
-        }else{
-            $attachments = EventAttachment::where('event_id', $id)->whereNotIn('id', $request->filesAttach)->get();
-        }
-        foreach ($attachments as $attach) {
-            $attach->delete();
-        }  
-        if ($request->hasFile('file')) {
-            foreach ($request->file('file') as $file) {
-                $path = $file->getClientOriginalName();
-                $name = time() . '-' . $path;
-                $attachment = new EventAttachment();
-                $file->move(public_path() . '/event-files/', $name);
-                $file_name = '/event-files/' . $name;
-                $attachment->file_name = $file_name;
-                $attachment->event_id = $events->id;
-                $attachment->save();
-            }
-        }
+        // if ($request->filesAttach == null) {
+        //     $attachments = EventAttachment::where('event_id', $id)->get();
+        // }else{
+        //     $attachments = EventAttachment::where('event_id', $id)->whereNotIn('id', $request->filesAttach)->get();
+        // }
+        // foreach ($attachments as $attach) {
+        //     $attach->delete();
+        // }  
+        // if ($request->hasFile('file')) {
+        //     foreach ($request->file('file') as $file) {
+        //         $path = $file->getClientOriginalName();
+        //         $name = time() . '-' . $path;
+        //         $attachment = new EventAttachment();
+        //         $file->move(public_path() . '/event-files/', $name);
+        //         $file_name = '/event-files/' . $name;
+        //         $attachment->file_name = $file_name;
+        //         $attachment->event_id = $events->id;
+        //         $attachment->save();
+        //     }
+        // }
         
 
 
