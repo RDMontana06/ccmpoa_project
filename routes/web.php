@@ -56,6 +56,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     // Profile
     Route::get('profile', 'ProfileController@index');
+    Route::post('change-avatar','ProfileController@changeAvatar');
+    Route::post('upload-cover','ProfileController@uploadCoverPhoto');
 
     // Events
     Route::get('event', 'EventController@index');
@@ -63,6 +65,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('updateEvents/{id}', 'EventController@update_events');
     Route::post('deleteAttachment/{id}', 'EventController@delete_attachment');
     Route::post('cancelEvent/{id}', 'EventController@cancel_events');
+
+    //Following
+    Route::post('follow-profile','FollowersController@index');
 
 
     // Marketplace

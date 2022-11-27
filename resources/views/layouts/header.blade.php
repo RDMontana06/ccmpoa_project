@@ -104,7 +104,13 @@
 	   customCSSBox: `border-bottom: 5px solid red; background-color: white;`
 	  })
 	 }
+
+	function show()
+	{
+		$(".pageloader").toggleClass("is-active");
+	}
 	</script>
+	@yield('footerjs')
 	<!-- Landing page js -->
 
 	<!-- Signup page js -->

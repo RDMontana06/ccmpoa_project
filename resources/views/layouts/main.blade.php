@@ -48,7 +48,7 @@
 	{{-- <script src="https://code.jquery.com/jquery-3.6.1.min.js"
 		integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script> --}}
 	<script src="{{ asset('assets/js/app.js') }}"></script>
-	{{-- <script src="https://js.stripe.com/v3/"></script> --}}
+	<script src="https://js.stripe.com/v3/"></script>
 	<script src="{{ asset('assets/data/tipuedrop_content.js') }}"></script>
 
 	<!-- Core js -->
@@ -73,13 +73,13 @@
 	<script src="{{ asset('assets/js/popovers-users.js') }}"></script>
 	<script src="{{ asset('assets/js/popovers-pages.js') }}"></script>
 	<script src="{{ asset('assets/js/lightbox.js') }}"></script>
+
+	<script src="{{ asset('assets/js/feed.js') }}"></script>
+	<script src="{{ asset('assets/js/profile.js') }}"></script>
+
 	<script src="{{ asset('assets/app/script.js') }}"></script>
 	<script src="{{ asset('assets/app/login.js') }}"></script>
 	<script src="{{ asset('assets/js/notify-js.js') }}"></script>
-
-
-	<!-- Feed pages js -->
-	<script src="{{ asset('assets/js/feed.js') }}"></script>
 
 	<script src="{{ asset('assets/js/webcam.js') }}"></script>
 	<script src="{{ asset('assets/js/compose.js') }}"></script>
@@ -88,7 +88,6 @@
 	<!-- profile js -->
 	{{-- <script src="{{ asset('assets/js/profile.js') }}"></script> --}}
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.6/dist/sweetalert2.all.min.js"></script>
-	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 
 
 	@include('sweetalert::alert')

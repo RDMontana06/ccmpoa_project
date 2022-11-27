@@ -71,8 +71,6 @@ class EventController extends Controller
                 $attachment->save();
             }
         }
-        
-
 
         Alert::success('Successfully Store', 'Event created successfully!')->persistent('Dismiss');
         return back();
