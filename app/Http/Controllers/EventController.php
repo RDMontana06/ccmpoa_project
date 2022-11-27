@@ -166,7 +166,7 @@ class EventController extends Controller
     }
    public function cancel_events($id){
     Event::Where('id', $id)->update(['status' => 'Cancelled']);
-    Alert::success('Event Cancelled', 'Event was cancelled successfully!')->persistent('Dismiss');
+    // Alert::success('Event Cancelled', 'Event was cancelled successfully!')->persistent('Dismiss');
     return back();
    }
    public function register_events($id){

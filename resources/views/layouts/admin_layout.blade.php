@@ -139,6 +139,7 @@
 
 	@yield('adminScripts')
 	@yield('eventScript')
+	@yield('usersScript')
 	@include('sweetalert::alert')
 	<script>
 		function show() {

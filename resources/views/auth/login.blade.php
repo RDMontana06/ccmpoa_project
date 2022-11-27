@@ -20,12 +20,13 @@
 					<div class="login-form">
 						<form method="POST" action="{{ route('login') }}" class="login-form">
 							@csrf
-							@if (session()->has('status'))
-								<div class="notification is-success">
-									<button class="delete"></button>
-									{{ session()->get('status') }}
-								</div>
-							@endif
+							{{-- @if ($errors->has('any'))
+								@foreach ($errors->all() as $error)
+									<div class="notification is-danger is-light">
+										{{ $error }}
+									</div>
+								@endforeach
+							@endif --}}
 							<div class="form-panel">
 								<div class="field">
 									<label>Email</label>
@@ -64,6 +65,7 @@
 											<p>Remember me?</p>
 										</div> --}}
 									</div>
+									
 									<a href="{{ route('password.request') }}">Forgot Password?</a>
 								</div>
 							</div>

@@ -45,6 +45,9 @@ Route::group(['middleware' => 'auth'], function () {
 
     // Users
     Route::get('admin/users', 'UserController@index');
+    Route::post('diableAccount/{id}', 'UserController@disable_account');
+
+
     // Admin Events
     Route::get('adminEvents', 'EventController@admin_event');
     Route::post('storeEvents', 'EventController@store_events');
