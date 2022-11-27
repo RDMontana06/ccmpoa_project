@@ -7,8 +7,8 @@
 			<div class="columns is-vcentered">
 				<div class="column is-6 image-column">
 					<!--Illustration-->
-					<img class="light-image login-image" src="{{ asset('assets/img/illustrations/login/login.svg') }}" alt="">
-					<img class="dark-image login-image" src="{{ asset('assets/img/illustrations/login/login.svg') }}" alt="">
+					<img class="light-image login-image" src="{{ asset('assets/img/login-img/login.png') }}" alt="">
+					<img class="dark-image login-image" src="{{ asset('assets/img/login-img/login.png') }}" alt="">
 				</div>
 				<div class="column is-6">
 
@@ -47,10 +47,24 @@
 									</button>
 								</div>
 							</div>
+							<div class="field is-flex">
+								<div class="switch-block">
+									{{-- <label class="f-switch">
+										<input type="checkbox" class="is-switch">
+										<i></i>
+									</label>
+									<div class="meta">
+										<p>Remember me?</p>
+									</div> --}}
+								</div>
+								
+								<a  href="{{ url('/login') }}" onclick='show()' >Back to Log in</a>
+							</div>
+							
 						</div>
 
 					</form>
-
+					
 				</div>
 			</div>
 		</div>

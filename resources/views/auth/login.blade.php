@@ -55,6 +55,11 @@
 										@endif
 									</div>
 								</div>
+								@if (session('error'))
+									<span class="has-text-danger" role="alert">
+											{{ session('error') }}
+									</span>
+								@endif
 								<div class="field is-flex">
 									<div class="switch-block">
 										{{-- <label class="f-switch">
