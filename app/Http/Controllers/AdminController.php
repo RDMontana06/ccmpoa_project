@@ -18,11 +18,13 @@ class AdminController extends Controller
         $users = User::all();
         // dd($users);
         $accountRequests = AccountRequest::orderBy('created_at', 'desc')->get();
+        $events = Event::where('status', 'active')->get();
         return view('admin.index', array(
             'users' => $users,
             'header' => 'dashboard',
             'submenu' => 'dashboard_sub',
             'accountRequests' => $accountRequests,
+            'events' => $events,
         ));
     }
 

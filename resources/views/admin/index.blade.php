@@ -36,8 +36,9 @@
 								<div class="card-body">
 									<div class="card-title d-flex align-items-start justify-content-between">
 										<div class="avatar flex-shrink-0">
-											<img src="{{ asset('admin_assets/img/icons/unicons/chart-success.png') }}" alt="chart success"
-												class="rounded" />
+											{{-- <img src="{{ asset('admin_assets/img/icons/unicons/chart-success.png') }}" alt="chart success"
+												class="rounded" /> --}}
+												<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAAXNSR0IArs4c6QAAAaZJREFUWEftl4FNwzAQRV8noGwAE1AmADaACYAJygbABMAEwAYwQWECGIER6ASgj+LKvTqxk9hKkHpSVaW1ned/5/PdhJHZZGQ8/BugGXAHHBdS8AW4BT7t+iGF9oAPYFoIxi37DewD+l5ZCOiqUqcwz9/yl8BTDOgGuK4GSVY957TG9UMKbYFyukyBL/deVIsqHuTmtUA1/i7qsntgbl74AOhg1FlRICmxY96s33bHBLSM5LCiCo3OZQpq7dgPaj0PFtRdEmZRl0mhI0CXsUyX5ftQCmmnOvL2Epa7FFvKRyEropAS4HnEXxqjy9NadiAF8GNi8JwBqn18yw6kODlIBNLYw9JAP4kwbpitKLIr1LY+suOzA7UUqHxQDwr0BuhTZ6+BzkF5yZYk/nx1Mq6b2SiRQyWsBi8SZVASPPGgBKO5LnPHltEJXGuF6hrFlMTnXuagvlrCPHuX8gq8qXPVLk9rtmjdIigB+cqE3OmWU7LcaBL1Z59WuiljB3cf819fIM0PQXWGyQFkoXrB5AJyUDqdrnJM8U5wTJ8Y6vzSpolboJisv+R6jSXTaF/hAAAAAElFTkSuQmCC"/>
 										</div>
 										<div class="dropdown">
 											<button class="btn p-0" type="button" id="cardOpt3" data-bs-toggle="dropdown" aria-haspopup="true"
@@ -50,8 +51,8 @@
 										</div>
 									</div>
 									<span class="fw-semibold d-block mb-1">Users</span>
-									<h3 class="card-title mb-2">100</h3>
-									<small class="text-success fw-semibold"><i class="bx bx-up-arrow-alt"></i> as of today</small>
+									<h3 class="card-title mb-2">{{ count($users) }}</h3>
+									<small class="text-success fw-semibold">As of today</small>
 								</div>
 							</div>
 						</div>
@@ -60,7 +61,7 @@
 								<div class="card-body">
 									<div class="card-title d-flex align-items-start justify-content-between">
 										<div class="avatar flex-shrink-0">
-											<img src="{{ asset('admin_assets/img/icons/unicons/wallet-info.png') }}" alt="Credit Card" class="rounded" />
+											<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAAXNSR0IArs4c6QAAAZRJREFUWEftl/ExBTEQh79XASqgE1RACVTAqwAVoAM6oAJ0QAd08FTA/EzOZDKX3OaymTkz9q8393LZ73Z/m92sWJitFsbDnwXaBq6BY0C/vewOWAObYUNrhB6AIy+KZJ974KQW6KsTjLZVdHZ6Ar0FJ/sVH/GbKWvKLBG6Am5iPQCXwIUBzB3oMQh+zLdFf+5Ap4AqZszOQ4WWAuUOdAg8ZzweAE8TaXMH6hahWLyx4KdEregoSu4amgskEFXUbVRlOtHPwvOpQsumrAVocPoaoKQdq3UFskLE67oAfYRKew+e9gBFaddA6Ar0EnRSKnvpq9RK3IA0OqhdWKx0QLoAqXfpy2ss19uagaQXaWSOSWOprpqBdN4oBXNMKdb55FplEnBOxFOQqrz0jGqO0JTT2v8XBfQZXxzSiTHXOixDVm1UhvXFIT8HpEapAUy535rreeQ9wag4stegHJAjQ3kra8r+gYYIKJeeGtG+1qvWD0O62HqPqklhE5AcCUp3bcscYwFrBrI46bamir4bRbTx4oC+AQPmWSWQyMshAAAAAElFTkSuQmCC"/>
 										</div>
 										<div class="dropdown">
 											<button class="btn p-0" type="button" id="cardOpt6" data-bs-toggle="dropdown" aria-haspopup="true"
@@ -73,10 +74,57 @@
 										</div>
 									</div>
 									<span>Account request</span>
-									<h3 class="card-title text-nowrap mb-1">10</h3>
-									<small class="text-success fw-semibold"><i class="bx bx-up-arrow-alt"></i> as of today</small>
+									<h3 class="card-title text-nowrap mb-1">{{ count($accountRequests) }}</h3>
+									<small class="text-success fw-semibold">As of today</small>
 								</div>
 							</div>
+						</div>
+						<div class="col-12 mb-4">
+							<div class="card">
+								<div class="card-body">
+									<div class="card-title d-flex align-items-start justify-content-between">
+										<div class="avatar flex-shrink-0">
+											 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAAXNSR0IArs4c6QAAARVJREFUWEftmGENwjAQRt8UgARwgANwgAYc4ABQgAUkgANQABKQAA7ILRtpoFt7KZd0pP2zbLte3767XnOryGxUmfEwaKAtsGkU3QFy3ze09rUvjULaBbT2wwKaAXtgYZT0R0DCfvv07wvZBLgCYyOY1u0DmAJyfQ8f0LpRx5indr8CDiEgNxmtob52q08hF+gCnH9MJXk57yofIaCYeqPl7S0HgwOScFmErC0n6hzShkNrX4BCiv2XQu7XdG3dmOeuakkKFaBWyqzPstAuSX2flEOpi/vmJwGVpA4ldXYKZZdDBahVILuuQ/qxOzCyiJHj8wlIDxjsy2SOdK5yhCyNoE6N/6jO1Yghzq3m70ecx0Sr7IBe7ntyJT9O4NQAAAAASUVORK5CYII="/>
+										</div>
+										<div class="dropdown">
+											<button class="btn p-0" type="button" id="cardOpt4" data-bs-toggle="dropdown" aria-haspopup="true"
+												aria-expanded="false">
+												<i class="bx bx-dots-vertical-rounded"></i>
+											</button>
+											<div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt4">
+												<a class="dropdown-item" href="javascript:void(0);">View More</a>
+												<a class="dropdown-item" href="javascript:void(0);">Delete</a>
+											</div>
+										</div>
+									</div>
+									<span class="d-block mb-1">Events</span>
+									<h3 class="card-title text-nowrap mb-2">{{ count($events) }}</h3>
+									<small class="text-success fw-semibold">As of today</small>
+								</div>
+							</div>
+						</div>
+						<div class="col-6 mb-4">
+							{{-- <div class="card">
+								<div class="card-body">
+									<div class="card-title d-flex align-items-start justify-content-between">
+										<div class="avatar flex-shrink-0">
+											<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAAXNSR0IArs4c6QAAAfhJREFUWEftloExBEEQRb8IEAEZIAIyQAZEgAgQARkgAkSADIgAGRAB9ZhRXb0zO713q46q66qrq5qd7nnT8/fPLuiPxcIf49EcqHUiY3foUNKapHtJD5JeWgD++dhAgGymRXYl3cwa6MMALEt6myXQlqS7BPAqaXUoDPPHPDL0c5YgriTtzRoIvWwniCNJ57MG4o1aSRAbkh5/E2hJ0kUS6X5hIfTybMatFC4lLUoirynyiIbWEwz/BIVZxMaOpOs0gP8gcAIdsRGCjpHb27kWEAtRkA7lOJV04oDQy0Eas8+Zd2zm0iGgqv7UB+SLvacdl4r1GSKbyseW2agNeCdKQFkvFMrxlGBq7W4ZIscNFNdKDjbW0ZUH8noh+TbB1AQZNUQ2ClS2hqKuPJB9dUko6cW3eagheinQdWziKzwQD21bq2ftWj/EED0QcshvcAcofNYGKGqIIW3WRN086wTUZ4j2aMPaHPLalzykZogWJuplRQ15wbY8pGaI1m+sMfZ5WQiISV5X9upofSHaq6PlZWEgJmYP4djsd07LEMlFj+STN8rl2vX375GoIdbyi+Oty7Wv2FBDDIFNAzTKF6KnnAYoaoihztSujmhy1BCj9X7mTdqhiCEOhildrtEidIi3jB9e5D9po3U68ybt0MQLthLnQP+uQ597P3wlqYDcdAAAAABJRU5ErkJggg=="/>
+										</div>
+										<div class="dropdown">
+											<button class="btn p-0" type="button" id="cardOpt1" data-bs-toggle="dropdown" aria-haspopup="true"
+												aria-expanded="false">
+												<i class="bx bx-dots-vertical-rounded"></i>
+											</button>
+											<div class="dropdown-menu" aria-labelledby="cardOpt1">
+												<a class="dropdown-item" href="javascript:void(0);">View More</a>
+											</div>
+										</div>
+									</div>
+									<span class="fw-semibold d-block mb-1">Under Development</span>
+									<h3 class="card-title mb-2">$14,857</h3>
+									<small class="text-success fw-semibold"><i class="bx bx-up-arrow-alt"></i> +28.14%</small>
+								</div>
+							</div> --}}
 						</div>
 					</div>
 				</div>
