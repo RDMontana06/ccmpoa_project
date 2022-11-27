@@ -35478,7 +35478,7 @@ body.is-dark .error-container .error-wrapper .error-inner h3 {
 
 .events-wrapper .left-panel .left-panel-inner {
   position: relative;
-  height: 100%;
+  /* height: 100%; */
   width: 100%;
   padding-bottom: 60px
 }
@@ -35574,16 +35574,9 @@ body.is-dark .error-container .error-wrapper .error-inner h3 {
 .events-wrapper .left-panel .left-panel-inner .add-event .button {
   height: 42px;
   width: 100%;
-  border: 2px dashed #cecece;
-  color: #999
 }
 
-.events-wrapper .left-panel .left-panel-inner .add-event .button:hover {
-  border: 2px solid #3d70b2;
-  background: #3d70b2;
-  color: #fafafa;
-  box-shadow: 0 14px 26px -12px rgba(61, 112, 178, .42), 0 4px 23px 0px rgba(0, 0, 0, .12), 0 8px 10px -5px rgba(61, 112, 178, .2) !important
-}
+/*  */
 
 .events-wrapper .right-panel {
   position: fixed;
@@ -35678,7 +35671,7 @@ body.is-dark .error-container .error-wrapper .error-inner h3 {
   padding: 40px 60px;
   background: #fff;
   border-bottom: 1px solid #e8e8e8;
-  display: flex
+  /* display: flex */
 }
 
 .events-wrapper .wrapper-inner .event-list .event-item .event-inner-wrap {
@@ -36038,7 +36031,7 @@ body.is-dark .error-container .error-wrapper .error-inner h3 {
 }
 
 .event-page-wrapper .event-participants .container-inner .participant .participant-avatar:hover {
-  border-color: #3d70b2;
+  border-color: #33A968;
   opacity: 1;
   filter: grayscale(0)
 }
