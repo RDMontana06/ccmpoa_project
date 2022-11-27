@@ -41,26 +41,33 @@
 						</div>
 					</div>
 					<div class="row imageUploaded">
-						<label for="formFileMultiple" class="form-label">Files</label>
-							<input class="form-control mb-2" type="file" name="file[]" id="formFileMultiple" multiple /><br>
-						{{-- <img src="{{ url('public/event-files/' . $profile->image) }}" /> --}}
+						<label for="formFileMultiple" class="form-label">Cover Photo (Dimension: 1600x460)</label>
+							<input class="form-control" type="file" name="cover_photo" accept=".png, .jpg, .jpeg" src="" onchange='upload_cover(this)' id="inputImage">
 					</div>
+					<img class="form-control img-thumbnail mx-auto d-block img-responsive" id="feed-upload" height='200px;' width='200px;'  name="">
 					<hr>
 					<div class="row">
-						<div class="col-lg-4">
+						<div class="col-lg-6">
 							<label for="organizer" class="form-label">Organizer Name</label>
-							<input type="text" id="eorganizer" name="organizer_name" value="" class="form-control"
+							<input type="text" id="eorganizer" name="organizer_name" value="{{ old('organizer_name') }}" class="form-control"
 								placeholder="Enter Name" required />
 						</div>
-						<div class="col-lg-4">
+						<div class="col-lg-6">
 							<label for="organizer_email" class="form-label">Organizer Email</label>
-							<input type="email" id="eorganizer_email" name="organizer_email" value="" class="form-control"
-								placeholder="Enter email" required />
+							<input type="email" id="eorganizer_email" name="organizer_email" value="{{ old('organizer_email') }}"
+								class="form-control" placeholder="Enter email" required />
 						</div>
-						<div class="col-lg-4">
+					</div>
+					<div class="row">
+						<div class="col-lg-6">
+							<label for="organizer_number" class="form-label">Organizer Number</label>
+							<input type="text" id="eorganizer_number" name="organizer_number" class="form-control"
+								placeholder="e.g. 3234-433-232" value="{{ old('organizer_number') }}" />
+						</div>
+						<div class="col-lg-6">
 							<label for="organizer_website" class="form-label">Organizer Website (Optional)</label>
 							<input type="text" id="eorganizer_website" name="organizer_website" class="form-control"
-								placeholder="Enter website" value="" />
+								placeholder="www.website.com" value="{{ old('organizer_website') }}" />
 						</div>
 					</div>
 			</div>
