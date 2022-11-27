@@ -889,7 +889,7 @@
                                                 <img src="{{URL::asset($post->user->profile_picture)}}" data-demo-src="{{URL::asset($post->user->profile_picture)}}" onerror="this.src='{{URL::asset('/images/no_image.png')}}';" data-user-popover="0" alt="">
                                             </div>
                                             <div class="user-info">
-                                                <a href="#">{!! nl2br($post->user->name)!!}</a>
+                                                <a href="{{url('/profile?id='.$post->user_id)}}" target="_blank">{!! nl2br($post->user->name)!!}</a>
                                                 <span class="time">{{date('M d, Y h:i a',strtotime($post->created_at))}}</span>
                                             </div>
                                         </div>
@@ -992,22 +992,22 @@
                                             <p>
                                                 @if($post->likes->count() == 1)
                                                     @foreach($post->likes as $like)
-                                                    <a href="#">{{$like->user->first_name}}</a>
+                                                    <a href="{{url('/profile?id='.$like->user->id)}}" target="_blank">{{$like->user->name}}</a>
                                                     @endforeach
                                                     liked this
                                                 @elseif($post->likes->count() == 2)
                                                     @foreach($post->likes as $key => $like)
                                                         @if($key == 0)
-                                                        <a href="#">{{$like->user->first_name}}</a>
+                                                        <a href="{{url('/profile?id='.$like->user->id)}}" target="_blank">{{$like->user->name}}</a>
                                                         @else
-                                                        and <a href="#">{{$like->user->first_name}}</a>
+                                                        <a href="{{url('/profile?id='.$like->user->id)}}" target="_blank">{{$like->user->name}}</a>
                                                         @endif
                                                     @endforeach
                                                     liked this
                                                 @else
                                                     @foreach($post->likes as $key => $like)
                                                         @if($key == 0)
-                                                        <a href="#">{{$like->user->first_name}}</a>
+                                                        <a href="{{url('/profile?id='.$like->user->id)}}" target="_blank">{{$like->user->name}}</a>
                                                         @else
                                                         and Others
                                                         @break
