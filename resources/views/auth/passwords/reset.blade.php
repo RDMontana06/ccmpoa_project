@@ -7,8 +7,8 @@
 			<div class="columns is-vcentered">
 				<div class="column is-6 image-column">
 					<!--Illustration-->
-					<img class="light-image login-image" src="{{ asset('assets/img/illustrations/login/login.svg') }}" alt="">
-					<img class="dark-image login-image" src="{{ asset('assets/img/illustrations/login/login.svg') }}" alt="">
+					<img class="light-image login-image" src="{{ asset('assets/img/login-img/login.png') }}" alt="">
+					<img class="dark-image login-image" src="{{ asset('assets/img/login-img/login.png') }}" alt="">
 				</div>
 				<div class="column is-6">
 

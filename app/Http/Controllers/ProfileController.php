@@ -15,7 +15,10 @@ class ProfileController extends Controller
         {
             $id = $request->id;
         }
-        $user = User::with('posts','attachments','followers.user','following')->findOrfail($id);
+        $user = User::with(['posts' => function ($query) {
+            $query->orderBy('created_at', 'desc');
+        }
+        ,'attachments','followers.user','following'])->findOrfail($id);
         // dd($user);
         // dd($user);
         return view('profiles.index', array(
