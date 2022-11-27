@@ -25,7 +25,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $posts = Post::with('user', 'likes.user', 'comments.user')->orderBy('created_at', 'desc')->get();
+        $posts = Post::with('user', 'likes.user', 'comments.user','attachment')->orderBy('created_at', 'desc')->get();
         return view(
             'main.main-feed',
             array(
@@ -33,11 +33,6 @@ class HomeController extends Controller
                 'posts' => $posts,
             )
         );
-        $users = User::all();
-        // dd($users);
-        return view('main.main-feed', array(
-            'header' => 'main',
-            'users' => $users,
-        ));
+       
     }
 }

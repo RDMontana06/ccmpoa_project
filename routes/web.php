@@ -64,10 +64,15 @@ Route::group(['middleware' => 'auth'], function () {
 
     // Profile
     Route::get('profile', 'ProfileController@index');
+    Route::post('change-avatar','ProfileController@changeAvatar');
+    Route::post('upload-cover','ProfileController@uploadCoverPhoto');
 
     // Events
     Route::get('event', 'EventController@index');
     Route::get('event/eventDetails/{id}', 'EventController@event_details');
+
+    //Following
+    Route::post('follow-profile','FollowersController@index');
 
 
     // Marketplace

@@ -87,6 +87,18 @@ class EventController extends Controller
         $events->save();
 
         //Save Multiple File
+        if ($request->hasFile('file')) {
+            foreach ($request->file('file') as $file) {
+                $path = $file->getClientOriginalName();
+                $name = time() . '-' . $path;
+                $attachment = new EventAttachment();
+                $file->move(public_path() . '/event-files/', $name);
+                $file_name = '/event-files/' . $name;
+                $attachment->file_name = $file_name;
+                $attachment->event_id = $events->id;
+                $attachment->save();
+            }
+        }
         // if ($request->hasFile('file')) {
         //     foreach ($request->file('file') as $file) {
         //         $path = $file->getClientOriginalName();

@@ -40,4 +40,20 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Role::class);
     }
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
+    public function attachments()
+    {
+        return $this->hasMany(PostAttachment::class);
+    }
+    public function followers()
+    {
+        return $this->hasMany(Follower::class);
+    }
+    public function following()
+    {
+        return $this->hasMany(Follower::class,'follower_id','id');
+    }
 }
