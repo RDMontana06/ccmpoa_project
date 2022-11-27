@@ -10,7 +10,7 @@
 					@csrf
 					<div class="row">
 						<div class="col mb-3">
-							<label for="name" class="form-label">Name</label>
+							<label for="name" class="form-label">Event Name</label>
 							<input type="text" id="name" name="name" class="form-control" placeholder="Enter Event Name"
 								value="{{ old('name') }}" required />
 						</div>
