@@ -28,7 +28,7 @@
 		</div>
 		<div class="right">
 			<div id="open-mobile-search" class="navbar-item is-icon">
-				<a class="icon-link is-primary" href="javascript:void(0);">
+				<a class="icon-link is-success" href="javascript:void(0);">
 					<i data-feather="search"></i>
 				</a>
 			</div>

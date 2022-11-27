@@ -30,10 +30,11 @@
 	<link rel="stylesheet" href="{{ asset('assets/css/feed.css') }}">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.6/dist/sweetalert2.min.css">
 	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
 
 </head>
 
-<body>
+<body class="is-white">
 
 	<!-- Pageloader -->
 	<div class="pageloader"></div>
@@ -84,6 +85,7 @@
 	<script src="{{ asset('assets/js/webcam.js') }}"></script>
 	<script src="{{ asset('assets/js/compose.js') }}"></script>
 	<script src="{{ asset('assets/js/autocompletes.js') }}"></script>
+	<script src="{{ asset('assets/js/events.js') }}"></script>
 
 	<!-- profile js -->
 	{{-- <script src="{{ asset('assets/js/profile.js') }}"></script> --}}
@@ -93,6 +95,8 @@
 
 	@include('sweetalert::alert')
 	@yield('loginScript')
+	@yield('addCalendar')
+	@yield('eventScript')
 	<script>
 		// Notifcation close
 		document.addEventListener('readystatechange', event => {

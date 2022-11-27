@@ -18,4 +18,12 @@ class Event extends Model
     {
         return $this->hasMany(EventAttachment::class);
     }
+    public function participant()
+    {
+        return $this->hasMany(EventParticipant::class);
+    }
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'encoded_by', 'id');
+    }
 }

@@ -50,6 +50,12 @@ Route::group(['middleware' => 'auth'], function () {
 
     // Admin Events
     Route::get('adminEvents', 'EventController@admin_event');
+    Route::post('storeEvents', 'EventController@store_events');
+    Route::post('updateEvents/{id}', 'EventController@update_events');
+    Route::post('deleteAttachment/{id}', 'EventController@delete_attachment');
+    Route::post('cancelEvent/{id}', 'EventController@cancel_events');
+    Route::post('event/eventDetails/register-event/{id}', 'EventController@register_events');
+    Route::post('leave-event/{id}', 'EventController@leave_events');
 
     // Approve Request
     Route::get('account_request', 'AccountRequestController@accountRequest');
@@ -61,10 +67,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     // Events
     Route::get('event', 'EventController@index');
-    Route::post('storeEvents', 'EventController@store_events');
-    Route::post('updateEvents/{id}', 'EventController@update_events');
-    Route::post('deleteAttachment/{id}', 'EventController@delete_attachment');
-    Route::post('cancelEvent/{id}', 'EventController@cancel_events');
+    Route::get('event/eventDetails/{id}', 'EventController@event_details');
 
 
     // Marketplace
