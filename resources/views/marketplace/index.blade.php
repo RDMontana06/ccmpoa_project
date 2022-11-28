@@ -200,21 +200,21 @@
 																		<i data-feather="more-horizontal"></i>
 																</a>
 																<div class="product-image">
-																		<img src="assets/img/products/1.svg" alt="">
+																		<img src="{{ asset('assets/img/products/sample-property.png') }}" alt="">
 																</div>
 																<div class="product-info">
-																		<h3>Spring Red Dress</h3>
-																		<p>A beautiful dress for you best evenings and important dates</p>
+																		<h3>Property 1</h3>
+																		<p>a thing or things belonging to someone; possessions collectively.</p>
 																</div>
 																<div class="product-actions">
-																		<div class="left">
+																		{{-- <div class="left">
 																				<i data-feather="heart"></i>
 																				<span>147</span>
-																		</div>
+																		</div> --}}
 																		<div class="right">
 																				<a class="button is-solid accent-button raised">
 																						<i data-feather="shopping-cart"></i>
-																						<span>$44.00</span>
+																					<span>$44.00</span>
 																				</a>
 																		</div>
 																</div>
@@ -227,17 +227,17 @@
 																		<i data-feather="more-horizontal"></i>
 																</a>
 																<div class="product-image">
-																		<img src="assets/img/products/2.svg" alt="">
+																		<img src="{{ asset('assets/img/products/sample-property.png') }}" alt="">
 																</div>
 																<div class="product-info">
-																		<h3>Cool Shirt</h3>
-																		<p>A shirt that will make you look nice and feel relax</p>
+																		<h3>Property 2</h3>
+																		<p>a thing or things belonging to someone; possessions collectively.</p>
 																</div>
 																<div class="product-actions">
-																		<div class="left">
+																		{{-- <div class="left">
 																				<i data-feather="heart"></i>
 																				<span>42</span>
-																		</div>
+																		</div> --}}
 																		<div class="right">
 																				<a class="button is-solid accent-button raised">
 																						<i data-feather="shopping-cart"></i>
@@ -254,17 +254,17 @@
 																		<i data-feather="more-horizontal"></i>
 																</a>
 																<div class="product-image">
-																		<img src="assets/img/products/3.svg" alt="">
+																		<img src="{{ asset('assets/img/products/sample-property.png') }}" alt="">
 																</div>
 																<div class="product-info">
-																		<h3>Military Short</h3>
-																		<p>An awesome shorts for chillout and trips, blends in with anything</p>
+																		<h3>Propert 3</h3>
+																		<p>a thing or things belonging to someone; possessions collectively.</p>
 																</div>
 																<div class="product-actions">
-																		<div class="left">
+																		{{-- <div class="left">
 																				<i data-feather="heart"></i>
 																				<span>56</span>
-																		</div>
+																		</div> --}}
 																		<div class="right">
 																				<a class="button is-solid accent-button raised">
 																						<i data-feather="shopping-cart"></i>

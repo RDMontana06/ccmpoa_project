@@ -12,7 +12,7 @@
 				</div>
 				<div class="column is-6">
 
-					<h2 class="form-title">Welcome Back</h2>
+					<h2 class="form-title">Welcome to CCMPOA</h2>
 					<h3 class="form-subtitle">Enter your credentials to sign in.</h3>
 
 					<!--Form-->
