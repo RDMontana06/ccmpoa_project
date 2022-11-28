@@ -144,21 +144,8 @@
 									<div class="columns is-two-fifths is-justify-content-space-between pl-3 pr-3 mt-0 ">
 										<div class="column is-one-quarter store-tabs p-0">
 											<a data-tab="products-tab" class="tab-control is-active pb-0">Listings</a>
-											<a data-tab="brands-tab" class="tab-control pb-0" style="display: none;">Brands</a>
-											<a data-tab="followers-tab" class="tab-control pb-0" style="display: none;">Followers</a>
 											<div class="store-naver"></div>
 										</div>
-										<div class="column">
-										</div>
-										<div class="columns pl-3">
-											<div class="column" id="price-range">
-												<div class="price-data mb-1">
-													<input type="number" id="amount_min">
-													<input type="number" id="amount_max">
-												</div>
-												<div id="slider-range"></div>
-											</div>
-											<div class="column location">
 
 												<!-- displayed modal -->
 												<div id="display-modal" class="modal">
@@ -204,98 +191,89 @@
 
 									<!--Products-->
 									<div id="products-tab" class="store-tab-pane is-active">
-										<div class="columns is-multiline" id="marketplace_listing">
-											<!--Product-->
-										
-
-											<!--Product-->
-											<div class="column is-one-fifth-quarter is-one-third-widescreen is-half-desktop is-half-tablet is-half-mobile">
-												<div class="product-card p-0" data-name="Spring Red Dress" data-price="42,500.00" data-colors="true"
-													data-variants="true" data-path="{{ asset('assets/img/products/sample-property.png') }}">
-
-													{{-- <div class="set-options">
-                                                        <img class="go-to-products pointer" src="../assets/img/forward.svg" href="#">
-                                                        <img class="heart pointer" src="../assets/img/heart.svg" href="#">
-                                                    </div> --}}
-
-													<div class="product-image">
-														<img class="m-0" src="{{ asset('assets/img/products/sample-property.png') }}" alt="">
-													</div>
-
-													<div class="product-info">
-														<div class="columns mb-1 pl-3 pr-3 mt-1 price-classify">
-															<div class="column pb-0">
-																<h2 class="tag-price">$42,500</h2>
-															</div>
-															<div class="column has-text-right pb-0">
-																{{-- <span class="product-classification">Selling</span> --}}
-															</div>
+										<div class="columns is-multiline">
+												<!-- /partials/commerce/products/products-list.html -->
+												<!--Product-->
+												<div class="column is-one-fifth-quarter is-one-third-widescreen is-half-desktop is-half-tablet is-half-mobile">
+														<div class="product-card" data-name="Spring Red Dress" data-price="44.00" data-colors="true" data-variants="true" data-path="assets/img/products/1">
+																<a class="quickview-trigger">
+																		<i data-feather="more-horizontal"></i>
+																</a>
+																<div class="product-image">
+																		<img src="assets/img/products/1.svg" alt="">
+																</div>
+																<div class="product-info">
+																		<h3>Spring Red Dress</h3>
+																		<p>A beautiful dress for you best evenings and important dates</p>
+																</div>
+																<div class="product-actions">
+																		<div class="left">
+																				<i data-feather="heart"></i>
+																				<span>147</span>
+																		</div>
+																		<div class="right">
+																				<a class="button is-solid accent-button raised">
+																						<i data-feather="shopping-cart"></i>
+																						<span>$44.00</span>
+																				</a>
+																		</div>
+																</div>
 														</div>
-														<div class="product-title mb-1 pl-3 pr-3">
-															<h2 class="has-text-weight-medium">Sigh Field Property</h2>
-														</div>
-														<div class="product-sub-details columns pl-3 pr-3 mb-1">
-															<div class="column">
-																<p>from <span class="tag-location">Seiser Aim, Kasteiruth, Italy.</span></p>
-															</div>
-															<div class="column is-one-third has-text-right">
-																<p class="date-posted">Jul 1, 2022</p>
-															</div>
-														</div>
-													</div>
-
-													<div class="posted-by-info pl-3 pr-3 pt-2 pb-2">
-														<img class="posted-by-image mr-3" src="https://via.placeholder.com/50x50.png?text=Image">
-														<a class="posted-by" href="#">posted by <span class="posted-name">Vish Singh</span></a>
-													</div>
 												</div>
-											</div>
-
-											<!--Product-->
-											<div
-												class="column is-one-fifth-quarter is-one-third-widescreen is-half-desktop is-half-tablet is-half-mobile">
-												<div class="product-card p-0" data-name="Spring Red Dress" data-price="42,500.00" data-colors="true"
-													data-variants="true" data-path="../assets/img/products/sample-property">
-													{{-- 
-                                                    <div class="set-options">
-                                                        <img class="go-to-products pointer" src="../assets/img/forward.svg" href="#">
-                                                        <img class="heart pointer" src="../assets/img/heart.svg" href="#">
-                                                    </div> --}}
-
-													<div class="product-image">
-														<img class="m-0" src="{{ asset('assets/img/products/sample-property.png') }}" alt="">
-													</div>
-
-													<div class="product-info">
-														<div class="columns mb-1 pl-3 pr-3 mt-1 price-classify">
-															<div class="column pb-0">
-																<h2 class="tag-price">$42,500</h2>
-															</div>
-															<div class="column has-text-right pb-0">
-																<span class="product-classification">Selling</span>
-															</div>
+												<!--Product-->
+												<div class="column is-one-fifth-quarter is-one-third-widescreen is-half-desktop is-half-tablet is-half-mobile">
+														<div class="product-card" data-name="Cool Shirt" data-price="29.00" data-colors="false" data-variants="true">
+																<a class="quickview-trigger">
+																		<i data-feather="more-horizontal"></i>
+																</a>
+																<div class="product-image">
+																		<img src="assets/img/products/2.svg" alt="">
+																</div>
+																<div class="product-info">
+																		<h3>Cool Shirt</h3>
+																		<p>A shirt that will make you look nice and feel relax</p>
+																</div>
+																<div class="product-actions">
+																		<div class="left">
+																				<i data-feather="heart"></i>
+																				<span>42</span>
+																		</div>
+																		<div class="right">
+																				<a class="button is-solid accent-button raised">
+																						<i data-feather="shopping-cart"></i>
+																						<span>$29.00</span>
+																				</a>
+																		</div>
+																</div>
 														</div>
-														<div class="product-title mb-1 pl-3 pr-3">
-															<h2 class="has-text-weight-medium">Sigh Field Property</h2>
-														</div>
-														<div class="product-sub-details columns pl-3 pr-3 mb-1">
-															<div class="column">
-																<p>from <span class="tag-location">Seiser Aim, Kasteiruth, Italy.</span></p>
-															</div>
-															<div class="column is-one-third has-text-right">
-																<p class="date-posted">Jul 1, 2022</p>
-															</div>
-														</div>
-													</div>
-
-													<div class="posted-by-info pl-3 pr-3 pt-2 pb-2">
-														<img class="posted-by-image mr-3" src="https://via.placeholder.com/50x50.png?text=Image">
-														<a class="posted-by" href="#">posted by <span class="posted-name">Vish Singh</span></a>
-													</div>
 												</div>
-											</div>
-										</div>
-									</div>
+												<!--Product-->
+												<div class="column is-one-fifth-quarter is-one-third-widescreen is-half-desktop is-half-tablet is-half-mobile">
+														<div class="product-card" data-name="Military Short" data-price="39.00" data-colors="false" data-variants="true">
+																<a class="quickview-trigger">
+																		<i data-feather="more-horizontal"></i>
+																</a>
+																<div class="product-image">
+																		<img src="assets/img/products/3.svg" alt="">
+																</div>
+																<div class="product-info">
+																		<h3>Military Short</h3>
+																		<p>An awesome shorts for chillout and trips, blends in with anything</p>
+																</div>
+																<div class="product-actions">
+																		<div class="left">
+																				<i data-feather="heart"></i>
+																				<span>56</span>
+																		</div>
+																		<div class="right">
+																				<a class="button is-solid accent-button raised">
+																						<i data-feather="shopping-cart"></i>
+																						<span>$39.00</span>
+																				</a>
+																		</div>
+																</div>
+														</div>
+												</div>
 
 									<!--Followers-->
 									<div id="followers-tab" class="store-tab-pane">

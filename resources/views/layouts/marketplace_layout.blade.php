@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="{{ asset('assets/vendor/bulma-list/css/bulma-list.css') }}">
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
-    <link rel="stylesheet" href="{{ asset('assets/css/modal-fx.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('assets/css/modal-fx.css') }}"> --}}
 
 
 </head>
@@ -69,11 +69,11 @@
     <script src="{{ asset('assets/js/lightbox.js') }}"></script>
 
     <script src="{{ asset('assets/js/shop.js') }}"></script>
-    <script src="{{ asset('assets/js/modal-fx.js') }}"></script>
-    <script src="{{ asset('assets/js/modal-01.js') }}"></script>
+    {{-- <script src="{{ asset('assets/js/modal-fx.js') }}"></script>
+    <script src="{{ asset('assets/js/modal-01.js') }}"></script> --}}
 
-  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>  
+  {{-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>   --}}
 
   {{-- <script src="../node_modules/intro.js/intro.js"></script> --}}
 </body>

@@ -8,7 +8,7 @@
 
 			<!--Cover-->
 			<div class="event-cover">
-				<img class="cover-image" src="{{ url('' . $event->cover_photo) }}" onerror="this.src='{{url('https://via.placeholder.com/1600x460')}}';"
+				<img class="cover-image" src="{{ url('' . $event->cover_photo) }}" onerror="this.src='{{URL::asset('/images/no_image.png')}}';"
         data-demo-src="{{ $event->cover_photo }}"
 					alt="">
 			</div>
@@ -87,7 +87,7 @@
              @foreach ($event->participant as $participant)
             <a class="participant" >
 							<div class="participant-avatar" >
-								<img class="avatar" src="{{ asset($participant->user->profile_picture) }}" data-demo-src="{{ asset($participant->user->profile_picture )}}"
+								<img class="avatar" src="{{ asset($participant->user->profile_picture) }}" onerror="this.src='{{URL::asset('/images/no_image.png')}}';" data-demo-src="{{ asset($participant->user->profile_picture )}}"
 									data-user-popover="1" alt="">
 							</div>
 						</a>
