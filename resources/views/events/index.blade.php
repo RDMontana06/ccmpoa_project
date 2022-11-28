@@ -96,7 +96,7 @@
 									<div class="event-participants">
 									@foreach ($event->participant as $participant )
 										<div class="participants-group" id="userImage{{ $participant->event_id }}">
-											<img src="{{ url(''). $participant->user->profile_picture }}" data-demo-src="{{ url(''). $participant->user->profile_picture }}"data-user-popover="0" alt="">
+											<img src="{{ url(''). $participant->user->profile_picture }}" onerror="this.src='{{URL::asset('/images/no_image.png')}}';" data-demo-src="{{ url(''). $participant->user->profile_picture }}"data-user-popover="0" alt="">
 										</div>
 									@endforeach
 										
@@ -143,7 +143,7 @@
 					@foreach ($events as $event )
 						<div class="activity-block" id="activity{{ $event->id }}">
 							@foreach ($event->participant as $participant)
-								<img src="{{ url(''). $participant->user->profile_picture }}"  onerror="this.src='{{url('https://via.placeholder.com/300x300')}}';" data-demo-src="{{ url('') . $participant->user->profile_picture }}" data-user-popover="4"
+								<img src="{{ url(''). $participant->user->profile_picture }}"  onerror="this.src='{{URL::asset('/images/no_image.png')}}';" data-demo-src="{{ url('') . $participant->user->profile_picture }}" data-user-popover="4"
 								alt="">
 							<div class="activity-meta">
 								<p><a>{{ $participant->user->name }}</a> is now participating to the <a>{{ $event->name }}</a> event.</p>
