@@ -1012,7 +1012,7 @@
                                                         @if($key == 0)
                                                         <a href="{{url('/profile?id='.$like->user->id)}}" target="_blank">{{$like->user->name}}</a>
                                                         @else
-                                                        <a href="{{url('/profile?id='.$like->user->id)}}" target="_blank">{{$like->user->name}}</a>
+                                                        and <a href="{{url('/profile?id='.$like->user->id)}}" target="_blank">{{$like->user->name}}</a>
                                                         @endif
                                                     @endforeach
                                                     liked this
