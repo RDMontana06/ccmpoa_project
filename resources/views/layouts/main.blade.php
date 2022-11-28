@@ -8,7 +8,7 @@
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<meta name="csrf-token" content="{{ csrf_token() }}">
 
-	<title>CCMPOA.org | Main Feed</title>
+	<title>@yield('title')</title>
 	<link rel="icon" sizes="any" type="image/svg+xml" href="{{ asset('assets/img/logo/logo.svg') }}" />
 	<!-- Fonts -->
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:600,700,800,900" rel="stylesheet">

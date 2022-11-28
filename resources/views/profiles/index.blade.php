@@ -1,4 +1,5 @@
 @extends('layouts.main')
+@section('title', 'CCMPOA.org | Profile')
 
 @section('content')
 <div class="view-wrapper">

@@ -13129,9 +13129,9 @@ body.is-white {
   padding-top: 10px
 }
 
-.navbar-v2-wrapper {
+/* .navbar-v2-wrapper {
   padding-top: 6rem
-}
+} */
 
 .inbox-wrapper {
   position: absolute;
@@ -35448,7 +35448,7 @@ body.is-dark .error-container .error-wrapper .error-inner h3 {
 /*! _app-events.scss | Friendkit | © Css Ninja. 2020-2021 */
 .events-wrapper {
   position: absolute;
-  top: 150px;
+  top: 58px;
   left: 0;
   width: 100%;
   height: calc(100vh - 58px);
@@ -35468,7 +35468,7 @@ body.is-dark .error-container .error-wrapper .error-inner h3 {
 
 .events-wrapper .left-panel {
   position: fixed;
-  top: 150px !important;
+  top: 58px;
   left: 0;
   width: 260px;
   height: calc(100vh - 58px);
@@ -35478,7 +35478,7 @@ body.is-dark .error-container .error-wrapper .error-inner h3 {
 
 .events-wrapper .left-panel .left-panel-inner {
   position: relative;
-  /* height: 100%; */
+  height: 100%;
   width: 100%;
   padding-bottom: 60px
 }
@@ -35496,12 +35496,12 @@ body.is-dark .error-container .error-wrapper .error-inner h3 {
 }
 
 .events-wrapper .left-panel .left-panel-inner a.is-active span.tag {
-  background: #33A968 !important;
+  background: #5596e6 !important;
   color: #fff !important
 }
 
 .events-wrapper .left-panel .left-panel-inner a.is-active span.date-block svg {
-  stroke: #33A968
+  stroke: #5596e6
 }
 
 .events-wrapper .left-panel .left-panel-inner a span {
@@ -35559,7 +35559,7 @@ body.is-dark .error-container .error-wrapper .error-inner h3 {
 }
 
 .events-wrapper .left-panel .left-panel-inner .add-event {
-  /* position: absolute; */
+  position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
@@ -35574,13 +35574,20 @@ body.is-dark .error-container .error-wrapper .error-inner h3 {
 .events-wrapper .left-panel .left-panel-inner .add-event .button {
   height: 42px;
   width: 100%;
+  border: 2px dashed #cecece;
+  color: #999
 }
 
-/*  */
+.events-wrapper .left-panel .left-panel-inner .add-event .button:hover {
+  border: 2px solid #33A968;
+  background: #33A968;
+  color: #fafafa;
+  box-shadow: 0 14px 26px -12px rgba(61, 112, 178, .42), 0 4px 23px 0px rgba(0, 0, 0, .12), 0 8px 10px -5px rgba(61, 112, 178, .2) !important
+}
 
 .events-wrapper .right-panel {
   position: fixed;
-  top: 150px !important;
+  top: 58px;
   right: 0;
   width: 380px;
   height: calc(100vh - 58px);
@@ -35639,7 +35646,7 @@ body.is-dark .error-container .error-wrapper .error-inner h3 {
 }
 
 .events-wrapper .right-panel .panel-body .activity-block .activity-meta p a:hover {
-  color: #33A968
+  color: #5596e6
 }
 
 .events-wrapper .right-panel .panel-body .activity-block .activity-meta span {
@@ -35671,7 +35678,7 @@ body.is-dark .error-container .error-wrapper .error-inner h3 {
   padding: 40px 60px;
   background: #fff;
   border-bottom: 1px solid #e8e8e8;
-  /* display: flex */
+  display: flex
 }
 
 .events-wrapper .wrapper-inner .event-list .event-item .event-inner-wrap {
@@ -35814,7 +35821,7 @@ body.is-dark .error-container .error-wrapper .error-inner h3 {
 }
 
 .events-wrapper .wrapper-inner .event-list .event-item .event-participants .participants-text p a:hover {
-  color: #33A968
+  color: #5596e6
 }
 
 .event-page-wrapper {
@@ -35916,7 +35923,7 @@ body.is-dark .error-container .error-wrapper .error-inner h3 {
   height: 16px;
   width: 16px;
   stroke-width: 1.6px;
-  stroke: #33A968
+  stroke: #5596e6
 }
 
 .event-page-wrapper .event-content .event-head .left .info-block .info-head>span {
@@ -35943,7 +35950,7 @@ body.is-dark .error-container .error-wrapper .error-inner h3 {
 }
 
 .event-page-wrapper .event-content .event-head .left .info-block .info-body .socials a:hover {
-  color: #33A968
+  color: #5596e6
 }
 
 .event-page-wrapper .event-content .event-head .left .info-block .info-body .socials a svg {
@@ -36031,7 +36038,7 @@ body.is-dark .error-container .error-wrapper .error-inner h3 {
 }
 
 .event-page-wrapper .event-participants .container-inner .participant .participant-avatar:hover {
-  border-color: #33A968;
+  border-color: #3d70b2;
   opacity: 1;
   filter: grayscale(0)
 }
@@ -36044,7 +36051,7 @@ body.is-dark .error-container .error-wrapper .error-inner h3 {
   width: 50px;
   transform: translate(-50%, -50%);
   border-radius: 50%;
-  background: #33A968;
+  background: #5596e6;
   display: flex;
   justify-content: center;
   align-items: center
@@ -36184,7 +36191,7 @@ body.is-dark .error-container .error-wrapper .error-inner h3 {
   height: 16px;
   width: 16px;
   stroke-width: 1.6px;
-  stroke: #33A968
+  stroke: #5596e6
 }
 
 .event-page-wrapper .event-details .right .side-block .side-head>span {

@@ -1,4 +1,5 @@
 @extends('layouts.main')
+@section('title', 'CCMPOA.org | Events')
 
 @section('content')
 	<div class="view-wrapper">
@@ -24,7 +25,7 @@
 						@endforeach
 					@endif
 					<div class="add-event">
-						<button class="button is-success modal-trigger" data-modal="new-event-modal">New Event</button>
+						<button class="button modal-trigger" data-modal="new-event-modal">New Event</button>
 					</div>
 
 				</div>
