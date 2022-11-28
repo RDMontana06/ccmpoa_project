@@ -35559,7 +35559,7 @@ body.is-dark .error-container .error-wrapper .error-inner h3 {
 }
 
 .events-wrapper .left-panel .left-panel-inner .add-event {
-  position: absolute;
+  /* position: absolute; */
   bottom: 0;
   left: 0;
   width: 100%;
