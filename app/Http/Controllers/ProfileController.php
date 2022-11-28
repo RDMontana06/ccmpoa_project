@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
-
+use App\UserProfile;
+use RealRashid\SweetAlert\Facades\Alert;
 class ProfileController extends Controller
 {
     // User Index
@@ -18,7 +19,7 @@ class ProfileController extends Controller
         $user = User::with(['posts' => function ($query) {
             $query->orderBy('created_at', 'desc');
         }
-        ,'attachments','followers.user','following'])->findOrfail($id);
+        ,'attachments','followers.user','following','information'])->findOrfail($id);
         // dd($user);
         // dd($user);
         return view('profiles.index', array(
@@ -53,5 +54,18 @@ class ProfileController extends Controller
         $user->cover_photo = $file_name;
         $user->save();
         return $success;
+    }
+    public function updateInformation(Request $request)
+    {
+        $user = UserProfile::where('user_id',auth()->user()->id)->delete();
+     
+        $new_user = new UserProfile;
+        $new_user->user_id = auth()->user()->id;
+        $new_user->studied_at = $request->studied_at;
+        $new_user->place_from = $request->from;
+        $new_user->lives_in = $request->lives_in;
+        $new_user->save();
+        Alert::success('Successfully Updated', 'You may now view your updated information.')->persistent('Dismiss');
+        return back();
     }
 }

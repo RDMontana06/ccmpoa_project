@@ -66,6 +66,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('profile', 'ProfileController@index');
     Route::post('change-avatar','ProfileController@changeAvatar');
     Route::post('upload-cover','ProfileController@uploadCoverPhoto');
+    Route::post('edit-information','ProfileController@updateInformation');
 
     // Events
     Route::get('event', 'EventController@index');

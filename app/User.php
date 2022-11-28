@@ -56,4 +56,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(Follower::class,'follower_id','id');
     }
+    public function information()
+    {
+        return $this->hasOne(UserProfile::class,'user_id','id');
+    }
 }

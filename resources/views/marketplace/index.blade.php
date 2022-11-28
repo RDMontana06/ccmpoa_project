@@ -735,62 +735,6 @@
 					</div>
 				</div>
 			</div>
-
-			<div id="modal-fadeInScale" class="modal ">
-				<div class="modal-background"></div>
-				<div class="modal-content">
-					<!-- content -->
-					<div class="modal-card">
-						<header class="modal-card-head">
-							<p class="modal-card-title">Post Property Form</p>
-							<button class="delete" aria-label="close" id="close_modal"></button>
-						</header>
-						<section class="modal-card-body">
-							<!-- Content ... -->
-							<form action="">
-								<div class="field">
-									<label class="label">Name</label>
-									<div class="control">
-										<input class="input" type="text" placeholder="Name" id="name">
-									</div>
-								</div>
-								<div class="field">
-									<label class="label">Description</label>
-									<div class="control">
-										<textarea name="description" id="description" cols="30" rows="10" class="input"
-										 style="min-height: 100px;" placeholder="Description"></textarea>
-									</div>
-								</div>
-								<div class="field">
-									<label class="label">Price</label>
-									<div class="control">
-										<input class="input" type="number" placeholder="Price" id="price">
-									</div>
-								</div>
-								<div class="field">
-									<label class="label">Location</label>
-									<div class="control">
-										<input class="input" type="text" placeholder="Location" id="location">
-									</div>
-								</div>
-								<div class="field">
-									<div class="file">
-										<label>
-											<input type="file" name="sample_image" id="property_img" />
-										</label>
-									</div>
-								</div>
-
-							</form>
-						</section>
-						<footer class="modal-card-foot">
-							<button class="button is-success" onclick="addPropertyListing()">Save changes</button>
-							<button class="button">Cancel</button>
-						</footer>
-					</div>
-					<!-- end content -->
-				</div>
-			</div>
 		</div>
 
 		<div id="product-quickview" class="modal product-quickview is-large has-light-bg">
@@ -932,61 +876,63 @@
 			</div>
 		</div>
 	</div>
-	<div id="post-property" class="modal post-property is-medium has-light-bg">
+	<div id="post-property" class="modal is-medium has-light-bg">
 		<div class="modal-background"></div>
 		<div class="modal-content">
-			<div class="card">
-				<div class="card-heading">
-					<h3>Property Form</h3>
-					<!-- Close X button -->
-					<div class="close-wrap">
-						<span class="close-modal">
-							<i data-feather="x"></i>
-						</span>
+			<form >
+				<div class="card">
+					<div class="card-heading">
+						<h3>Property Form</h3>
+						<!-- Close X button -->
+						<div class="close-wrap">
+							<span class="close-modal">
+								<i data-feather="x"></i>
+							</span>
+						</div>
 					</div>
-				</div>
-				<div class="card-body">
-					<form action="new-propert" method="POST">
-						<div class="field">
-							<label class="label">Name</label>
-							<div class="control">
-								<input class="input" type="text" placeholder="Name" id="name" required>
-							</div>
-						</div>
-						<div class="field">
-							<label class="label">Description</label>
-							<div class="control">
-								<textarea name="description" id="description" cols="30" rows="10" class="input"
-								 style="min-height: 100px;" placeholder="Description" required></textarea>
-							</div>
-						</div>
-						<div class="field">
-							<label class="label">Price</label>
-							<div class="control">
-								<input class="input" type="number" placeholder="Price" id="price" required>
-							</div>
-						</div>
-						<div class="field">
-							<label class="label">Location</label>
-							<div class="control">
-								<input class="input" type="text" placeholder="Location" id="location" required>
-							</div>
-						</div>
-						<div class="field">
-							<label class="label">
-								<div class="control file">
-									<input type="file" name="sample_image" id="property_img" required />
+					<div class="card-body">
+						<form action="new-propert" method="POST">
+							<div class="field">
+								<label class="label">Name</label>
+								<div class="control">
+									<input class="input" type="text" placeholder="Name" id="name" required>
 								</div>
-							</label>
-						</div>
-					</form>
-				</div>
+							</div>
+							<div class="field">
+								<label class="label">Description</label>
+								<div class="control">
+									<textarea name="description" id="description" cols="30" rows="10" class="input"
+									style="min-height: 100px;" placeholder="Description" required></textarea>
+								</div>
+							</div>
+							<div class="field">
+								<label class="label">Price</label>
+								<div class="control">
+									<input class="input" type="number" placeholder="Price" id="price" required>
+								</div>
+							</div>
+							<div class="field">
+								<label class="label">Location</label>
+								<div class="control">
+									<input class="input" type="text" placeholder="Location" id="location" required>
+								</div>
+							</div>
+							<div class="field">
+								<label class="label">
+									<div class="control file">
+										<input type="file" name="sample_image" id="property_img" required />
+									</div>
+								</label>
+							</div>
+						</form>
+					</div>
 
-				<footer class="modal-card-foot">
-					<button class="button is-success" onclick="addPropertyListing()">Save changes</button>
-					<button class="button">Cancel</button>
-				</footer>
-			</div>
+					<footer class="modal-card-foot">
+						<button class="button is-success" type='submit'>Post</button>
+						{{-- <button class="button">Cancel</button> --}}
+					</footer>
+				</div>
+			</form>
 		</div>
 	</div>
 @endsection
