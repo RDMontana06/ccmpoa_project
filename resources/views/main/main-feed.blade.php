@@ -976,8 +976,8 @@
 			}
 			function removePost(id)
 			{
-				$('#post-'+id).remove();
 				$(".pageloader").toggleClass("is-active");
+				$('#post-'+id).remove();
 				$.ajax({
 						url: "remove-post",
 						method: "POST",

@@ -205,56 +205,13 @@
 									<!--Products-->
 									<div id="products-tab" class="store-tab-pane is-active">
 										<div class="columns is-multiline" id="marketplace_listing">
+											<!--Product-->
+										
 
 											<!--Product-->
-											<div
-												class="column is-one-fifth-quarter is-one-third-widescreen is-half-desktop is-half-tablet is-half-mobile">
+											<div class="column is-one-fifth-quarter is-one-third-widescreen is-half-desktop is-half-tablet is-half-mobile">
 												<div class="product-card p-0" data-name="Spring Red Dress" data-price="42,500.00" data-colors="true"
-													data-variants="true" data-path="../assets/img/products/sample-property">
-
-													{{-- <div class="set-options">
-                                                        <img class="go-to-products" src="" href="#">
-                                                        <img class="heart" src="{{ asset('assets/img/heart.svg') }}" href="#">
-                                                    </div> --}}
-
-													<div class="product-image">
-														<img class="m-0" src="{{ asset('assets/img/products/sample-property.png') }}" alt="">
-													</div>
-
-													<div class="product-info">
-														<div class="columns mb-1 pl-3 pr-3 mt-1 price-classify">
-															<div class="column pb-0">
-																<h2 class="tag-price">$42,500</h2>
-															</div>
-															<div class="column has-text-right pb-0">
-																<span class="product-classification">Selling</span>
-															</div>
-														</div>
-														<div class="product-title mb-1 pl-3 pr-3">
-															<h2 class="has-text-weight-medium">Sigh Field Property</h2>
-														</div>
-														<div class="product-sub-details columns pl-3 pr-3 mb-1">
-															<div class="column">
-																<p>from <span class="tag-location">Seiser Aim, Kasteiruth, Italy.</span></p>
-															</div>
-															<div class="column is-one-third has-text-right">
-																<p class="date-posted">Jul 1, 2022</p>
-															</div>
-														</div>
-													</div>
-
-													<div class="posted-by-info pl-3 pr-3 pt-2 pb-2">
-														<img class="posted-by-image mr-3" src="https://via.placeholder.com/50x50.png?text=Image">
-														<a class="posted-by" href="#">posted by <span class="posted-name">Vish Singh</span></a>
-													</div>
-												</div>
-											</div>
-
-											<!--Product-->
-											<div
-												class="column is-one-fifth-quarter is-one-third-widescreen is-half-desktop is-half-tablet is-half-mobile">
-												<div class="product-card p-0" data-name="Spring Red Dress" data-price="42,500.00" data-colors="true"
-													data-variants="true" data-path="../assets/img/products/sample-property">
+													data-variants="true" data-path="{{ asset('assets/img/products/sample-property.png') }}">
 
 													{{-- <div class="set-options">
                                                         <img class="go-to-products pointer" src="../assets/img/forward.svg" href="#">
@@ -271,7 +228,7 @@
 																<h2 class="tag-price">$42,500</h2>
 															</div>
 															<div class="column has-text-right pb-0">
-																<span class="product-classification">Selling</span>
+																{{-- <span class="product-classification">Selling</span> --}}
 															</div>
 														</div>
 														<div class="product-title mb-1 pl-3 pr-3">
@@ -800,62 +757,6 @@
 					</div>
 				</div>
 			</div>
-
-			<div id="modal-fadeInScale" class="modal ">
-				<div class="modal-background"></div>
-				<div class="modal-content">
-					<!-- content -->
-					<div class="modal-card">
-						<header class="modal-card-head">
-							<p class="modal-card-title">Post Property Form</p>
-							<button class="delete" aria-label="close" id="close_modal"></button>
-						</header>
-						<section class="modal-card-body">
-							<!-- Content ... -->
-							<form action="">
-								<div class="field">
-									<label class="label">Name</label>
-									<div class="control">
-										<input class="input" type="text" placeholder="Name" id="name">
-									</div>
-								</div>
-								<div class="field">
-									<label class="label">Description</label>
-									<div class="control">
-										<textarea name="description" id="description" cols="30" rows="10" class="input"
-										 style="min-height: 100px;" placeholder="Description"></textarea>
-									</div>
-								</div>
-								<div class="field">
-									<label class="label">Price</label>
-									<div class="control">
-										<input class="input" type="number" placeholder="Price" id="price">
-									</div>
-								</div>
-								<div class="field">
-									<label class="label">Location</label>
-									<div class="control">
-										<input class="input" type="text" placeholder="Location" id="location">
-									</div>
-								</div>
-								<div class="field">
-									<div class="file">
-										<label>
-											<input type="file" name="sample_image" id="property_img" />
-										</label>
-									</div>
-								</div>
-
-							</form>
-						</section>
-						<footer class="modal-card-foot">
-							<button class="button is-success" onclick="addPropertyListing()">Save changes</button>
-							<button class="button">Cancel</button>
-						</footer>
-					</div>
-					<!-- end content -->
-				</div>
-			</div>
 		</div>
 
 		<div id="product-quickview" class="modal product-quickview is-large has-light-bg">
@@ -997,61 +898,63 @@
 			</div>
 		</div>
 	</div>
-	<div id="post-property" class="modal post-property is-medium has-light-bg">
+	<div id="post-property" class="modal is-medium has-light-bg">
 		<div class="modal-background"></div>
 		<div class="modal-content">
-			<div class="card">
-				<div class="card-heading">
-					<h3>Property Form</h3>
-					<!-- Close X button -->
-					<div class="close-wrap">
-						<span class="close-modal">
-							<i data-feather="x"></i>
-						</span>
+			<form >
+				<div class="card">
+					<div class="card-heading">
+						<h3>Property Form</h3>
+						<!-- Close X button -->
+						<div class="close-wrap">
+							<span class="close-modal">
+								<i data-feather="x"></i>
+							</span>
+						</div>
 					</div>
-				</div>
-				<div class="card-body">
-					<form action="new-propert" method="POST">
-						<div class="field">
-							<label class="label">Name</label>
-							<div class="control">
-								<input class="input" type="text" placeholder="Name" id="name" required>
-							</div>
-						</div>
-						<div class="field">
-							<label class="label">Description</label>
-							<div class="control">
-								<textarea name="description" id="description" cols="30" rows="10" class="input"
-								 style="min-height: 100px;" placeholder="Description" required></textarea>
-							</div>
-						</div>
-						<div class="field">
-							<label class="label">Price</label>
-							<div class="control">
-								<input class="input" type="number" placeholder="Price" id="price" required>
-							</div>
-						</div>
-						<div class="field">
-							<label class="label">Location</label>
-							<div class="control">
-								<input class="input" type="text" placeholder="Location" id="location" required>
-							</div>
-						</div>
-						<div class="field">
-							<label class="label">
-								<div class="control file">
-									<input type="file" name="sample_image" id="property_img" required />
+					<div class="card-body">
+						<form action="new-propert" method="POST">
+							<div class="field">
+								<label class="label">Name</label>
+								<div class="control">
+									<input class="input" type="text" placeholder="Name" id="name" required>
 								</div>
-							</label>
-						</div>
-					</form>
-				</div>
+							</div>
+							<div class="field">
+								<label class="label">Description</label>
+								<div class="control">
+									<textarea name="description" id="description" cols="30" rows="10" class="input"
+									style="min-height: 100px;" placeholder="Description" required></textarea>
+								</div>
+							</div>
+							<div class="field">
+								<label class="label">Price</label>
+								<div class="control">
+									<input class="input" type="number" placeholder="Price" id="price" required>
+								</div>
+							</div>
+							<div class="field">
+								<label class="label">Location</label>
+								<div class="control">
+									<input class="input" type="text" placeholder="Location" id="location" required>
+								</div>
+							</div>
+							<div class="field">
+								<label class="label">
+									<div class="control file">
+										<input type="file" name="sample_image" id="property_img" required />
+									</div>
+								</label>
+							</div>
+						</form>
+					</div>
 
-				<footer class="modal-card-foot">
-					<button class="button is-success" onclick="addPropertyListing()">Save changes</button>
-					<button class="button">Cancel</button>
-				</footer>
-			</div>
+					<footer class="modal-card-foot">
+						<button class="button is-success" type='submit'>Post</button>
+						{{-- <button class="button">Cancel</button> --}}
+					</footer>
+				</div>
+			</form>
 		</div>
 	</div>
 @endsection

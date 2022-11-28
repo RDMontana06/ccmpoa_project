@@ -155,28 +155,30 @@
                                         <i data-feather="more-vertical"></i>
                                     </div>
                                 </div>
-                                <div class="dropdown-menu" role="menu">
-                                    <div class="dropdown-content">
-                                        <a href="#" class="dropdown-item">
-                                            <div class="media">
-                                                <i data-feather="eye"></i>
-                                                <div class="media-content">
-                                                    <h3>View</h3>
-                                                    <small>Update Personal Information.</small>
+                                @if($user->id == auth()->user()->id)
+                                    <div class="dropdown-menu" role="menu">
+                                        <div class="dropdown-content">
+                                            <a href="javascript:void(0);" data-modal="edit-info"  class="dropdown-item modal-trigger">
+                                                <div class="media">
+                                                    <i data-feather="eye"></i>
+                                                    <div class="media-content">
+                                                        <h3>View</h3>
+                                                        <small>Update Personal Information.</small>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </a>
-                                        <a href="#" class="dropdown-item is-hidden">
-                                            <div class="media">
-                                                <i data-feather="search"></i>
-                                                <div class="media-content">
-                                                    <h3>Related</h3>
-                                                    <small>Search for related users.</small>
+                                            </a>
+                                            <a href="#" class="dropdown-item is-hidden">
+                                                <div class="media">
+                                                    <i data-feather="search"></i>
+                                                    <div class="media-content">
+                                                        <h3>Related</h3>
+                                                        <small>Search for related users.</small>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </a>
+                                            </a>
+                                        </div>
                                     </div>
-                                </div>
+                                @endif
                             </div>
                         </div>
 
@@ -185,7 +187,7 @@
                                 <div class="info-row">
                                     <div>
                                         <span>Studied at</span>
-                                        <a class="is-inverted">Georgetown University</a>
+                                        <a class="is-inverted">@if($user->information){{$user->information->studied_at}}@endif</a>
                                     </div>
                                     <i class="mdi mdi-school"></i>
                                 </div>
@@ -199,14 +201,14 @@
                                 <div class="info-row">
                                     <div>
                                         <span>From</span>
-                                        <a class="is-inverted">Melbourne, AU</a>
+                                        <a class="is-inverted">@if($user->information){{$user->information->place_from}}@endif</a>
                                     </div>
                                     <i class="mdi mdi-earth"></i>
                                 </div>
                                 <div class="info-row">
                                     <div>
                                         <span>Lives in</span>
-                                        <a class="is-inverted">Los Angeles, CA</a>
+                                        <a class="is-inverted">@if($user->information){{$user->information->lives_in}}@endif</a>
                                     </div>
                                     <i class="mdi mdi-map-marker"></i>
                                 </div>
@@ -265,8 +267,18 @@
 
                         <div class="is-photos-widget">
                             @foreach($user->attachments as $attachment)
-                                <img src="{{asset($attachment->attachment)}}" data-demo-src="{{url($attachment->attachment)}}" width='200px' height='200px' alt="">
+                                <img src="{{asset($attachment->attachment)}}" data-demo-src="{{url($attachment->attachment)}}" alt="">
                             @endforeach
+                            @if((($user->attachments)->count())%4 == 1)
+                            <img src="{{asset('images/white.png')}}"  alt="">
+                            <img src="{{asset('images/white.png')}}"  alt="">
+                            <img src="{{asset('images/white.png')}}"  alt="">
+                            @elseif((($user->attachments)->count())%4 == 2)
+                            <img src="{{asset('images/white.png')}}"   alt="">
+                            <img src="{{asset('images/white.png')}}"  alt="">
+                            @elseif((($user->attachments)->count())%4 == 3)
+                            <img src="{{asset('images/white.png')}}"   alt="">
+                            @endif
                         </div>
                         <!-- Star friends widget -->
                         <!-- html/partials/pages/profile/timeline/widgets/star-friends-widget.html -->
@@ -319,7 +331,7 @@
                                 <div class="friend-item">
                                     <img src="{{asset($follower->user->profile_picture)}}" data-demo-src="{{asset($follower->user->profile_picture)}}" alt="" data-user-popover="1">
                                     <div class="text-content">
-                                        <a>{{$follower->user->name}}</a>
+                                        <a  href='{{url("profile?id=".$follower->follower_id)}}' target='_blank'>{{$follower->user->name}}</a>
                                         {{-- <span>4 mutual friend(s)</span> --}}
                                     </div>
                                     <div class="star-friend is-hidden">
@@ -1595,4 +1607,5 @@
 </script>
 <script src="{{url('/js/script.js')}}"></script>
 @include('profiles.change_avatar')
+@include('profiles.edit_personal_info')
 @endsection
