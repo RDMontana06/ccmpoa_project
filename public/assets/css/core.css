@@ -35681,14 +35681,15 @@ body.is-dark .error-container .error-wrapper .error-inner h3 {
   display: flex
 }
 
-.events-wrapper .wrapper-inner .event-list .event-item .event-inner-wrap {
+/* .events-wrapper .wrapper-inner .event-list .event-item .event-inner-wrap {
   position: relative
-}
+} */
 
 .events-wrapper .wrapper-inner .event-list .event-item .event-inner-wrap .event-options {
   position: absolute;
-  top: 5px;
-  right: 0
+  /* top: 5px; */
+  right: 0;
+  margin-right: 40px !important;
 }
 
 .events-wrapper .wrapper-inner .event-list .event-item .event-inner-wrap .event-options:hover .button svg {
@@ -36309,8 +36310,8 @@ body.is-dark .error-container .error-wrapper .error-inner h3 {
   }
 
   .events-wrapper .wrapper-inner .event-list .event-item .event-inner-wrap .event-options {
-    top: 0px;
-    right: 0px
+    top: 40px;
+    right: -20px
   }
 
   .events-wrapper .wrapper-inner .event-list .event-item .event-inner-wrap .event-participants {

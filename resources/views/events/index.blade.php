@@ -102,16 +102,16 @@
 									@endforeach
 										
 										<div class="participants-text" id="participants-text{{ $event->id }}">
-											@if($event->participant->count() == 1 )
+											@if($event->participant->count() == 1)
 												@foreach ($event->participant as $participant )
-													@if($participant->user->id == auth()->user()->id)
+													@if($participant->user->id == auth()->user()->id && $participant->deleted_at != null)
 														<p id="you{{ $participant->event_id }}"><a href="#">You</a></p>
 													@else
 													<p><a href="#">{{$participant->user->first_name}}</a></p>
 													@endif
 												@endforeach
 												<p id="participate{{ $participant->event_id  }}">are participating</p>
-											@elseif ($event->participant->count() == 2 )
+											@elseif ($event->participant->count() == 2)
 													@foreach($event->participant as $key => $participant)
 														@if($key == 0)
 														<p><a href="#">{{$participant->user->first_name}}</a></p>
