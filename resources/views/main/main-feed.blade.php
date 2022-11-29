@@ -730,7 +730,7 @@
 									</div>
 									<div class="dropdown-menu" role="menu">
 										<div class="dropdown-content">
-											<a href="#" class="dropdown-item">
+											<a href="{{ url('event') }}" class="dropdown-item">
 												<div class="media">
 													<i data-feather="tv"></i>
 													<div class="media-content">
@@ -745,38 +745,18 @@
 							</div>
 							<div class="card-body no-padding">
 								<!-- Story block -->
-								<div class="story-block">
-									<div class="img-wrapper">
-										<img src="{{ asset('assets/img/avatars/dan.jpg') }}"
-											data-demo-src="{{ asset('assets/img/avatars/dan.jpg') }}" data-user-popover="1" alt="">
+								@foreach ($events as $event )
+									<div class="story-block">
+										<div class="img-wrapper">
+											<img src="{{ asset($event->cover_photo) }}" onerror="this.src='{{ URL::asset('/images/no_image.png') }}';"
+												data-demo-src="{{ asset($event->cover_photo) }}}" data-user-popover="8" alt="">
+										</div>
+										<div class="story-meta">
+											<span>{{ $event->name }}</span>
+											<span>{{ Carbon\Carbon::parse($event->updated_at)->diffForHumans() }}</span>
+										</div>
 									</div>
-									<div class="story-meta">
-										<span>Event 1</span>
-										<span>1 hour ago</span>
-									</div>
-								</div>
-								<!-- Story block -->
-								<div class="story-block">
-									<div class="img-wrapper">
-										<img src="{{ asset('assets/img/avatars/bobby.jpg') }}"
-											data-demo-src="{{ asset('assets/img/avatars/bobby.jpg') }}" data-user-popover="8" alt="">
-									</div>
-									<div class="story-meta">
-										<span>Evente 2</span>
-										<span>3 days ago</span>
-									</div>
-								</div>
-								<!-- Story block -->
-								<div class="story-block">
-									<div class="img-wrapper">
-										<img src="{{ asset('assets/img/avatars/elise.jpg') }}"
-											data-demo-src="{{ asset('assets/img/avatars/elise.jpg') }}"data-user-popover="6" alt="">
-									</div>
-									<div class="story-meta">
-										<span>Event 3</span>
-										<span>Last week</span>
-									</div>
-								</div>
+								@endforeach
 							</div>
 						</div>
 

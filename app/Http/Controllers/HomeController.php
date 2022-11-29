@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Post;
 use App\User;
+use App\Event;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -26,11 +27,17 @@ class HomeController extends Controller
     public function index()
     {
         $posts = Post::with('user', 'likes.user', 'comments.user','attachment')->orderBy('created_at', 'desc')->get();
+        $events = Event::with('participant.user')
+        ->where('status', 'active')
+        ->orderBy('created_at', 'desc')->take(5)
+        ->get();
+        //  dd($events->all());
         return view(
             'main.main-feed',
             array(
                 'header' => 'main',
                 'posts' => $posts,
+                'events' => $events,
             )
         );
        
