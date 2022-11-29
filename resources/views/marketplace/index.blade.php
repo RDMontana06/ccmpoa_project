@@ -236,7 +236,7 @@
 				<div class="card">
 					<div class="left">
 						<div class="product-image is-active">
-							<img src="../assets/img/products/1.svg" alt="">
+							<img src="" alt="">
 						</div>
 					</div>
 					<div class="right">
@@ -333,7 +333,7 @@
 					</div>
 
 					<footer class="modal-card-foot">
-						<button class="button is-success" type='submit'>Post</button>
+						<button class="button is-success" id="submitMarket" type='submit'>Post</button>
 						{{-- <button class="button">Cancel</button> --}}
 					</footer>
 				</form>

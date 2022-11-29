@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-    <title> CCMPOA.org | Marketplace</title>
+    <title> CCMPOA.org | {{ $header }}</title>
    <link rel="icon" sizes="any" type="image/svg+xml" href="{{ asset('assets/img/logo/logo.svg') }}" />
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:600,700,800,900" rel="stylesheet">
@@ -80,6 +80,13 @@
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>   --}}
 
   {{-- <script src="../node_modules/intro.js/intro.js"></script> --}}
+  <script>
+  function show()
+	{
+		$(".pageloader").toggleClass("is-active");
+    $("#submitMarket").prop("disabled", true);
+	}
+  </script>
 </body>
 
 </html>

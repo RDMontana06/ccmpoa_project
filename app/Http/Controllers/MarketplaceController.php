@@ -11,7 +11,7 @@ class MarketplaceController extends Controller
     {
         $markeplaces = Marketplace::with('user')->get();
         return view('marketplace.index', array(
-            'header' => 'marketplace',
+            'header' => 'Marketplace',
             'markeplaces' => $markeplaces,
 
         ));
