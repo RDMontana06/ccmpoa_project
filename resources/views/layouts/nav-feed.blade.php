@@ -24,7 +24,7 @@
 					</a>
 				</div>
 				<div class="navbar-item is-icon drop-trigger">
-					<a class="icon-link {{ $header == 'marketplace' ? 'is-active' : '' }}"" href="{{ url('marketplace') }}"
+					<a class="icon-link {{ $header == 'marketplace' ? 'is-active' : '' }}" href="{{ url('marketplace') }}"
 						title="Marketplace">
 						<i data-feather="shopping-cart"></i>
 						<span class="indicator"></span>

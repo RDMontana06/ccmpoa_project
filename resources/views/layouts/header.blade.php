@@ -82,6 +82,7 @@
 	<script src="{{ asset('assets/app/script.js') }}"></script>
 	<script src="{{ asset('assets/app/login.js') }}"></script>
 	<script src="{{ asset('assets/js/notify-js.js') }}"></script>
+	@include('sweetalert::alert')
 	<script>
 	 if (window.location.hash == '#success') {
 	  new NotifyJS({

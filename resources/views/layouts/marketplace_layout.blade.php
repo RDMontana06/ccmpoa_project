@@ -69,6 +69,10 @@
     <script src="{{ asset('assets/js/lightbox.js') }}"></script>
 
     <script src="{{ asset('assets/js/shop.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.6/dist/sweetalert2.all.min.js"></script>
+
+
+    @include('sweetalert::alert')
     {{-- <script src="{{ asset('assets/js/modal-fx.js') }}"></script>
     <script src="{{ asset('assets/js/modal-01.js') }}"></script> --}}
 
