@@ -9,7 +9,7 @@
 			</a>
 		</div>
 		<div class="navbar-menu">
-			<div class="navbar-start">
+			<div class="navbar-start" style="flex-grow: 1; justify-content: center;">
 				<!-- Navbar Search -->
 				<div class="navbar-item is-icon drop-trigger">
 					<a class="icon-link {{ $header == 'main' ? 'is-active' : '' }}" href="{{ url('/') }}" title="Main Feed">

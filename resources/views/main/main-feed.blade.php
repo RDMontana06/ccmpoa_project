@@ -753,7 +753,8 @@
 										</div>
 										<div class="story-meta">
 											<span>{{ $event->name }}</span>
-											<span>{{ Carbon\Carbon::parse($event->updated_at)->diffForHumans() }}</span>
+											{{-- <span>{{ Carbon\Carbon::parse($event->updated_at)->diffForHumans() }}</span> --}}
+											<span>{{ date('F j, Y, g:i a', strtotime($event->date))  }}</span>
 										</div>
 									</div>
 								@endforeach
