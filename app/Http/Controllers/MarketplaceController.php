@@ -7,12 +7,23 @@ use RealRashid\SweetAlert\Facades\Alert;
 class MarketplaceController extends Controller
 {
     //
-    public function index()
+    public function index(Request $request)
     {
+        $min = null;
+        $max = null;
         $markeplaces = Marketplace::with('user')->get();
+        if($request->min)
+        {
+            $min = $request->min;
+            $max = $request->max;
+            $markeplaces = Marketplace::whereBetween('price',[$min,$max])->with('user')->get();
+        }
+      
         return view('marketplace.index', array(
             'header' => 'Marketplace',
             'markeplaces' => $markeplaces,
+            'min' => $min,
+            'max' => $min,
 
         ));
     }
