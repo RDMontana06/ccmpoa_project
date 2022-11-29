@@ -301,11 +301,11 @@
 										</div>
 										<div class="dropdown-menu" role="menu">
 											<div class="dropdown-content">
-												<a href="#" class="dropdown-item">
+												<a href="{{ url('marketplace') }}" class="dropdown-item">
 													<div class="media">
 														<i data-feather="file-text"></i>
 														<div class="media-content">
-															<h3>All Recommandations</h3>
+															<h3>All Recommendations</h3>
 															<small>View all properties.</small>
 														</div>
 													</div>
@@ -316,45 +316,16 @@
 								</div>
 								<div class="card-body no-padding">
 									<!-- Recommended Page -->
-									<div class="page-block transition-block">
-										<img src="{{ asset('assets/img/groups/1.jpg') }}"
-											data-demo-src="{{ asset('assets/img/icons/logos/fastpizza.svg') }}" data-page-popover="0" alt="">
+									@foreach ($marketplaces as $marketplace )
+										<div class="page-block transition-block">
+										<img src="{{ asset($marketplace->cover_photo) }}"
+											data-demo-src="{{ asset($marketplace->cover_photo) }}" data-page-popover="0" alt="">
 										<div class="page-meta">
-											<span>Property 1</span>
+											<span>{{ $marketplace->property_name }}</span>
+											<span>{{ $marketplace->description }}</span>
 										</div>
 									</div>
-									<!-- Recommended Page -->
-									<div class="page-block transition-block">
-										<img src="{{ asset('assets/img/groups/2.jpg') }}"
-											data-demo-src="{{ asset('assets/img/icons/logos/lonelydroid.svg') }}" data-page-popover="1" alt="">
-										<div class="page-meta">
-											<span>Property 2</span>
-										</div>
-									</div>
-									<!-- Recommended Page -->
-									<div class="page-block transition-block">
-										<img src="{{ asset('assets/img/groups/5.jpg') }}"
-											data-demo-src="{{ asset('assets/img/icons/logos/metamovies.svg') }}" data-page-popover="2" alt="">
-										<div class="page-meta">
-											<span>Property 3</span>
-										</div>
-									</div>
-									<!-- Recommended Page -->
-									<div class="page-block transition-block">
-										<img src="{{ asset('assets/img/groups/3.jpg') }}"
-											data-demo-src="{{ asset('assets/img/icons/logos/nuclearjs.svg') }}" data-page-popover="3" alt="">
-										<div class="page-meta">
-											<span>Property 4</span>
-										</div>
-									</div>
-									<!-- Recommended Page -->
-									<div class="page-block transition-block">
-										<img src="{{ asset('assets/img/groups/56.jpg') }}"
-											data-demo-src="{{ asset('assets/img/icons/logos/slicer.svg') }}" data-page-popover="4" alt="">
-										<div class="page-meta">
-											<span>Property 6</span>
-										</div>
-									</div>
+									@endforeach
 								</div>
 							</div>
 

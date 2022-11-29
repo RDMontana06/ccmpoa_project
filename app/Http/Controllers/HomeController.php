@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Post;
 use App\User;
 use App\Event;
+use App\Marketplace;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -29,15 +30,20 @@ class HomeController extends Controller
         $posts = Post::with('user', 'likes.user', 'comments.user','attachment')->orderBy('created_at', 'desc')->get();
         $events = Event::with('participant.user')
         ->where('status', 'active')
-        ->orderBy('date', 'desc')->take(5)
+        ->orderBy('date', 'desc')
+        ->take(5)
         ->get();
         //  dd($events->all());
+        $marketplaces = Marketplace::with('user')->orderBy('created_at', 'desc')
+        ->take(5)
+        ->get();
         return view(
             'main.main-feed',
             array(
                 'header' => 'main',
                 'posts' => $posts,
                 'events' => $events,
+                'marketplaces' => $marketplaces,
             )
         );
        
