@@ -29,7 +29,7 @@ class HomeController extends Controller
         $posts = Post::with('user', 'likes.user', 'comments.user','attachment')->orderBy('created_at', 'desc')->get();
         $events = Event::with('participant.user')
         ->where('status', 'active')
-        ->orderBy('created_at', 'desc')->take(5)
+        ->orderBy('date', 'desc')->take(5)
         ->get();
         //  dd($events->all());
         return view(

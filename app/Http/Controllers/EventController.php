@@ -15,20 +15,25 @@ class EventController extends Controller
 {
     public function index()
     {
-        $events = Event::with('user_event', 'participant.user', 'user')
-            ->where('status', 'Active')
+        // $events = Event::with('user_event', 'participant.user', 'user')
+        //     ->where('status', 'Active')
+        //     ->get();
+        $events = Event::with('participant.user')
+            ->where('status', 'active')
+            ->orderBy('date', 'desc')
             ->get();
-        
+
         return view('events.index', array(
             'header' => 'eventSettings',
             'events' => $events,
             // 'countUserEvent' => $countUserEvent,
         ));
     }
-    public function event_details($id){
+    public function event_details($id)
+    {
 
         $event = Event::with('participant.user')->findOrFail($id);
-         $eventUser = EventParticipant::where('user_id', auth()->user()->id)->where('event_id', $id)->first();
+        $eventUser = EventParticipant::where('user_id', auth()->user()->id)->where('event_id', $id)->first();
         //   dd($event);
         return view('events.event-details', array(
             'header' => 'eventSettings',
@@ -76,9 +81,9 @@ class EventController extends Controller
         $events->organizer_number = $request->organizer_number;
         $events->status = 'Active';
         $events->encoded_by = auth()->user()->id;
-    
+
         // Save Single Image
-        
+
         if ($request->file('cover_photo')) {
             $attachment = $request->file('cover_photo');
             $original_name = $attachment->getClientOriginalName();
@@ -115,16 +120,16 @@ class EventController extends Controller
         //     }
         // }
 
-        
+
 
         Alert::success('Successfully Store', 'Event created successfully!')->persistent('Dismiss');
         return back();
     }
-    public function leave_events($id){
+    public function leave_events($id)
+    {
         $events = EventParticipant::where('event_id', $id)->where('user_id', auth()->user()->id)->first();
         $events->delete();
-        return back();  
-
+        return back();
     }
     public function update_events(Request $request, $id)
     {
@@ -157,18 +162,18 @@ class EventController extends Controller
         $events->organizer_number = $request->organizer_number;
         $events->status = 'Active';
         $events->encoded_by = auth()->user()->id;
-        
 
-            // Save Single Image
-            if ($request->file('cover_photo')) {
-                $attachment = $request->file('cover_photo');
-                $original_name = $attachment->getClientOriginalName();
-                $name = time() . '_' . $attachment->getClientOriginalName();
-                $attachment->move(public_path() . '/event-files/', $name);
-                $file_name = '/event-files/' . $name;
-                $events->cover_photo = $file_name;
-            }
-       
+
+        // Save Single Image
+        if ($request->file('cover_photo')) {
+            $attachment = $request->file('cover_photo');
+            $original_name = $attachment->getClientOriginalName();
+            $name = time() . '_' . $attachment->getClientOriginalName();
+            $attachment->move(public_path() . '/event-files/', $name);
+            $file_name = '/event-files/' . $name;
+            $events->cover_photo = $file_name;
+        }
+
         $events->save();
 
         // if ($request->filesAttach == null) {
@@ -191,25 +196,26 @@ class EventController extends Controller
         //         $attachment->save();
         //     }
         // }
-        
+
 
 
         Alert::success('Successfully Updated', 'Event update successfully!')->persistent('Dismiss');
         return back();
     }
-   public function cancel_events($id){
-    Event::Where('id', $id)->update(['status' => 'Cancelled']);
-    // Alert::success('Event Cancelled', 'Event was cancelled successfully!')->persistent('Dismiss');
-    return back();
-   }
-   public function register_events($id){
-    
-    $eventParticipants = new EventParticipant;
-    $eventParticipants->event_id = $id;
-    $eventParticipants->user_id = auth()->user()->id;
-    $eventParticipants->save();
+    public function cancel_events($id)
+    {
+        Event::Where('id', $id)->update(['status' => 'Cancelled']);
+        // Alert::success('Event Cancelled', 'Event was cancelled successfully!')->persistent('Dismiss');
+        return back();
+    }
+    public function register_events($id)
+    {
 
-    return back();
+        $eventParticipants = new EventParticipant;
+        $eventParticipants->event_id = $id;
+        $eventParticipants->user_id = auth()->user()->id;
+        $eventParticipants->save();
 
-   }
+        return back();
+    }
 }
