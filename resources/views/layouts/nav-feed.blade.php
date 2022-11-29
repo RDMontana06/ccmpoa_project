@@ -76,7 +76,7 @@
 									</div>
 								</a>
 								<hr class="account-divider">
-								<a href="{{ url('adminEvents') }}" class="account-item">
+								<a href="{{ url('admin_index') }}" class="account-item">
 									<div class="media">
 										<div class="icon-wrap">
 											<i data-feather="settings"></i>
