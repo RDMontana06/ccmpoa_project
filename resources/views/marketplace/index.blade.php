@@ -201,7 +201,7 @@
 																			<i data-feather="more-horizontal"></i>
 																	</a>
 																	<div class="product-image">
-																			<img src="{{ asset($marketplace->cover_photo) }}" alt="">
+																			<img  class="image is-128x128" src="{{ asset($marketplace->cover_photo) }}" alt="">
 																	</div>
 																	<div class="product-info">
 																			<h3>{{$marketplace->property_name}}</h3>
