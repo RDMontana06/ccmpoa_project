@@ -48,7 +48,7 @@
 										</div>
 										<div class="dropdown-menu" role="menu">
 											<div class="dropdown-content">
-												<a href="{{ URL('event/eventDetails/' . $event->id ) }}" class="dropdown-item">
+												<a href="{{ URL('event/eventDetails/' . $event->id) }}" class="dropdown-item">
 													<div class="media">
 														<i data-feather="calendar"></i>
 														<div class="media-content">
@@ -70,7 +70,8 @@
 												@if ($event->participant->isNotEmpty())
 													@if ($event->participant[0]->user_id == auth()->user()->id)
 														<hr class="dropdown-divider">
-														<a href="#" class="dropdown-item" id="leaveId{{ $event->id }}" onclick="leave({{ $event->id }})">
+														<a href="#" class="dropdown-item" id="leaveId{{ $event->id }}"
+															onclick="leave({{ $event->id }})">
 															<div class="media">
 																<i data-feather="delete"></i>
 																<div class="media-content">
@@ -95,31 +96,33 @@
 										</div>
 									</div>
 									<div class="event-participants">
-									@foreach ($event->participant as $participant )
-										<div class="participants-group" id="userImage{{ $participant->event_id }}">
-											<img src="{{ url(''). $participant->user->profile_picture }}" onerror="this.src='{{URL::asset('/images/no_image.png')}}';" data-demo-src="{{ url(''). $participant->user->profile_picture }}"data-user-popover="0" alt="">
-										</div>
-									@endforeach
-										
+										@foreach ($event->participant as $participant)
+											<div class="participants-group" id="userImage{{ $participant->event_id }}">
+												<img src="{{ url('') . $participant->user->profile_picture }}"
+													onerror="this.src='{{ URL::asset('/images/no_image.png') }}';"
+													data-demo-src="{{ url('') . $participant->user->profile_picture }}"data-user-popover="0" alt="">
+											</div>
+										@endforeach
+
 										<div class="participants-text" id="participants-text{{ $event->id }}">
-											@if($event->participant->count() == 1)
-												@foreach ($event->participant as $participant )
-													@if($participant->user->id == auth()->user()->id && $participant->deleted_at != null)
+											@if ($event->participant->count() == 1)
+												@foreach ($event->participant as $participant)
+													@if ($participant->user->id == auth()->user()->id && $participant->deleted_at != null)
 														<p id="you{{ $participant->event_id }}"><a href="#">You</a></p>
 													@else
-													<p><a href="#">{{$participant->user->first_name}}</a></p>
+														<p><a href="#">{{ $participant->user->first_name }}</a></p>
 													@endif
 												@endforeach
-												<p id="participate{{ $participant->event_id  }}">are participating</p>
+												<p id="participate{{ $participant->event_id }}">are participating</p>
 											@elseif ($event->participant->count() == 2)
-													@foreach($event->participant as $key => $participant)
-														@if($key == 0)
-														<p><a href="#">{{$participant->user->first_name}}</a></p>
-														@else
-														and <p><a href="#">{{$participant->user->first_name}}</p>
-														@endif
-													@endforeach
-													<p id="participate{{ $participant->event_id  }}">are participating</p>
+												@foreach ($event->participant as $key => $participant)
+													@if ($key == 0)
+														<p><a href="#">{{ $participant->user->first_name }}</a></p>
+													@else
+														and <p><a href="#">{{ $participant->user->first_name }}</p>
+													@endif
+												@endforeach
+												<p id="participate{{ $participant->event_id }}">are participating</p>
 											@else
 												<p>No Participants</p>
 											@endif
@@ -141,17 +144,18 @@
 				</div>
 				<div class="panel-body has-slimscroll">
 					<!--Activity-->
-					@foreach ($events as $event )
-						<div class="activity-block" id="activity{{ $event->id }}">
-							@foreach ($event->participant as $participant)
-								<img src="{{ url(''). $participant->user->profile_picture }}"  onerror="this.src='{{URL::asset('/images/no_image.png')}}';" data-demo-src="{{ url('') . $participant->user->profile_picture }}" data-user-popover="4"
-								alt="">
-							<div class="activity-meta">
-								<p><a>{{ $participant->user->name }}</a> is now participating to the <a>{{ $event->name }}</a> event.</p>
-								<span>{{ Carbon\Carbon::parse($participant->updated_at)->diffForHumans() }}</span>
+					@foreach ($events as $event)
+						@foreach ($event->participant as $participant)
+							<div class="activity-block" id="activity{{ $event->id }}">
+								<img src="{{ url('') . $participant->user->profile_picture }}"
+									onerror="this.src='{{ URL::asset('/images/no_image.png') }}';"
+									data-demo-src="{{ url('') . $participant->user->profile_picture }}" data-user-popover="4" alt="">
+								<div class="activity-meta">
+									<p><a>{{ $participant->user->name }}</a> is now participating to the <a>{{ $event->name }}</a> event.</p>
+									<span>{{ Carbon\Carbon::parse($participant->updated_at)->diffForHumans() }}</span>
+								</div>
 							</div>
-							@endforeach
-						</div>
+						@endforeach
 					@endforeach
 				</div>
 			</div>
@@ -166,25 +170,26 @@
 	@endif
 @endsection
 @section('eventScript')
-<script>
-function ownerModal(idx){
-	var events = {!! json_encode($events->toArray()) !!};
-	console.log(events);
-	var obj = events.find(event => event.id == idx);
-	console.log(obj);
-	var source = "{!! asset('/') !!}";
-	$('#profile').attr("src", source + obj.user.profile_picture);
-	$('#name').append(obj.user.name)
-	$('#emailId').attr("href", "mailto:" + obj.user.email).text(obj.user.email)
+	<script>
+		function ownerModal(idx) {
+			var events = {!! json_encode($events->toArray()) !!};
+			console.log(events);
+			var obj = events.find(event => event.id == idx);
+			console.log(obj);
+			var source = "{!! asset('/') !!}";
+			$('#profile').attr("src", source + obj.user.profile_picture);
+			$('#name').append(obj.user.name)
+			$('#emailId').attr("href", "mailto:" + obj.user.email).text(obj.user.email)
 
-	$('#org_name').append(obj.organizer)
-	$('#org_emailId').attr("href", "mailto:" + obj.organizer_email).text(obj.organizer_email)
-	$('#org_number').append(obj.organizer_number)
-	$('#org_website').append(obj.organizer_website)
-	document.getElementById("owner-modal").classList.add("is-active");
-}
-function leave(id){
-Swal.fire({
+			$('#org_name').append(obj.organizer)
+			$('#org_emailId').attr("href", "mailto:" + obj.organizer_email).text(obj.organizer_email)
+			$('#org_number').append(obj.organizer_number)
+			$('#org_website').append(obj.organizer_website)
+			document.getElementById("owner-modal").classList.add("is-active");
+		}
+
+		function leave(id) {
+			Swal.fire({
 				title: 'Leave this event',
 				text: "Are you sure about this?",
 				icon: 'question',
@@ -211,12 +216,12 @@ Swal.fire({
 								'You have successfully leave this event!',
 								'success'
 							).then(function() {
-                let div = document.querySelector('#participant');
-                
-                 document.querySelector('#leaveId' + id).remove();
-                 document.querySelector('#activity' + id).remove();
-                 document.querySelector('#userImage' + id).remove();
-                 document.querySelector('#you' + id).remove();
+								let div = document.querySelector('#participant');
+
+								document.querySelector('#leaveId' + id).remove();
+								document.querySelector('#activity' + id).remove();
+								document.querySelector('#userImage' + id).remove();
+								document.querySelector('#you' + id).remove();
 
 							});
 						}
@@ -231,6 +236,6 @@ Swal.fire({
 					)
 				}
 			})
-}
-</script>
+		}
+	</script>
 @endsection

@@ -72,6 +72,7 @@ class AccountRequestController extends Controller
         $user->email = $acctReq->email;
         $user->password = bcrypt($randomPassword);
         $user->role_id = $request->role;
+        $user->status = 1;
         $user->profile_picture = asset('assets/img/avatar/no-user-image.png');
         $user->save();
 
