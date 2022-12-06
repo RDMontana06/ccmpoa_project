@@ -122,22 +122,24 @@
 										<div class="column">
 											<h3 class="mb-2 has-text-weight-medium">Properties</h3>
 										</div>
-										<div class="column">
-											<h3 class="mb-2 has-text-weight-medium">Price Range</h3>
-											<div class="field is-grouped">
-												<p class="control">
-													<input class="input" type="int" placeholder="Minimum Amount">
-												</p>
-												<p class="control">
-													<input class="input" type="int" placeholder="Maximum Amount">
-												</p>
-												<p class="control">
-													<a class="button is-success">
-														Search
-													</a>
-												</p>
+										<form>
+											<div class="column">
+												<h3 class="mb-2 has-text-weight-medium">Price Range</h3>
+												<div class="field is-grouped">
+													<p class="control">
+														<input class="input" type="int" placeholder="Minimum Amount" name='min' value='{{$min}}' required>
+													</p>
+													<p class="control">
+														<input class="input" type="int" placeholder="Maximum Amount" name='max' value='{{$max}}' required>
+													</p>
+													<p class="control">
+														<button class="button is-success" type='submit'>
+															Search
+														</button>
+													</p>
+												</div>
 											</div>
-										</div>
+										</form>
 
 									</div>
 
