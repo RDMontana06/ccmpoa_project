@@ -15,7 +15,7 @@
                         <div class="cover-bg">
                             <img class="cover-image" src="{{asset($user->cover_photo)}}" onerror="this.src='https://via.placeholder.com/1600x460';" id='cover-image' data-demo-src="{{$user->cover_photo}}" alt="">
                             <div class="avatar">
-                                <img id="user-avatar" class="avatar-image" src="{{ asset($user->profile_picture) }}" data-demo-src="{{ asset($user->profile_picture) }}" alt="Profile Picture">
+                                <img id="user-avatar" class="avatar-image" src="{{ asset($user->profile_picture) }}" data-demo-src="{{ asset($user->profile_picture) }}" onerror="this.src='{{ URL::asset('/images/no_image.png') }}';" alt="Profile Picture">
                                 {{-- @if($user->id == auth()->user()->id) --}}
                                     <div class="avatar-button">
                                         <i data-feather="plus"></i>
