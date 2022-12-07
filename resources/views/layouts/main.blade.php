@@ -23,6 +23,7 @@
 
 	{{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
 	<!-- Core CSS -->
+	<link href="{{ asset('css/iziToast.css') }}" rel="stylesheet">
 	<link rel="stylesheet" href="{{ asset('assets/css/core.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/css/app.css') }}">
 	{{-- <link rel="stylesheet" href="{{ asset('assets/css/landing-page.css') }}"> --}}
@@ -85,6 +86,8 @@
 	<script src="{{ asset('assets/js/compose.js') }}"></script>
 	<script src="{{ asset('assets/js/autocompletes.js') }}"></script>
 	<script src="{{ asset('assets/js/events.js') }}"></script>
+	<script src="{{ asset('js/iziToast.js') }}"></script>
+	@include('vendor.lara-izitoast.toast')
 
 	<!-- profile js -->
 	{{-- <script src="{{ asset('assets/js/profile.js') }}"></script> --}}

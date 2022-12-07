@@ -98,10 +98,10 @@
 						<div class="columns is-mobile">
             <div class="column is-falf">
 								<div class="field">
-									<label>Organizer Number (Optional)</label>
+									<label>Organizer Number</label>
 									<div class="control">
 										<input type="text" class="input" name="organizer_number" value="{{ old('organizer_number') }}"
-											placeholder="e.g. 3234-433-232">
+											placeholder="e.g. 3234-433-232" required>
 									</div>
 								</div>
 							</div>
