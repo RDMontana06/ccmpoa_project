@@ -273,7 +273,7 @@
 										onerror="this.src='{{ URL::asset('/images/no_image.png') }}';" alt="">
 									<div class="pc-first-text">
 										<h3 id="userName">{{ auth()->user()->first_name }}</h3>
-										{{-- <p>Owner</p> --}}
+										<p>{{ auth()->user()->role->role }}</p>
 									</div>
 								</div>
 								<div class="pc-second" style="background-color:rgba(59,167,103,0.9);">
