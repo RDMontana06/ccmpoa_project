@@ -29,9 +29,9 @@
 										@if ($acctRequest->status == 'Approved')
 											<span class="badge bg-label-success me-1">Approved</span>
 										@elseif($acctRequest->status == 'Rejected')
-											<span class="badge bg-label-danger me-1">Rejected</span>
+											<span class="badge bg-label-warning me-1">Rejected</span>
 										@else
-											<span class="badge bg-label-warning me-1">Pending</span>
+											<span class="badge bg-label-danger me-1">Pending</span>
 										@endif
 									</td>
 									<td>
