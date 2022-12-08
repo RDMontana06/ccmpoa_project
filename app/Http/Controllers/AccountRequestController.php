@@ -78,7 +78,8 @@ class AccountRequestController extends Controller
 
         $acctReq->notify(new ApprovedRequest($acctReq, $randomPassword));
 
-        Alert::success('Successfully Approved')->persistent('Dismiss');
+        // Alert::success('Successfully Approved')->persistent('Dismiss');
+        notify()->success("Successfully Approved!","Success","topRight");
         return back();
     }
     // Reject Request
@@ -88,6 +89,7 @@ class AccountRequestController extends Controller
         $acctReq = AccountRequest::findOrFail($id);
         $acctReq->status = 'Rejected';
         $acctReq->update();
+        notify()->success("Request Rejected!","Danger","topRight");
         return back();
     }
 }
