@@ -123,7 +123,7 @@
 											<h3 class="mb-2 has-text-weight-medium">Properties</h3>
 										</div>
 										<form>
-											<div class="column">
+											{{-- <div class="column">
 												<h3 class="mb-2 has-text-weight-medium">Price Range</h3>
 												<div class="field is-grouped">
 													<p class="control">
@@ -138,7 +138,7 @@
 														</button>
 													</p>
 												</div>
-											</div>
+											</div> --}}
 										</form>
 
 									</div>
