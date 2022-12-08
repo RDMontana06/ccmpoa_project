@@ -122,7 +122,8 @@ class EventController extends Controller
 
 
 
-        Alert::success('Successfully Store', 'Event created successfully!')->persistent('Dismiss');
+        // Alert::success('Successfully Store', 'Event created successfully!')->persistent('Dismiss');
+        notify()->success("Event created successfully!","Success","topRight");
         return back();
     }
     public function leave_events($id)
@@ -199,7 +200,8 @@ class EventController extends Controller
 
 
 
-        Alert::success('Successfully Updated', 'Event update successfully!')->persistent('Dismiss');
+        // Alert::success('Successfully Updated', 'Event update successfully!')->persistent('Dismiss');
+        notify()->success("Event update successfully!","Success","topRight");
         return back();
     }
     public function cancel_events($id)

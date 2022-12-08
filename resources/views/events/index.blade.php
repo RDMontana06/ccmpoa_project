@@ -66,12 +66,10 @@
 														</div>
 													</div>
 												</a>
-												{{-- {{ dd($event->participant[0]->user_id == auth()->user()->id) }} --}}
-												@if ($event->participant->isNotEmpty())
-													@if ($event->participant[0]->user_id == auth()->user()->id)
+												@foreach ($event->participant as $participant )
+													@if ($participant->user_id === auth()->user()->id)
 														<hr class="dropdown-divider">
-														<a href="#" class="dropdown-item" id="leaveId{{ $event->id }}"
-															onclick="leave({{ $event->id }})">
+														<a href="#" class="dropdown-item" id="leaveId{{ $event->id }}"onclick="leave({{ $event->id }})">
 															<div class="media">
 																<i data-feather="delete"></i>
 																<div class="media-content">
@@ -81,7 +79,11 @@
 															</div>
 														</a>
 													@endif
-												@endif
+												@endforeach
+												{{-- @if ($event->participant->isNotEmpty())
+												
+													
+												@endif --}}
 											</div>
 										</div>
 									</div>
@@ -113,13 +115,13 @@
 														<p><a href="#">{{ $participant->user->first_name }}</a></p>
 													@endif
 												@endforeach
-												<p id="participate{{ $participant->event_id }}">are participating</p>
+												<p id="participate{{ $participant->event_id }}">is participating</p>
 											@elseif ($event->participant->count() == 2)
 												@foreach ($event->participant as $key => $participant)
 													@if ($key == 0)
-														<p><a href="#">{{ $participant->user->first_name }}</a></p>
+														<p><a href="#">{{ $participant->user->first_name }}</a>
 													@else
-														and <p><a href="#">{{ $participant->user->first_name }}</p>
+														and <a href="#">{{ $participant->user->first_name }}</p>
 													@endif
 												@endforeach
 												<p id="participate{{ $participant->event_id }}">are participating</p>
