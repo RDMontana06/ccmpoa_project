@@ -17,7 +17,7 @@
 				<div class="event-head">
 					<div class="left">
 						<h2>{{ $event->name }}</h2>
-						<h3>{{ date('g:i a', strtotime($event->date)) }} - {{ date('g:i a', strtotime($event->expiration_date)) }}</h3>
+						<h3 class="{{ date("Y-m-d", strtotime($event->date)) === date("Y-m-d") ? "has-text-danger has-text-weight-semibold" : '' }}">{{ date("Y-m-d", strtotime($event->date)) === date("Y-m-d") ? "Today at " : '' }}{{ date('g:i a', strtotime($event->date)) }} - {{ date('g:i a', strtotime($event->expiration_date)) }}</h3>
 						<div class="button-separator">
 							<i data-feather="chevron-right"></i>
 						</div>
