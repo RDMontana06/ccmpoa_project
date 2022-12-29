@@ -41859,13 +41859,13 @@ body.is-dark .mapboxgl-ctrl-geocoder .mapboxgl-ctrl-geocoder--suggestion-address
   fill: #ff533d
 }
 
-.store-sections .product-card .product-actions .left span {
+/* .store-sections .product-card .product-actions .left span {
   display: block;
   font-size: .8rem;
   font-weight: 600;
   color: #393a4f;
   line-height: 1.2
-}
+} */
 
 .store-sections .product-card .product-actions .right .button svg {
   height: 14px;
@@ -42244,7 +42244,7 @@ body.is-dark .mapboxgl-ctrl-geocoder .mapboxgl-ctrl-geocoder--suggestion-address
 .product-quickview .shop-wrapper .cart-container .cart-content .cart-summary .summary-card .left,
 .shop-wrapper .cart-container .cart-content .cart-summary .product-quickview .summary-card .left {
   width: 55%;
-  background: #f5f5f5;
+  /* background: #f5f5f5; */
   display: flex;
   align-items: center;
   justify-content: center

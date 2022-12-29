@@ -79,6 +79,7 @@ Route::group(['middleware' => 'auth'], function () {
     // Marketplace
     Route::get('marketplace', 'MarketplaceController@index');
     Route::post('new-property','MarketplaceController@create');
+    Route::post('mark-sold/{id}','MarketplaceController@markAsSold');
     
 });
 Route::post('saveUser', 'RegisterController@save');
