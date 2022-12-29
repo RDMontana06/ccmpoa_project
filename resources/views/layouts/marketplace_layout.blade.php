@@ -23,6 +23,8 @@
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     {{-- <link rel="stylesheet" href="{{ asset('assets/css/modal-fx.css') }}"> --}}
+    {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css"> --}}
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/css/bulma-carousel.min.css">
 
 
 </head>
@@ -80,6 +82,13 @@
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>   --}}
 
   {{-- <script src="../node_modules/intro.js/intro.js"></script> --}}
+  <script src="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/js/bulma-carousel.min.js"></script>
+		<script>
+		bulmaCarousel.attach('#carousel-demo', {
+			slidesToScroll: 1,
+			slidesToShow: 1,
+		});
+		</script>
   <script>
   function show()
 	{
