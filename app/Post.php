@@ -23,6 +23,6 @@ class Post extends Model
     }
     public function attachment()
     {
-        return $this->hasMany(PostAttachment::class);
+        return $this->hasMany(PostAttachment::class, 'user_id', 'id')->withTrashed();
     }
 }

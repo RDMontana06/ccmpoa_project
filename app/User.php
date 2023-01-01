@@ -60,4 +60,12 @@ class User extends Authenticatable
     {
         return $this->hasOne(UserProfile::class,'user_id','id');
     }
+    public function coverPhoto()
+    {
+        return $this->hasMany(CoverPhoto::class,'user_id','id')->withTrashed();
+    }
+    public function userAvatar()
+    {
+        return $this->hasMany(UserAvatar::class,'user_id','id')->withTrashed();
+    }
 }
