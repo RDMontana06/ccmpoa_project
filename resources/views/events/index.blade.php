@@ -37,6 +37,7 @@
 					<!-- /partials/pages/events/events-1.html -->
 					@if ($events != null)
 						@foreach ($events as $event)
+						{{-- {{ dd(date("Y-m-d", strtotime($event->date))) }} --}}
 							<div id="event-{{ $event->id }}" class="event-item">
 								<div class="event-inner-wrap">
 									<!-- /partials/pages/events/event-options-dropdown.html -->
@@ -87,10 +88,15 @@
 											</div>
 										</div>
 									</div>
+									@if (date("Y-m-d", strtotime($event->date)) === date("Y-m-d"))
+										<h3 class="has-text-weight-semibold has-text-danger"> HAPPENING NOW</h3>
+										<hr>
+									@endif
 									<h2 class="event-title">{{ $event->name }}</h2>
+									
 									<div class="event-subtitle">
 										<i data-feather="map-pin"></i>
-										<h3>{{ $event->address }} | {{ date('M d, Y', strtotime($event->date)) }}</h3>
+										<h3 class="{{ date("Y-m-d", strtotime($event->date)) === date("Y-m-d") ? "has-text-weight-semibold" : '' }}">{{ $event->address }} | {{ date('M d, Y', strtotime($event->date)) }}</h3>
 									</div>
 									<div class="event-content">
 										<div class="event-description content">
@@ -110,23 +116,23 @@
 											@if ($event->participant->count() == 1)
 												@foreach ($event->participant as $participant)
 													@if ($participant->user->id == auth()->user()->id && $participant->deleted_at != null)
-														<p id="you{{ $participant->event_id }}"><a href="#">You</a></p>
+														<p class="{{ date("Y-m-d", strtotime($event->date)) === date("Y-m-d") ? "has-text-white" : '' }}" id="you{{ $participant->event_id }}"><a href="#">You</a></p>
 													@else
-														<p><a href="#">{{ $participant->user->first_name }}</a></p>
+														<p class="{{ date("Y-m-d", strtotime($event->date)) === date("Y-m-d") ? "has-text-white" : '' }}"><a href="#">{{ $participant->user->first_name }}</a></p>
 													@endif
 												@endforeach
-												<p id="participate{{ $participant->event_id }}">is participating</p>
+												<p class="{{ date("Y-m-d", strtotime($event->date)) === date("Y-m-d") ? "has-text-white" : '' }}" id="participate{{ $participant->event_id }}">is participating</p>
 											@elseif ($event->participant->count() == 2)
 												@foreach ($event->participant as $key => $participant)
 													@if ($key == 0)
-														<p><a href="#">{{ $participant->user->first_name }}</a>
+														<p class="{{ date("Y-m-d", strtotime($event->date)) === date("Y-m-d") ? "has-text-white" : '' }}"><a href="#">{{ $participant->user->first_name }}</a>
 													@else
 														and <a href="#">{{ $participant->user->first_name }}</p>
 													@endif
 												@endforeach
 												<p id="participate{{ $participant->event_id }}">are participating</p>
 											@else
-												<p>No Participants</p>
+												<p class="{{ date("Y-m-d", strtotime($event->date)) === date("Y-m-d") ? "has-text-white" : '' }}">No Participants</p>
 											@endif
 										</div>
 									</div>
