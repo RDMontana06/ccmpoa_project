@@ -68,4 +68,12 @@ class User extends Authenticatable
     {
         return $this->hasMany(UserAvatar::class,'user_id','id')->withTrashed();
     }
+    public function coverPhotoFinal()
+    {
+        return $this->hasMany(CoverPhoto::class)->orderBy('id','desc')->first();
+    }    
+    public function userAvatarFinal()
+    {
+        return $this->hasMany(UserAvatar::class)->orderBy('id','desc');
+    }    
 }
