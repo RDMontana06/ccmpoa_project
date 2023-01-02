@@ -29,7 +29,7 @@
 	<link rel="stylesheet" href="{{ asset('assets/css/owl.carousel.min.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/css/owl.theme.default.min.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/css/magnific-popup.css') }}">
-	<link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
+	{{-- <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}"> --}}
 
 	<link rel="stylesheet" href="{{ asset('assets/css/flaticon.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/css/new_style/style.css') }}">
@@ -81,7 +81,7 @@
 	<script src="{{ asset('assets/js/js/scrollax.min.js') }}"></script>
 	<script src="{{ asset('assets/js/js/bootstrap.min.js') }}"></script>
 
-	{{-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script> --}}
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
 	<script src="{{ asset('assets/js/js/main.js') }}"></script>
 
 	@include('vendor.lara-izitoast.toast')
