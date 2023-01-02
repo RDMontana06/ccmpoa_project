@@ -4,11 +4,11 @@
 		<!-- Timeline Header -->
 		<!-- html/partials/pages/profile/timeline/timeline-header.html -->
 		<div class="cover-bg">
-			<img class="cover-image" src="{{ asset($cover->image) }}" onerror="this.src='https://via.placeholder.com/1600x460';"
-				id='cover-image' data-demo-src="{{ asset($cover->image) }}" alt="">
+			<img class="cover-image" src="@if($coverProfile != null){{ asset($coverProfile->image) }}@endif" onerror="this.src='https://via.placeholder.com/1600x460';"
+				id='cover-image' data-demo-src="@if($coverProfile != null){{ asset($coverProfile->image) }}@endif" alt="">
 			<div class="avatar">
-				<img id="user-avatar" class="avatar-image" src="{{ asset($avatar->avatar) }}"
-					data-demo-src="{{ asset($avatar->avatar) }}" onerror="this.src='{{ URL::asset('/images/no_image.png') }}';"
+				<img id="user-avatar" class="avatar-image" src="@if($avatarProfile != null){{ asset($avatarProfile->avatar) }}@endif"
+					data-demo-src="@if($avatarProfile != null){{ asset($avatarProfile->avatar) }}@endif" onerror="this.src='{{ URL::asset('/images/no_image.png') }}';"
 					alt="Profile Picture">
 				{{-- @if ($user->id == auth()->user()->id) --}}
 				<div class="avatar-button">
@@ -113,12 +113,12 @@
 
 		<div class="profile-menu is-hidden-mobile">
 			<div class="menu-start">
-				<a href="{{ url('profile') }}" class="button has-min-width {{ $header == 'Profile' ? 'is-active' : '' }}">Timeline</a>
-				<a href="#" class="button has-min-width ">About</a>
+				<a href="{{ url('profile?id='.$id) }}" class="button has-min-width {{ $header == 'Profile' ? 'is-active' : '' }}">Timeline</a>
+				{{-- <a href="#" class="button has-min-width ">About</a> --}}
 			</div>
 			<div class="menu-end">
-				<a id="profile-friends-link" href="#" class="button has-min-width">Friends</a>
-				<a href="{{ url('profilePhotos') }}" class="button has-min-width {{ $header == 'ProfilePhotos' ? 'is-active' : '' }}">Photos</a>
+				{{-- <a id="profile-friends-link" href="#" class="button has-min-width">Friends</a> --}}
+				<a href="{{ url('profilePhotos?id='.$id) }}" class="button has-min-width {{ $header == 'ProfilePhotos' ? 'is-active' : '' }}">Photos</a>
 			</div>
 		</div>
 

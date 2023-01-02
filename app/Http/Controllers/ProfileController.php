@@ -24,14 +24,16 @@ class ProfileController extends Controller
         ,'attachments','followers.user','following','information'])->findOrfail($id);
         // dd($user);
         // dd($userPhotos->all());
-        $cover = CoverPhoto::with('user')->where('user_id', auth()->user()->id)->where('deleted_at', null)->orderBy('created_at', 'desc')->first();
-        $avatar = UserAvatar::with('user')->where('user_id', auth()->user()->id)->where('deleted_at', null)->orderBy('created_at', 'desc')->first();
+        $coverProfile = CoverPhoto::with('user')->where('user_id', $id)->orderBy('created_at', 'desc')->first();
+        $avatarProfile = UserAvatar::with('user')->where('user_id', $id)->orderBy('created_at', 'desc')->first();
             // dd($avatar);
         return view('profiles.index', array(
             'header' => 'Profile',
             'user' => $user,
-            'cover' => $cover,
-            'avatar' => $avatar,
+            'coverProfile' => $coverProfile,
+            'avatarProfile' => $avatarProfile,
+            'id' => $id,
+            
         ));
     }
     public function profilePhotos(Request $request){
@@ -45,22 +47,23 @@ class ProfileController extends Controller
         }
         ,'attachments','followers.user','following','information'])->findOrfail($id);
         // dd($user);
-        $cover = CoverPhoto::with('user')->where('user_id', auth()->user()->id)->where('deleted_at', null)->orderBy('created_at', 'desc')->first();
+        $coverProfile = CoverPhoto::with('user')->where('user_id', $id)->orderBy('created_at', 'desc')->first();
 
-        $coverPhotos = CoverPhoto::with('user')->where('user_id', auth()->user()->id)->withTrashed()->get();
+        $coverPhotos = CoverPhoto::with('user')->where('user_id', $id)->withTrashed()->get();
         //   dd($cover);
-        $avatar = UserAvatar::with('user')->where('user_id', auth()->user()->id)->where('deleted_at', null)->orderBy('created_at', 'desc')->first();
+        $avatarProfile = UserAvatar::with('user')->where('user_id', $id)->orderBy('created_at', 'desc')->first();
 
         // $allPhotos = User::with('coverPhoto', 'userAvatar')->where('id', auth()->user()->id)->get();
-        $allPhotos = User::with(['coverPhoto', 'userAvatar', 'attachments'])->where('id', auth()->user()->id)->get();
+        $allPhotos = User::with(['coverPhoto', 'userAvatar', 'attachments'])->where('id', $id)->get();
         // dd($allPhotos->coverPhoto->withTrashed());   
         return view('profiles.profile_photos', array(
-            'header' => 'ProfilePhotos',    
+            'header' => 'ProfilePhotos',
             'user' => $user,
-            'cover' => $cover,
+            'coverProfile' => $coverProfile,
             'coverPhotos' => $coverPhotos,
-            'avatar' => $avatar,
+            'avatarProfile' => $avatarProfile,
             'allPhotos' => $allPhotos,
+            'id' => $id,
         ));
     }
     public function changeAvatar(Request $request)
