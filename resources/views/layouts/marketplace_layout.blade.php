@@ -21,10 +21,8 @@
     <link rel="stylesheet" href="{{ asset('assets/vendor/intro.js/introjs.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/bulma-list/css/bulma-list.css') }}">
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     {{-- <link rel="stylesheet" href="{{ asset('assets/css/modal-fx.css') }}"> --}}
     {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css"> --}}
-		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/css/bulma-carousel.min.css">
 
 
 </head>
@@ -45,7 +43,7 @@
     <script src="{{ asset('assets/data/tipuedrop_content.js') }}"></script>
 
     <!-- Core js -->
-    <script src="{{ asset('assets/js/global.js') }}"></script>
+    <script src="{{ asset('assets/js/global.js') }}"></script>  
     
 
 
@@ -73,7 +71,7 @@
     <script src="{{ asset('assets/js/shop.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.6/dist/sweetalert2.all.min.js"></script>
 
-
+@include('vendor.lara-izitoast.toast')
     @include('sweetalert::alert')
     {{-- <script src="{{ asset('assets/js/modal-fx.js') }}"></script>
     <script src="{{ asset('assets/js/modal-01.js') }}"></script> --}}

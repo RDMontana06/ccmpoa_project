@@ -57,7 +57,7 @@ class MarketplaceController extends Controller
             }
             
         }
-        Alert::success('Successfully posted', 'Others can now inquire.')->persistent('Dismiss');
+        notify()->success("New property posted successfully!","Success","topCenter");
         return back();
     }
     public function markAsSold(Request $request, $id){
