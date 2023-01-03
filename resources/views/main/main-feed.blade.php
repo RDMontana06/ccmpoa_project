@@ -317,14 +317,17 @@
 								<div class="card-body no-padding">
 									<!-- Recommended Page -->
 									@foreach ($marketplaces as $marketplace )
-										<div class="page-block transition-block">
-										<img src="{{ asset($marketplace->cover_photo) }}"
-											data-demo-src="{{ asset($marketplace->cover_photo) }}" data-page-popover="0" alt="">
-										<div class="page-meta">
-											<span>{{ $marketplace->property_name }}</span>
-											<span>{{ $marketplace->description }}</span>
-										</div>
-									</div>
+										@foreach ($marketplace->attachment as $attachment)
+											<div class="page-block transition-block">
+												<img src="{{ asset($attachment->first()->attachment) }}"
+													data-demo-src="{{ asset($attachment->first()->attachment) }}" data-page-popover="0" alt="">
+												<div class="page-meta">
+													<span>{{ $marketplace->property_name }}</span>
+													<span>{{ $marketplace->description }}</span>
+												</div>
+											</div>
+										@endforeach
+										
 									@endforeach
 								</div>
 							</div>
