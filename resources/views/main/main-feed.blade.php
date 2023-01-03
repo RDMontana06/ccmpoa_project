@@ -319,8 +319,8 @@
 									@foreach ($marketplaces as $marketplace )
 										@foreach ($marketplace->attachment as $attachment)
 											<div class="page-block transition-block">
-												<img src="{{ asset($attachment->first()->attachment) }}"
-													data-demo-src="{{ asset($attachment->first()->attachment) }}" data-page-popover="0" alt="">
+												<img src="{{ asset($attachment->attachment) }}"
+													data-demo-src="{{ asset($attachment->attachment) }}" data-page-popover="0" alt="">
 												<div class="page-meta">
 													<span>{{ $marketplace->property_name }}</span>
 													<span>{{ $marketplace->description }}</span>
