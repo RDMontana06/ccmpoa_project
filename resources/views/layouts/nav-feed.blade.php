@@ -65,13 +65,13 @@
 						</div>
 						<div class="nav-drop-body is-notifications">
 							<!-- Notification -->
-							@foreach(config('users.notifications')::where('user_id',auth()->user()->id)->get()->take(10) as $notification)
+							@foreach(config('users.notifications')::where('user_id',auth()->user()->id)->orderBy('id','desc')->get()->take(10) as $notification)
 							<div class="media">
 								<figure class="media-left">
 									<p class="image">
 										@php
 											$avatar = "/images/no_image.png";
-											if($notification->action_info->userAvatarFinal != null) 
+											if(count($notification->action_info->userAvatarFinal) != 0) 
 											{
 												$avatar = (($notification->action_info->userAvatarFinal)->first())->avatar;
 											}
@@ -82,7 +82,7 @@
 								</figure>
 							
 								<div class="media-content">
-									<span><a href="#">{{ $notification->action_info->name }}</a> {{ $notification->message }} <a href="#">your post</a>.</span>
+									<span><a href="{{ '/profile?id='.$notification->action_by }}" target="_blank">{{ $notification->action_info->name }}</a> {{ $notification->message }} <a href="#">{{ $notification->action }}</a>.</span>
 									<span class="time">{{ time_elapsed_string($notification->created_at) }}</span>
 								</div>
 							</div>

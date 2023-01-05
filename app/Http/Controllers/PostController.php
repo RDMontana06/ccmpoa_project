@@ -47,7 +47,24 @@ class PostController extends Controller
             $like->post_id = $request->id;
             $like->user_id = auth()->user()->id;
             $like->type = "Like";
+            
             $like->save();
+
+            $post = Post::where('id',$request->id)->first();
+            if($post->user_id != auth()->user()->id)
+            {
+                $action = (object)[
+                    'action' => 'your post',
+                    'message' => 'likes',
+                    'user_id' => $post->user_id,
+                    'action_by' => auth()->user()->id,
+                    'table_id' => $post->id,
+                    'table_name' => "likes",
+                  ];
+        
+                $new_notifi = new NotificationController;
+                $notif =  $new_notifi->create($action);
+            }
         }
         
         return "Success";
