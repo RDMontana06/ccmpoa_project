@@ -123,7 +123,7 @@ class EventController extends Controller
 
 
         // Alert::success('Successfully Store', 'Event created successfully!')->persistent('Dismiss');
-        notify()->success("Event created successfully!","Success","topRight");
+        notify()->success("Event created successfully!","Success","topCenter");
         return back();
     }
     public function leave_events($id)
