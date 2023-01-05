@@ -410,6 +410,35 @@
 
 								<!-- Post -->
 								@foreach ($posts as $post)
+								<div id="view-histories-{{$post->id}}"  class="modal view-histories-{{$post->id}}is-medium has-light-bg">
+									<div class="modal-background"></div>
+									<div class="modal-content">
+										<div class="card">
+											<div class="card-heading">
+												<h3>View Post History</h3>
+												<!-- Close X button -->
+												<div class="close-wrap">
+													<span class="close-modal">
+														<i data-feather="x"></i>
+													</span>
+												</div>
+											</div>
+											<div class="card-body">
+												<div class="field">
+													@foreach($post->histories as $history)
+														<div class="post-text">
+															<p >{!! nl2br($history->old_data) !!}
+																<Br>
+																	<small>{{ date('M d, Y h:i a', strtotime($history->created_at)) }}</small><p>
+																	
+														</div>
+													<hr>
+													@endforeach
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
 									<div class="card is-post" id='post-{{ $post->id }}'>
 										<!-- Main wrap -->
 										<div class="content-wrap">
@@ -456,6 +485,18 @@
 																		</div>
 																	</div>
 																</a>
+																
+																@if(count($post->histories) != 0)
+																<a href="#" class="dropdown-item modal-trigger" data-modal="view-histories-{{$post->id}}" >
+																	<div class="media">
+																		<i data-feather="list"></i>
+																		<div class="media-content">
+																			<h3>View</h3>
+																			<small>View history of this post.</small>
+																		</div>
+																	</div>
+																</a>
+																@endif
 
 																<a class="dropdown-item is-hidden">
 																	<div class="media">

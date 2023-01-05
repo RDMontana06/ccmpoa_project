@@ -49,9 +49,10 @@ class CommentController extends Controller
         // dd($request->all());
         $post = Comment::findOrfail($request->editcommentid);
         $posthistory = new CommentHistory;
-        $posthistory->post_id = $request->editcommentid;
+        $posthistory->comment_id = $request->editcommentid;
         $posthistory->old_data = $post->comment;
         $posthistory->user_id = auth()->user()->id;
+        $posthistory->save();
 
 
         $post->comment = $request->textarea;

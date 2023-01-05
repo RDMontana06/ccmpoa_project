@@ -76,7 +76,7 @@ class PostController extends Controller
         $post = Post::findOrfail(intval($request->post_id))->delete();
         return "success";
     }
-public function editPost(Request $request)
+    public function editPost(Request $request)
     {
        
         $post = Post::findOrfail($request->editpostid);
@@ -84,6 +84,7 @@ public function editPost(Request $request)
         $posthistory->post_id = $request->editpostid;
         $posthistory->old_data = $post->content;
         $posthistory->user_id = auth()->user()->id;
+        $posthistory->save();
 
 
         $post->content = $request->textarea;
