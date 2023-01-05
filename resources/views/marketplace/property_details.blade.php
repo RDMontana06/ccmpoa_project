@@ -16,7 +16,7 @@
 							<div class="carousel-inner">
 								@foreach ($marketplace->attachment as $attachment)
 									<div class="carousel-item active">
-										<img src="{{ asset($attachment->attachment) }}" class="d-block w-100 h-100" alt="...">
+										<img src="{{ asset($attachment->attachment) }}" class="d-block w-100 " alt="...">
 									</div>
 								@endforeach
 							</div>
