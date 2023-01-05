@@ -65,7 +65,9 @@
             {{-- {{ dd($event->participant) }} --}}
 						<div class="subscribe-block">
 							<p>If you are interested to this event click the register button</p>
-							<button class="button is-solid is-success raised {{ $eventUser == null ? '' : 'is-disabled' }} " onclick="addCalendar({{ $event->id }})" id="btnAddCalendar">Register</button>
+							@if (date("Y-m-d", strtotime($event->date)) <= date("Y-m-d") )
+								<button class="button is-solid is-success raised {{ $eventUser == null ? '' : 'is-disabled' }} " onclick="addCalendar({{ $event->id }})" id="btnAddCalendar">Register</button>
+							@endif
 						</div>
 						<div class="condition has-text-centered">
 							<span></span>

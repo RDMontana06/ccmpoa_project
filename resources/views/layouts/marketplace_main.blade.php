@@ -83,8 +83,11 @@
 
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
 	<script src="{{ asset('assets/js/js/main.js') }}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.6/dist/sweetalert2.all.min.js"></script>
+
 
 	@include('vendor.lara-izitoast.toast')
+  @include('sweetalert::alert')
 
 	<script>
 		function show() {

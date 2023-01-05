@@ -37,107 +37,116 @@
 					<!-- /partials/pages/events/events-1.html -->
 					@if ($events != null)
 						@foreach ($events as $event)
-						{{-- {{ dd(date("Y-m-d", strtotime($event->date))) }} --}}
-							<div id="event-{{ $event->id }}" class="event-item">
-								<div class="event-inner-wrap">
-									<!-- /partials/pages/events/event-options-dropdown.html -->
-									<div class="dropdown is-spaced event-options is-accent is-right dropdown-trigger">
-										<div>
-											<div class="button">
-												<i data-feather="settings"></i>
+							@if (date('Y-m-d', strtotime($event->date)) <= date('Y-m-d'))
+								<div id="event-{{ $event->id }}" class="event-item">
+									<div class="event-inner-wrap">
+										<!-- /partials/pages/events/event-options-dropdown.html -->
+										<div class="dropdown is-spaced event-options is-accent is-right dropdown-trigger">
+											<div>
+												<div class="button">
+													<i data-feather="settings"></i>
+												</div>
 											</div>
-										</div>
-										<div class="dropdown-menu" role="menu">
-											<div class="dropdown-content">
-												<a href="{{ URL('event/eventDetails/' . $event->id) }}" class="dropdown-item">
-													<div class="media">
-														<i data-feather="calendar"></i>
-														<div class="media-content">
-															<h3>View Event</h3>
-															<small>Open event details.</small>
-														</div>
-													</div>
-												</a>
-												<a class="dropdown-item modal-trigger" id="{{ $event->id }}" onclick="ownerModal(this.id)">
-													<div class="media">
-														<i data-feather="smile"></i>
-														<div class="media-content">
-															<h3>Owner</h3>
-															<small>View owner details.</small>
-														</div>
-													</div>
-												</a>
-												@foreach ($event->participant as $participant )
-													@if ($participant->user_id === auth()->user()->id)
-														<hr class="dropdown-divider">
-														<a href="#" class="dropdown-item" id="leaveId{{ $event->id }}"onclick="leave({{ $event->id }})">
-															<div class="media">
-																<i data-feather="delete"></i>
-																<div class="media-content">
-																	<h3>Leave</h3>
-																	<small>Leave this event.</small>
-																</div>
+											<div class="dropdown-menu" role="menu">
+												<div class="dropdown-content">
+													<a href="{{ URL('event/eventDetails/' . $event->id) }}" class="dropdown-item">
+														<div class="media">
+															<i data-feather="calendar"></i>
+															<div class="media-content">
+																<h3>View Event</h3>
+																<small>Open event details.</small>
 															</div>
-														</a>
-													@endif
-												@endforeach
-												{{-- @if ($event->participant->isNotEmpty())
+														</div>
+													</a>
+													<a class="dropdown-item modal-trigger" id="{{ $event->id }}" onclick="ownerModal(this.id)">
+														<div class="media">
+															<i data-feather="smile"></i>
+															<div class="media-content">
+																<h3>Owner</h3>
+																<small>View owner details.</small>
+															</div>
+														</div>
+													</a>
+													@foreach ($event->participant as $participant)
+														@if ($participant->user_id === auth()->user()->id)
+															<hr class="dropdown-divider">
+															<a href="#" class="dropdown-item"
+																id="leaveId{{ $event->id }}"onclick="leave({{ $event->id }})">
+																<div class="media">
+																	<i data-feather="delete"></i>
+																	<div class="media-content">
+																		<h3>Leave</h3>
+																		<small>Leave this event.</small>
+																	</div>
+																</div>
+															</a>
+														@endif
+													@endforeach
+													{{-- @if ($event->participant->isNotEmpty())
 												
 													
 												@endif --}}
+												</div>
 											</div>
 										</div>
-									</div>
-									@if (date("Y-m-d", strtotime($event->date)) === date("Y-m-d"))
-										<h3 class="has-text-weight-semibold has-text-danger"> HAPPENING NOW</h3>
-										<hr>
-									@endif
-									<h2 class="event-title">{{ $event->name }}</h2>
-									
-									<div class="event-subtitle">
-										<i data-feather="map-pin"></i>
-										<h3 class="{{ date("Y-m-d", strtotime($event->date)) === date("Y-m-d") ? "has-text-weight-semibold" : '' }}">{{ $event->address }} | {{ date('M d, Y', strtotime($event->date)) }}</h3>
-									</div>
-									<div class="event-content">
-										<div class="event-description content">
-											<p>{{ $event->description }}</p>
-										</div>
-									</div>
-									<div class="event-participants">
-										@foreach ($event->participant as $participant)
-											<div class="participants-group" id="userImage{{ $participant->event_id }}">
-												<img src="{{ url('') . $participant->user->profile_picture }}"
-													onerror="this.src='{{ URL::asset('/images/no_image.png') }}';"
-													data-demo-src="{{ url('') . $participant->user->profile_picture }}"data-user-popover="0" alt="">
-											</div>
-										@endforeach
+										@if (date('Y-m-d', strtotime($event->date)) === date('Y-m-d'))
+											<h3 class="has-text-weight-semibold has-text-danger"> HAPPENING NOW</h3>
+											<hr>
+										@endif
+										<h2 class="event-title">{{ $event->name }}</h2>
 
-										<div class="participants-text" id="participants-text{{ $event->id }}">
-											@if ($event->participant->count() == 1)
-												@foreach ($event->participant as $participant)
-													@if ($participant->user->id == auth()->user()->id && $participant->deleted_at != null)
-														<p class="{{ date("Y-m-d", strtotime($event->date)) === date("Y-m-d") ? "has-text-white" : '' }}" id="you{{ $participant->event_id }}"><a href="#">You</a></p>
-													@else
-														<p class="{{ date("Y-m-d", strtotime($event->date)) === date("Y-m-d") ? "has-text-white" : '' }}"><a href="#">{{ $participant->user->first_name }}</a></p>
-													@endif
-												@endforeach
-												<p class="{{ date("Y-m-d", strtotime($event->date)) === date("Y-m-d") ? "has-text-white" : '' }}" id="participate{{ $participant->event_id }}">is participating</p>
-											@elseif ($event->participant->count() == 2)
-												@foreach ($event->participant as $key => $participant)
-													@if ($key == 0)
-														<p class="{{ date("Y-m-d", strtotime($event->date)) === date("Y-m-d") ? "has-text-white" : '' }}"><a href="#">{{ $participant->user->first_name }}</a>
-													@else
-														and <a href="#">{{ $participant->user->first_name }}</p>
-													@endif
-												@endforeach
-												<p id="participate{{ $participant->event_id }}">are participating</p>
-											@else
-												<p class="{{ date("Y-m-d", strtotime($event->date)) === date("Y-m-d") ? "has-text-white" : '' }}">No Participants</p>
-											@endif
+										<div class="event-subtitle">
+											<i data-feather="map-pin"></i>
+											<h3 class="{{ date('Y-m-d', strtotime($event->date)) === date('Y-m-d') ? 'has-text-weight-semibold' : '' }}">
+												{{ $event->address }} | {{ date('M d, Y', strtotime($event->date)) }}</h3>
+										</div>
+										<div class="event-content">
+											<div class="event-description content">
+												<p>{{ $event->description }}</p>
+											</div>
+										</div>
+										<div class="event-participants">
+											@foreach ($event->participant as $participant)
+												<div class="participants-group" id="userImage{{ $participant->event_id }}">
+													<img src="{{ url('') . $participant->user->profile_picture }}"
+														onerror="this.src='{{ URL::asset('/images/no_image.png') }}';"
+														data-demo-src="{{ url('') . $participant->user->profile_picture }}"data-user-popover="0" alt="">
+												</div>
+											@endforeach
+
+											<div class="participants-text" id="participants-text{{ $event->id }}">
+												@if ($event->participant->count() == 1)
+													@foreach ($event->participant as $participant)
+														@if ($participant->user->id == auth()->user()->id && $participant->deleted_at != null)
+															<p class="{{ date('Y-m-d', strtotime($event->date)) === date('Y-m-d') ? 'has-text-white' : '' }}"
+																id="you{{ $participant->event_id }}"><a href="#">You</a></p>
+														@else
+															<p class="{{ date('Y-m-d', strtotime($event->date)) === date('Y-m-d') ? 'has-text-white' : '' }}"><a
+																	href="#">{{ $participant->user->first_name }}</a></p>
+														@endif
+													@endforeach
+													<p class="{{ date('Y-m-d', strtotime($event->date)) === date('Y-m-d') ? 'has-text-white' : '' }}"
+														id="participate{{ $participant->event_id }}">is participating</p>
+												@elseif ($event->participant->count() == 2)
+													@foreach ($event->participant as $key => $participant)
+														@if ($key == 0)
+															<p class="{{ date('Y-m-d', strtotime($event->date)) === date('Y-m-d') ? 'has-text-white' : '' }}"><a
+																	href="#">{{ $participant->user->first_name }}</a>
+															@else
+																and <a href="#">{{ $participant->user->first_name }}</p>
+														@endif
+													@endforeach
+													<p id="participate{{ $participant->event_id }}">are participating</p>
+												@else
+													<p class="{{ date('Y-m-d', strtotime($event->date)) === date('Y-m-d') ? 'has-text-white' : '' }}">No
+														Participants</p>
+												@endif
+											</div>
 										</div>
 									</div>
 								</div>
-							</div>
+							@endif
+							{{-- {{ dd(date("Y-m-d", strtotime($event->date))) }} --}}
 						@endforeach
 					@else
 						<span>No events found</span>

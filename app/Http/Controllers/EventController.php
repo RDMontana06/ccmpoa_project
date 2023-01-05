@@ -18,7 +18,7 @@ class EventController extends Controller
         // $events = Event::with('user_event', 'participant.user', 'user')
         //     ->where('status', 'Active')
         //     ->get();
-        $events = Event::with('participant.user')
+        $events = Event::with('participant.user', 'user')
             ->where('status', 'active')
             ->orderBy('date', 'desc')
             ->get();
