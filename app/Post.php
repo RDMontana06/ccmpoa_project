@@ -27,6 +27,6 @@ class Post extends Model
     }
     public function histories()
     {
-        return $this->hasMany(PostHistory::class);
+        return $this->hasMany(PostHistory::class)->orderBy('id','desc');
     }
 }
