@@ -437,6 +437,16 @@
 
 														<div class="dropdown-menu" role="menu">
 															<div class="dropdown-content">
+																
+																<a href="#" class="dropdown-item modal-trigger" data-modal="edit-post" onclick='editPost({{ $post->id }})'>
+																	<div class="media">
+																		<i data-feather="edit"></i>
+																		<div class="media-content">
+																			<h3>Edit</h3>
+																			<small>Edit this post.</small>
+																		</div>
+																	</div>
+																</a>
 																<a class="dropdown-item" onclick='removePost({{ $post->id }})'>
 																	<div class="media">
 																		<i data-feather="x"></i>
@@ -447,15 +457,6 @@
 																	</div>
 																</a>
 
-																<a href="#" class="dropdown-item is-hidden">
-																	<div class="media">
-																		<i data-feather="bookmark"></i>
-																		<div class="media-content">
-																			<h3>Bookmark</h3>
-																			<small>Add this post to your bookmarks.</small>
-																		</div>
-																	</div>
-																</a>
 																<a class="dropdown-item is-hidden">
 																	<div class="media">
 																		<i data-feather="bell"></i>
@@ -487,8 +488,7 @@
 											<div class="card-body">
 												<!-- Post body text -->
 												<div class="post-text">
-													<p>{!! nl2br($post->content) !!}
-													<p>
+													<p id='post-data-{{ $post->id }}'>{!! nl2br($post->content) !!}<p>
 												</div>
 												@if ($post->attachment->count())
 													<div class="post-image">
@@ -741,10 +741,54 @@
 			</div>
 		</div>
 	</div>
+	<div id="edit-post"  class="modal edit-post is-medium has-light-bg">
+		<div class="modal-background"></div>
+		<div class="modal-content">
+			<div class="card">
+				<div class="card-heading">
+					<h3>Edit Post</h3>
+					<!-- Close X button -->
+					<div class="close-wrap">
+						<span class="close-modal">
+							<i data-feather="x"></i>
+						</span>
+					</div>
+				</div>
+				<div class="card-body">
+					<form enctype="multipart/form-data" action="edit-post" method="POST" onsubmit='show_loading();' >
+						@csrf
+						<div class="field">
+							<label class="label">Post</label>
+							
+							<div class="control">
+								<input id='editpostid' type='number' name='editpostid' value='' hidden >
+								<textarea id="edit-publish" class="textarea" name="textarea" rows="3" placeholder="Write something about you..." required></textarea>
+							</div>
+						</div>
+						
+						
+				</div>
+	
+				<footer class="modal-card-foot">
+					<button class="button is-success" type='submit'>Save changes</button>
+					{{-- <button class="button">Cancel</button> --}}
+				</footer>
+			 </form>
+			</div>
+		</div>
+	</div>
 	<script src="https://maps.google.com/maps/api/js?key=AIzaSyAGLO_M5VT7BsVdjMjciKoH1fFJWWdhDPU&libraries=places"></script>
 	<script>
 		function show_loading() {
 			$(".pageloader").toggleClass("is-active");
+		}
+		function editPost (id)
+		{
+			var editpost = document.getElementById("post-data-" + id).innerText;
+			document.getElementById("edit-publish").value = editpost;
+			document.getElementById("editpostid").value = id;
+			// alert(document.getElementById("editpostid").value);
+
 		}
 
 		function publishPost(dataFile) {
