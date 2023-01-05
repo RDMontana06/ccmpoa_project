@@ -22,7 +22,7 @@ class CommentController extends Controller
         if($post->user_id != auth()->user()->id)
         {
             $action = (object)[
-                'action' => 'Comment',
+                'action' => 'your post',
                 'message' => 'commented on',
                 'user_id' => $post->user_id,
                 'action_by' => auth()->user()->id,
