@@ -218,6 +218,22 @@ class EventController extends Controller
         $eventParticipants->user_id = auth()->user()->id;
         $eventParticipants->save();
 
+        $post = Event::where('id',$id)->first();
+        if($post->user_id != auth()->user()->id)
+        {
+            $action = (object)[
+                'action' => 'your event',
+                'message' => 'registered on',
+                'user_id' => $post->user_id,
+                'action_by' => auth()->user()->id,
+                'table_id' => $post->id,
+                'table_name' => "event_participants",
+              ];
+    
+            $new_notifi = new NotificationController;
+            $notif =  $new_notifi->create($action);
+        }
+
         return back();
     }
 }
