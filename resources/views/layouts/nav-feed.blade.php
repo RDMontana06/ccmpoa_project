@@ -65,73 +65,58 @@
 						</div>
 						<div class="nav-drop-body is-notifications">
 							<!-- Notification -->
+							@foreach(config('users.notifications')::where('user_id',auth()->user()->id)->get()->take(10) as $notification)
 							<div class="media">
 								<figure class="media-left">
 									<p class="image">
-										<img src="https://via.placeholder.com/300x300" data-demo-src="../assets/img/avatars/david.jpg" alt="">
+										@php
+											$avatar = "/images/no_image.png";
+											if($notification->action_info->userAvatarFinal != null) 
+											{
+												$avatar = (($notification->action_info->userAvatarFinal)->first())->avatar;
+											}
+											
+										@endphp
+										<img src="{{ asset($avatar) }}" data-demo-src="{{ asset($avatar) }}" alt="">
 									</p>
 								</figure>
+							
 								<div class="media-content">
-									<span><a href="#">David Kim</a> commented on <a href="#">your post</a>.</span>
-									<span class="time">30 minutes ago</span>
-								</div>
-								<div class="media-right">
-									<div class="added-icon">
-										<i data-feather="message-square"></i>
-									</div>
+									<span><a href="#">{{ $notification->action_info->name }}</a> {{ $notification->message }} <a href="#">your post</a>.</span>
+									<span class="time">{{ time_elapsed_string($notification->created_at) }}</span>
 								</div>
 							</div>
-							<!-- Notification -->
-							<div class="media">
-								<figure class="media-left">
-									<p class="image">
-										<img src="https://via.placeholder.com/300x300" data-demo-src="../assets/img/avatars/daniel.jpg" alt="">
-									</p>
-								</figure>
-								<div class="media-content">
-									<span><a href="#">Daniel Wellington</a> liked your <a href="#">profile.</a></span>
-									<span class="time">43 minutes ago</span>
-								</div>
-								<div class="media-right">
-									<div class="added-icon">
-										<i data-feather="heart"></i>
-									</div>
-								</div>
-							</div>
-							<!-- Notification -->
-							<div class="media">
-								<figure class="media-left">
-									<p class="image">
-										<img src="https://via.placeholder.com/300x300" data-demo-src="../assets/img/avatars/stella.jpg" alt="">
-									</p>
-								</figure>
-								<div class="media-content">
-									<span><a href="#">Stella Bergmann</a> shared a <a href="#">New video</a> on your wall.</span>
-									<span class="time">Yesterday</span>
-								</div>
-								<div class="media-right">
-									<div class="added-icon">
-										<i data-feather="youtube"></i>
-									</div>
-								</div>
-							</div>
-							<!-- Notification -->
-							<div class="media">
-								<figure class="media-left">
-									<p class="image">
-										<img src="https://via.placeholder.com/300x300" data-demo-src="../assets/img/avatars/elise.jpg" alt="">
-									</p>
-								</figure>
-								<div class="media-content">
-									<span><a href="#">Elise Walker</a> shared an <a href="#">Image</a> with you an 2 other people.</span>
-									<span class="time">2 days ago</span>
-								</div>
-								<div class="media-right">
-									<div class="added-icon">
-										<i data-feather="image"></i>
-									</div>
-								</div>
-							</div>
+							@endforeach
+							@php
+							function time_elapsed_string($datetime, $full = false) {
+								$now = new DateTime;
+								$ago = new DateTime($datetime);
+								$diff = $now->diff($ago);
+
+								$diff->w = floor($diff->d / 7);
+								$diff->d -= $diff->w * 7;
+
+								$string = array(
+									'y' => 'year',
+									'm' => 'month',
+									'w' => 'week',
+									'd' => 'day',
+									'h' => 'hour',
+									'i' => 'minute',
+									's' => 'second',
+								);
+								foreach ($string as $k => &$v) {
+									if ($diff->$k) {
+										$v = $diff->$k . ' ' . $v . ($diff->$k > 1 ? 's' : '');
+									} else {
+										unset($string[$k]);
+									}
+								}
+
+								if (!$full) $string = array_slice($string, 0, 1);
+								return $string ? implode(', ', $string) . ' ago' : 'just now';
+							}
+							@endphp
 						</div>
 						<div class="nav-drop-footer">
 							<a href="#">View All</a>
@@ -339,11 +324,10 @@ for (i = 0; i < users.length; i++) {
 	obj.text = "<small>"+users[i].information.lives_in+"</small>";
   }
   obj.url = url+'/profile?id='+users[i].id;
-  data.push(obj);
+//   data.push(obj);
 
 }
 
-console.log(data);
 
 var tipuedrop = {
     "pages": data

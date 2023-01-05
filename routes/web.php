@@ -81,6 +81,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('marketplace', 'MarketplaceController@index');
     Route::post('new-property','MarketplaceController@create');
     Route::post('mark-sold/{id}','MarketplaceController@markAsSold');
+
+    //Notification
+    Route::post('post-notification','NotificationController@post');
     
 });
 Route::post('saveUser', 'RegisterController@save');
