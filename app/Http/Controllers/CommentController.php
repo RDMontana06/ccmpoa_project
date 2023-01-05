@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 use App\Comment;
+use App\CommentHistory;
 use App\Post;
 use Illuminate\Http\Request;
-
+use RealRashid\SweetAlert\Facades\Alert;
 class CommentController extends Controller
 {
     //
@@ -42,5 +43,21 @@ class CommentController extends Controller
         $comment = Comment::findOrfail(intval($request->comment_id))->delete();
 
         return "success";
+    }
+    public function editComment(Request $request)
+    {
+        // dd($request->all());
+        $post = Comment::findOrfail($request->editcommentid);
+        $posthistory = new CommentHistory;
+        $posthistory->post_id = $request->editcommentid;
+        $posthistory->old_data = $post->comment;
+        $posthistory->user_id = auth()->user()->id;
+
+
+        $post->comment = $request->textarea;
+        $post->save();
+
+        Alert::success('Successfully Updated', 'People can now view your updated comment.')->persistent('Dismiss');
+        return back();
     }
 }

@@ -601,7 +601,7 @@
 													<div class="media-content">
 														<a href="#">{{ $comment->user->name }}</a>
 														<span class="time">{{ date('M d, Y h:i a', strtotime($comment->created_at)) }}</span>
-														<p>{!! nl2br($comment->comment) !!}</p>
+														<p id='comment-data-data-{{ $comment->id }}'>{!! nl2br($comment->comment) !!}</p>
 														<div class="controls is-hidden">
 															<div class="like-count">
 																<i data-feather="thumbs-up"></i>
@@ -620,8 +620,18 @@
 																		<i data-feather="more-vertical"></i>
 																	</div>
 																</div>
+																
 																<div class="dropdown-menu" role="menu">
 																	<div class="dropdown-content">
+																		<a href="#" class="dropdown-item modal-trigger" data-modal="edit-comment" onclick='editComment({{ $comment->id }})'>
+																			<div class="media">
+																				<i data-feather="edit"></i>
+																				<div class="media-content">
+																					<h3>Edit</h3>
+																					<small>Edit this comment.</small>
+																				</div>
+																			</div>
+																		</a>
 																		<a class="dropdown-item" onclick='removeComment({{ $comment->id }},{{ $post->id }})'>
 																			<div class="media">
 																				<i data-feather="x"></i>
@@ -777,6 +787,42 @@
 			</div>
 		</div>
 	</div>
+	<div id="edit-comment"  class="modal edit-comment is-medium has-light-bg">
+		<div class="modal-background"></div>
+		<div class="modal-content">
+			<div class="card">
+				<div class="card-heading">
+					<h3>Edit Comment</h3>
+					<!-- Close X button -->
+					<div class="close-wrap">
+						<span class="close-modal">
+							<i data-feather="x"></i>
+						</span>
+					</div>
+				</div>
+				<div class="card-body">
+					<form enctype="multipart/form-data" action="edit-comment" method="POST" onsubmit='show_loading();' >
+						@csrf
+						<div class="field">
+							<label class="label">Comment</label>
+							
+							<div class="control">
+								<input id='editcommentid' type='number' name='editcommentid' value='' hidden >
+								<textarea id="edit-comment-text" class="textarea" name="textarea" rows="3" placeholder="Comment..." required></textarea>
+							</div>
+						</div>
+						
+						
+				</div>
+	
+				<footer class="modal-card-foot">
+					<button class="button is-success" type='submit'>Save changes</button>
+					{{-- <button class="button">Cancel</button> --}}
+				</footer>
+			 </form>
+			</div>
+		</div>
+	</div>
 	<script src="https://maps.google.com/maps/api/js?key=AIzaSyAGLO_M5VT7BsVdjMjciKoH1fFJWWdhDPU&libraries=places"></script>
 	<script>
 		function show_loading() {
@@ -790,17 +836,16 @@
 			// alert(document.getElementById("editpostid").value);
 
 		}
+		function editComment (id)
+		{
+			var editcomment = document.getElementById("comment-data-data-" + id).innerText;
+			// alert(editcomment);
+			document.getElementById("edit-comment-text").value = editcomment;
+			document.getElementById("editcommentid").value = id;
+
+		}
 
 		function publishPost(dataFile) {
-			// return false;
-			// var d = new FormData($('#upload_form'));
-			// var files = [];
-			// if(document.getElementById("feed-upload-input-2").files.length > 0)
-			// {
-			// 	files = new FormData();
-			// 	files.append('file', $('#feed-upload-input-2')[0].files[0]);
-			// }
-
 
 			$(".pageloader").toggleClass("is-active");
 			var publish = document.getElementById('publish').value;

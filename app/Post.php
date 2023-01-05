@@ -25,4 +25,8 @@ class Post extends Model
     {
         return $this->hasMany(PostAttachment::class, 'user_id', 'id')->withTrashed();
     }
+    public function histories()
+    {
+        return $this->hasMany(PostHistory::class);
+    }
 }

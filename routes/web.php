@@ -43,6 +43,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::post('comment', 'CommentController@create');
     Route::post('remove-comment', 'CommentController@remove');
+    Route::post('edit-comment','CommentController@editComment');
 
     // Users
     Route::get('admin/users', 'UserController@index');
