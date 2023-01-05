@@ -39,6 +39,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('publish-post', 'PostController@index');
     Route::post('like-post', 'PostController@likePost');
     Route::post('remove-post', 'PostController@remove');
+    Route::post('edit-post','PostController@editPost');
 
     Route::post('comment', 'CommentController@create');
     Route::post('remove-comment', 'CommentController@remove');
@@ -72,6 +73,7 @@ Route::group(['middleware' => 'auth'], function () {
     // Events
     Route::get('event', 'EventController@index');
     Route::get('event/eventDetails/{id}', 'EventController@event_details');
+
 
     //Following
     Route::post('follow-profile','FollowersController@index');
