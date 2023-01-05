@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Post;
 use App\Like;
 use App\PostAttachment;
+use App\PostHistory;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 class PostController extends Controller
@@ -74,5 +75,21 @@ class PostController extends Controller
     {
         $post = Post::findOrfail(intval($request->post_id))->delete();
         return "success";
+    }
+    public function editPost(Request $request)
+    {
+       
+        $post = Post::findOrfail($request->editpostid);
+        $posthistory = new PostHistory;
+        $posthistory->post_id = $request->editpostid;
+        $posthistory->old_data = $post->content;
+        $posthistory->user_id = auth()->user()->id;
+
+
+        $post->content = $request->textarea;
+        $post->save();
+
+        Alert::success('Successfully Updated', 'People can now view your updated post.')->persistent('Dismiss');
+        return back();
     }
 }
