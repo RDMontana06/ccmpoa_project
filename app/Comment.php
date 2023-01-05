@@ -17,6 +17,6 @@ class Comment extends Model
     }
     public function histories()
     {
-        return $this->hasMany(CommentHistory::class);
+        return $this->hasMany(CommentHistory::class)->orderBy('id','desc');
     }
 }

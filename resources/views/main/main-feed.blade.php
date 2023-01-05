@@ -426,12 +426,34 @@
 											<div class="card-body">
 												<div class="field">
 													@foreach($post->histories as $history)
-														<div class="post-text">
-															<p >{!! nl2br($history->old_data) !!}
-																<Br>
-																	<small>{{ date('M d, Y h:i a', strtotime($history->created_at)) }}</small><p>
+													<div class="card is-post" >
+														<!-- Main wrap -->
+														<div class="content-wrap">
+															<!-- Header -->
+															<div class="card-heading">
+																<!-- User image -->
+																<div class="user-block">
+																	<div class="image">
+																		<img src="{{ URL::asset($post->user->profile_picture) }}"
+																			data-demo-src="{{ URL::asset($post->user->profile_picture) }}"
+																			onerror="this.src='{{ URL::asset('/images/no_image.png') }}';" data-user-popover="0" alt="">
+																	</div>
+																	<div class="user-info">
+																		<a href="{{ url('/profile?id=' . $post->user_id) }}" target="_blank">{!! nl2br($post->user->name) !!}</a>
+																		<span class="time">{{ date('M d, Y h:i a', strtotime($history->created_at)) }}</span>
+																	</div>
+																</div>
+															</div>
+															<div class="card-body">
+																		<div class="post-text">
+															<p >{!! nl2br($history->old_data) !!}<p>
 																	
 														</div>
+															</div>
+														</div>
+												
+													</div>
+													
 													<hr>
 													@endforeach
 												</div>
