@@ -80,6 +80,16 @@
 																	</div>
 																</div>
 															</a>
+																{{-- <a href="#" class="dropdown-item"
+																id="cancelId{{ $event->id }}"onclick="cancel({{ $event->id }})">
+																<div class="media">
+																	<i data-feather="delete"></i>
+																	<div class="media-content">
+																		<h3>Cancel</h3>
+																		<small>Cancel this event.</small>
+																	</div>
+																</div>
+															</a> --}}
 														@endif
 													@endforeach
 													{{-- @if ($event->participant->isNotEmpty())
