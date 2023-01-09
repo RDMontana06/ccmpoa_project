@@ -219,7 +219,7 @@ class EventController extends Controller
         $eventParticipants->save();
 
         $post = Event::where('id',$id)->first();
-        if($post->user_id != auth()->user()->id)
+        if($post->encoded_by != auth()->user()->id)
         {
             $action = (object)[
                 'action' => 'your event',

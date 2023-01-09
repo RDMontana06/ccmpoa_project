@@ -324,13 +324,13 @@ for (i = 0; i < users.length; i++) {
 	obj.text = "<small>"+users[i].information.lives_in+"</small>";
   }
   obj.url = url+'/profile?id='+users[i].id;
-//   data.push(obj);
+  data.push(obj);
 
 }
+console.log(data);
 
 
 var tipuedrop = {
     "pages": data
 };	
-console.log(tipuedrop)
 </script>
