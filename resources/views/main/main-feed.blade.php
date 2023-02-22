@@ -601,8 +601,15 @@
 												<!-- Followers -->
 												<div class="likers-group">
 													@foreach ($post->likes->take(3) as $like)
-														<img src="{{ asset($like->user->profile_picture) }}"
-															data-demo-src="{{ asset($like->user->profile_picture) }}" alt="">
+														@php
+															$avatar = ($like->user->userAvatarFinal)->first();
+															if($avatar != null)
+															{
+																$avatar = $avatar->avatar;
+															}
+														@endphp
+														<img src="{{ asset($avatar) }}"
+															data-demo-src="{{ asset($avatar) }}" alt="">
 													@endforeach
 												</div>
 												<div class="likers-text">
