@@ -553,12 +553,12 @@
 												<div class="post-text">
 													<p id='post-data-{{ $post->id }}'>{!! nl2br($post->content) !!}<p>
 												</div>
-												@if ($post->attachment->count())
+												@if ($post->attachments->count())
 													<div class="post-image">
-														<a data-thumb="{{ url($post->attachment[0]->attachment) }}"
-															data-demo-href="{{ url($post->attachment[0]->attachment) }}">
-															<img style='width:100%;' src="{{ asset($post->attachment[0]->attachment) }}"
-																data-demo-src="{{ url($post->attachment[0]->attachment) }}" alt="">
+														<a data-thumb="{{ url($post->attachments[0]->attachment) }}"
+															data-demo-href="{{ url($post->attachments[0]->attachment) }}">
+															<img style='width:100%;' src="{{ asset($post->attachments[0]->attachment) }}"
+																data-demo-src="{{ url($post->attachments[0]->attachment) }}" alt="">
 														</a>
 													</div>
 												@endif

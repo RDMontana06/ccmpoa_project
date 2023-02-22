@@ -28,7 +28,8 @@ class HomeController extends Controller
     public function index()
     {
         // dd();
-        $posts = Post::with('user', 'likes.user', 'comments.user','attachment','histories','comments.histories')->orderBy('created_at', 'desc')->get();
+        $posts = Post::with('user', 'likes.user', 'comments.user','attachments','histories','comments.histories')->orderBy('created_at', 'desc')->get();
+        // dd($posts);
         $events = Event::with('participant.user')
         ->where('status', 'active')
         ->orderBy('date', 'desc')

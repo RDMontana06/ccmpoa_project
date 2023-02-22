@@ -29,4 +29,8 @@ class Post extends Model
     {
         return $this->hasMany(PostHistory::class)->orderBy('id','desc');
     }
+    public function attachments()
+    {
+        return $this->hasMany(PostAttachment::class, 'post_id', 'id');
+    }
 }
