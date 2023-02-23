@@ -269,7 +269,14 @@
 							<div class="card has-background-image is-bottom"
 								data-background="{{ asset('assets/img/illustrations/characters/friends2.svg') }}" id="profile-card">
 								<div class="pc-first">
-									<img src="{{ asset(auth()->user()->profile_picture) }}"
+									@php
+										$avatar = auth()->user()->userAvatarFinal()->first();
+										if($avatar != null)
+										{
+											$avatar = $avatar->avatar;
+										}
+									@endphp
+									<img src="{{ asset($avatar) }}"
 										onerror="this.src='{{ URL::asset('/images/no_image.png') }}';" alt="">
 									<div class="pc-first-text">
 										<h3 id="userName">{{ auth()->user()->first_name }}</h3>
@@ -370,9 +377,9 @@
 											<!-- Compose form -->
 											<div class="compose">
 												<div class="compose-form">
-													<img src="{{ asset(auth()->user()->profile_picture) }} "
+													<img src="{{ asset($avatar) }} "
 														onerror="this.src='{{ URL::asset('/images/no_image.png') }}';"
-														data-demo-src="{{ asset(auth()->user()->profile_picture) }}" alt="">
+														data-demo-src="{{ asset($avatar) }}" alt="">
 													<div class="control">
 														<textarea id="publish" class="textarea" name="textarea" rows="3" placeholder="Write something about you..."></textarea>
 													</div>
@@ -469,8 +476,15 @@
 												<!-- User image -->
 												<div class="user-block">
 													<div class="image">
-														<img src="{{ URL::asset($post->user->profile_picture) }}"
-															data-demo-src="{{ URL::asset($post->user->profile_picture) }}"
+														@php
+															$avatar = ($post->user->userAvatarFinal)->first();
+															if($avatar != null)
+															{
+																$avatar = $avatar->avatar;
+															}
+														@endphp
+														<img src="{{ URL::asset($avatar) }}"
+															data-demo-src="{{ URL::asset($avatar) }}"
 															onerror="this.src='{{ URL::asset('/images/no_image.png') }}';" data-user-popover="0" alt="">
 													</div>
 													<div class="user-info">
@@ -587,8 +601,15 @@
 												<!-- Followers -->
 												<div class="likers-group">
 													@foreach ($post->likes->take(3) as $like)
-														<img src="{{ asset($like->user->profile_picture) }}"
-															data-demo-src="{{ asset($like->user->profile_picture) }}" alt="">
+														@php
+															$avatar = ($like->user->userAvatarFinal)->first();
+															if($avatar != null)
+															{
+																$avatar = $avatar->avatar;
+															}
+														@endphp
+														<img src="{{ asset($avatar) }}"
+															data-demo-src="{{ asset($avatar) }}" alt="">
 													@endforeach
 												</div>
 												<div class="likers-text">

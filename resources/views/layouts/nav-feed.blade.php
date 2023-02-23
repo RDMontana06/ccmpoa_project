@@ -128,8 +128,15 @@
 			<div class="navbar-end">
 				<div id="account-dropdown" class="navbar-item is-account drop-trigger has-caret">
 					<div class="user-image">
-						<img src="{{ asset(auth()->user()->profile_picture) }}"
-							data-demo-src="{{ asset(auth()->user()->profile_picture) }}" alt=""
+						@php
+										$avatar = auth()->user()->userAvatarFinal()->first();
+										if($avatar != null)
+										{
+											$avatar = $avatar->avatar;
+										}
+									@endphp
+						<img src="{{ asset($avatar) }}"
+							data-demo-src="{{ asset($avatar) }}" alt=""
 							onerror="this.src='{{ URL::asset('/images/no_image.png') }}';">
 						<span class="indicator"></span>
 					</div>
@@ -155,8 +162,8 @@
 									<div class="media">
 										<div class="media-left">
 											<div class="image">
-												<img src="{{ asset(auth()->user()->profile_picture) }}"
-													data-demo-src="{{ asset(auth()->user()->profile_picture) }}"
+												<img src="{{ asset($avatar) }}"
+													data-demo-src="{{ asset($avatar) }}"
 													onerror="this.src='{{ URL::asset('/images/no_image.png') }}';" alt="">
 											</div>
 										</div>
