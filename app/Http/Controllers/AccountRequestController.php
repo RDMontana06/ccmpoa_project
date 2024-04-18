@@ -50,9 +50,9 @@ class AccountRequestController extends Controller
         $accountRequest->notify(new RequestorNotif($accountRequest));
 
         // Notify Appover
-        $acctReqApproval = User::where('role_id', '1')->first();
+        //$acctReqApproval = User::where('role_id', '1')->first();
         // dd($acctReqApproval);
-        $acctReqApproval->notify(new ApproverNotif($acctReqDetails));
+        //$acctReqApproval->notify(new ApproverNotif($acctReqDetails));
 
 
         Alert::success('Request Sent', 'Successfully Sent, Please wait for an email for your credentials')->persistent('Dismiss');
